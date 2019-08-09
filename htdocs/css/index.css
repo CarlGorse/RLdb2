@@ -1,0 +1,63 @@
+@media all and (max-device-width: 480px) {
+	body {
+		font-size:3em;
+	}
+}
+
+select { height:3em; }
+#areaFilter { height:9em; }
+
+#clubFilter	{ width: 16em; }
+#positionFilter	{ width: 16em; }
+#squadFilterFilter	{ width: 16em;  }
+
+#resultsSelect  { width: 26em; }
+
+table {
+	padding-bottom:2em;
+}
+
+#resultsSelect {
+}
+
+#clubLabel::after { content: ":"; }
+#positionnLabel::after { content: ":"; }
+#squadNoLabel::after { content: ":"; }
+#detailLabel::after { content: ":"; }
+#resultsCount::after { content: ":"; }
+
+.detailText { padding-left:1em }
+
+#spanResultsCount {
+	display:block;
+	padding-bottom:1em;
+	font-weight:bold;
+}
+
+#playerDetail {
+	padding-top:2em;
+	width: 26em;
+}
+
+#divImages {
+	padding-top:1em;
+	display:block;
+	max-width:14em;
+	min-width:14em;
+	height:auto;
+}
+
+#filters { font-weight: bold; }
+
+img {
+	display:none;
+}
+
+#divName { font-weight:bold;}
+#divClub { padding-bottom:1em;}
+#divSquadNo { padding-bottom:1em;}
+
+#position2Filter {
+	display:none;
+	list-style:none;
+}
