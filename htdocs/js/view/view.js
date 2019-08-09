@@ -2,7 +2,7 @@ function view()
 {
 
 	src="js/controller/controller.js?$$REVISION$$"
-	src="js/data/data.js?$$REVISION$$"
+	src="js/model/model.js?$$REVISION$$"
 
 	var clubFilter = new ClubFilter();
 	var positionsFilter = new PositionsFilter();

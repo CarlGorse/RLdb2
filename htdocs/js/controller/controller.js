@@ -3,7 +3,7 @@ function controller()
 {
 	
 	src="js/view/view.js?$$REVISION$$"
-	src="js/data/data.js?$$REVISION$$"
+	src="js/model/model.js?$$REVISION$$"
 	
 	this.currentPlayer = null;
 	
