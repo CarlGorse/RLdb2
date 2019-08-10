@@ -48,3 +48,48 @@ Data.prototype.loadPositions = function (file) { file.positions.forEach( 	functi
 Data.prototype.loadSquadNos = function (file) { file.squadNos.forEach( 	function (sn) { data.squadNos.add(sn, sn); } ) }
 Data.prototype.loadHasImages = function (file) { file.hasImages.forEach( 	function (hi) { data.hasImages.add(hi, hi); } ) }
 
+
+Data.prototype.getPlayerById = function (id) { 
+	var result = null;
+	this.players.items.forEach( 
+		function (p) { 
+			if (p.id.toString() == id)
+					result = p; } 
+	) 
+	return result;
+}
+
+Data.prototype.getClubById = function (id) { 
+	var result = null;
+	this.clubs.items.forEach( 
+		function (c) { 
+			if (c.id.toString() == id)
+					result = c; } 
+	) 
+	return result;
+}
+
+Data.prototype.getPositionById = function (id) {
+	var result = null;
+	this.positions.items.forEach( 
+		function (pn) { 
+			if (pn.id.toString() == id)
+					result = pn; } 
+	) 
+	return result;
+}
+
+Data.prototype.getPositionsTextByIds = function (ids) {
+	var result = "";
+	ids.forEach(
+		function (id) {
+			data.positions.items.forEach( 
+				function (pn) { 
+					if (pn.id.toString() == id)
+						result += pn.name; } 
+			) 
+		}
+	)
+
+	return result;
+}

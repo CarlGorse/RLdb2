@@ -12,33 +12,23 @@ function Controller()
 }
 
 Controller.prototype.initialise =  function () {
-		
 	view.loadDisplay();
-	
 }
 
 Controller.prototype.loadData =  function () {
-		
 	data.loadData();
-	
 }	
 
 Controller.prototype.setCurrentPlayer =  function (p) {
-		
 	this.currentPlayer = p;
-	
 }		
 
 Controller.prototype.deletePlayer =  function () {
-		
 	data.players.remove(p);
-	
 }		
 
 Controller.prototype.savePlayer =  function () {
-		
 	data.players.save(p);
-	
 }	
 
 Controller.prototype.isPlayerMatchObject =  function (p, clubId, positionId, squadNo, hasImage) {
