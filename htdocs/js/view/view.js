@@ -2,26 +2,31 @@
 function View()
 {
 
-	this.clubFilter = new ClubFilter();
-	this.positionsFilter = new PositionsFilter();
-	this.squadNoFilter = new SquadNoFilter();
-	this.hasImageFilter = new HasImageFilter();
-	this.playerFilter = new PlayerFilter();
-	this.club2Filter = new ClubFilter();
-	this.positions2Filter = new PositionsFilter(Filter);
-	this.squadNoFilter = new SquadNoFilter();
-	
-	this.filters = new Filters();
-	this.filters.add([this.clubFilter, this.positionsFilter, this.squadNoFilter, this.hasImageFilter, this.playerFilter, this.club2Filter, this.positions2Filter, this.squadNoFilter]);
-	
 	this.events = new Events(this);
 	this.elements = new Elements(this);
+
+	this.clubFilter = new ViewFilterClub('clubFilter', this.elements.clubFilter);
+	this.positionsFilter = new ViewFilterPositions('positionsFilter', this.elements.positionsFilter);
+	this.squadNoFilter = new ViewFilterSquadNo('squadNoFilter'. this.elements.squadNoFilter);
+	this.hasImageFilter = new ViewFilterHasImage('hasImageFilter'. this.element.hasImageFilter);
+	this.playerFilter = new ViewFilterPlayer('playerFilter', this.element.playerFilter);
+	this.club2Filter = new ViewFilterClub('club2Filter', this.elements.club2Filter);
+	this.positions2Filter = new ViewFilterPositions('positions2Filter', this.elements.positions2Filter);
+	this.squadNo2Filter = new ViewFilterSquadNo('squadNo2Filter', this.elements.squadNo2Filter);
+	
+	this.filters = new ViewFilters();
+	[this.clubFilter, this.positionsFilter, this.squadNoFilter, this.hasImageFilter, this.playerFilter, this.club2Filter, this.positions2Filter, this.squadNoFilter].forEach(
+		function (f) {
+			this.filters.items.push(f);
+		}, this
+	);
+	
 }
 
 View.prototype.loadDisplay =  function () {
 	this.hidePlayerDetails();
 	this.hideEditPlayerDetails();
-	this.controller.loadData();
+	controller.loadData();
 	this.filters.refresh();
 }
 
@@ -117,6 +122,14 @@ function Elements(view) {
 	
 	this.playerDetails =		this.element('playerDetails');
 	this.editPlayerDetails =	this.element('editPlayerDetails');
+	
+	this.clubFilter =	this.element('clubFilter');
+	this.positionsFilter =	this.element('positionsFilter');
+	this.squadNoFilter =	this.element('squadNoFilter');
+	this.hasImageFilter =	this.element('hasImageFilter');
+	this.club2Filter =	this.element('club2Filter');
+	this.positions2Filter =	this.element('positions2Filter');
+	this.squadNo2Filter =	this.element('squadNo2Filter');
 
 }
 Elements.prototype.element = 	function (elementId) { return new Element(elementId); }

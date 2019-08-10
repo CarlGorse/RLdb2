@@ -1,8 +1,11 @@
 
+var data;
+var view;
+
 function Controller()
 {
-	this.view = new View();
-	this.model = new Model();
+	data = new Data();
+	view = new View();
 
 	this.currentPlayer = null;
 
@@ -10,13 +13,13 @@ function Controller()
 
 Controller.prototype.initialise =  function () {
 		
-	this.view.loadDisplay();
+	view.loadDisplay();
 	
 }
 
 Controller.prototype.loadData =  function () {
 		
-	this.model.data.loadFiles();
+	data.loadData();
 	
 }	
 
@@ -28,13 +31,13 @@ Controller.prototype.setCurrentPlayer =  function () {
 
 Controller.prototype.deletePlayer =  function () {
 		
-	this.model.players.remove(p);
+	data.players.remove(p);
 	
 }		
 
 Controller.prototype.savePlayer =  function () {
 		
-	this.model.players.save(p);
+	data.players.save(p);
 	
 }	
 
