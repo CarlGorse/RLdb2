@@ -10,6 +10,13 @@ function ViewFilter(id, dataSet, element, displayProperty)
 	
 }
 
+ViewFilter.prototype.events =  function (id, name) {
+	pn = new Position();
+	pn.id = id;
+	pn.name = name;
+	this.addItem(pn);
+}
+
 function ViewFilterComboBox(id, dataSet, element, displayProperty)
 {
 	ViewFilter.call(this, id, dataSet, element, displayProperty);
@@ -108,3 +115,4 @@ ViewFilterComboBox.prototype.render = function() {
 	)
 	
 }
+

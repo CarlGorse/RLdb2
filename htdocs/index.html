@@ -32,14 +32,14 @@
 			<tr id="clubRow">
 				<td><label>Club</label></td>
 				<td>
-					<select id="clubFilter" onchange="this.view.events.selectFilter('clubFilter');"></select>
+					<select id="clubFilter" onchange="view.events.selectFilter('clubFilter');"></select>
 				</td>
 			</tr>
 
 			<tr>
 				<td><label>Position</label></td>
 				<td>
-					<select id="positionsFilter" onclick="this.view.events.selectFilter('positionFilter');" onchange="filters.filterPlayers();"></select>
+					<select id="positionsFilter" onclick="view.events.selectFilter('positionFilter');" onchange="filters.filterPlayers();"></select>
 					<ul id="position2Filter"></ul>
 				</td>
 			</tr>
@@ -47,14 +47,14 @@
 			<tr id="squadNoRow">
 				<td><label>Squad Number</label></td>
 				<td>
-					<select id="squadNoFilter" onchange="this.view.events.selectFilter('squadNoFilter');"></select>
+					<select id="squadNoFilter" onchange="view.events.selectFilter('squadNoFilter');"></select>
 				</td>
 			</tr>
 
 			<tr>
 				<td><label>Has image?</label></td>
 				<td>
-					<select id="hasImageFilter" onchange="this.view.events.selectFilter('hasImageFilter');"></select>
+					<select id="hasImageFilter" onchange="view.events.selectFilter('hasImageFilter');"></select>
 				</td>
 			</tr>	  
 		
@@ -64,7 +64,7 @@
 
 			<span><label id="playerCountLabel"></label></span>
 
-			<select id="playerFilter" onchange="this.view.showPlayerDetails();"></select>		
+			<select id="playerFilter" onchange="view.events.selectFilter('playerFilter');"></select>
 
 			<button id="addPlayer" onclick="view.events.addPlayer()">Add new Player</button>
 			<button id="deletePlayer" onclick="view.events.deletePlayer()">Delete Player</button>
@@ -90,7 +90,7 @@
 					<tr><td width="30%">Image</td><td><input id="pImage2"/></td></tr>
 				</table>
 			
-				<button id="savePlayer" onclick="view.savePlayer();return false;">Save Player</button>
+				<button id="savePlayer" onclick="view.evenets.savePlayer();return false;">Save Player</button>
 			
 			</div>
 

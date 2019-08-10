@@ -2,15 +2,15 @@
 function View()
 {
 
-	this.events = new Events(this);
-	this.elements = new Elements(this);
+	this.events = new ViewEvents(this);
+	this.elements = new ViewElements(this);
 
-	this.clubFilter = new ViewFilterClub('clubFilter', this.elements.clubFilter, 'name');
+	this.clubFilter = new ViewFilterClub('clubFilter', this.elements.clubFilter, 'name2');
 	this.positionsFilter = new ViewFilterPositions('positionsFilter', this.elements.positionsFilter, 'name');
 	this.squadNoFilter = new ViewFilterSquadNo('squadNoFilter', this.elements.squadNoFilter, 'number');
 	this.hasImageFilter = new ViewFilterHasImage('hasImageFilter', this.elements.hasImageFilter, 'text');
 	this.playerFilter = new ViewFilterPlayer('playerFilter', this.elements.playerFilter, 'name');
-	this.pClub2 = new ViewFilterClub('pClub2', this.elements.pClub2, 'name');
+	this.pClub2 = new ViewFilterClub('pClub2', this.elements.pClub2, 'name2');
 	this.pPositions2 = new ViewFilterPositions('pPositions2', this.elements.pPositions2, 'name');
 	this.pSquadNo2 = new ViewFilterSquadNo('pSquadNo2', this.elements.pSquadNo2, 'number');
 	
@@ -31,13 +31,13 @@ View.prototype.loadDisplay =  function () {
 }
 
 
-function Events() {
+function ViewEvents() {
+ViewEvents.prototype.selectFilter = function (filterId) { view.selectFilter(filterId); }
+ViewEvents.prototype.addPlayer = 	function () 		{ view.addPlayer(); }	
+ViewEvents.prototype.editPlayer = 	function (p) 		{ view.editPlayer(p); }
+ViewEvents.prototype.deletePlayer = function () 		{ view.deletePlayer(); }
+ViewEvents.prototype.savePlayer = 	function () 		{ view.savePlayer(); }	
 }
-Events.prototype.onSelectFilter = 	function (filterId) { this.view.selectFilter(filterId); }
-Events.prototype.onAddPlayer = 		function () 		{ this.view.addPlayer(); }	
-Events.prototype.onEditPlayer = 	function (p) 		{ this.view.editPlayer(p); }
-Events.prototype.onDeletePlayer = 	function () 		{ this.view.deletePlayer(); }
-Events.prototype.onSavePlayer = 	function () 		{ this.view.savePlayer(); }	
 
 View.prototype.selectFilter = function (filterId) {
 	filter = view.getFilter(filterId);
@@ -65,8 +65,6 @@ View.prototype.addPlayer = function () {
 }
 
 View.prototype.editPlayer = function () {
-	var p = view.playerFilter.player;
-	controller.setCurrentPlayer(p);
 	view.showEditPlayer();
 }
 
@@ -88,12 +86,14 @@ View.prototype.getFilter = function (filterId) {
 View.prototype.showEditPlayer = function () {
 
 	view.hidePlayerDetails();
-		
-	view.element.pName2.setValue(p.name.value);
-	view.element.pClub2.setValue(p.club.value);
-	view.element.pPositions2.setValue(p.positions.values);
-	view.element.pSquadNo2.setValue(p.squadNo.value);
-	view.element.pImage2.setValue = p.image.value;
+	
+	p = controller.currentPlayer;
+	
+	view.elements.pName2.setValue(p.name);
+	view.elements.pClub2.setValue(p.clubId);
+	view.elements.pPositions2.setValue(p.positions);
+	view.elements.pSquadNo2.setValue(p.squadNo);
+	view.elements.pImage2.setValue(p.image);
 		
 	this.showEditPlayerDetails();
 		
@@ -104,7 +104,7 @@ View.prototype.hidePlayerDetails = 		function () { this.elements.playerDetails.h
 View.prototype.showEditPlayerDetails = 	function () { this.elements.editPlayerDetails.show(); }
 View.prototype.hideEditPlayerDetails = 	function () { this.elements.editPlayerDetails.hide(); }
 
-function Elements() {
+function ViewElements() {
 	
 	this.pName = 		this.element('pName');
 	this.pClub = 		this.element('pClub');
@@ -128,7 +128,8 @@ function Elements() {
 	this.playerFilter =	this.element('playerFilter');
 
 }
-Elements.prototype.element = 	function (elementId) { return document.getElementById(elementId); }
+ViewElements.prototype.element = 	function (elementId) { return document.getElementById(elementId); }
 
-Element.prototype.show = function () { this.style = "block"; }
-Element.prototype.hide = function () { this.style = "none"; }
+Element.prototype.show = function () { this.style.display = "block"; }
+Element.prototype.hide = function () { this.style.display = "none"; }
+Element.prototype.setValue = function (v) { this.innerHTML = v; }
