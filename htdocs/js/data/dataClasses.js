@@ -19,8 +19,14 @@ function Players()
 	DataSet.call(this, 'Players')
 }
 Players.prototype = Object.create(DataSet.prototype)
-DataSet.prototype.add =  function () {
+Players.prototype.add =  function (id, name, clubId, positions, squadNo, image) {
 	p = new Player();
+	p.id = id;
+	p.name = name;
+	p.clubId = clubId;
+	p.positions = positions;
+	p.squadNo = squadNo;
+	p.image = image;
 	this.addItem(p);
 }
 
@@ -29,24 +35,48 @@ function Clubs()
 	DataSet.call(this, 'Clubs')
 }
 Clubs.prototype = Object.create(DataSet.prototype)
+Clubs.prototype.add =  function (id, name) {
+	c = new Club();
+	c.id = id;
+	c.name = name;
+	this.addItem(c);
+}
 
 function Positions()
 {
 	DataSet.call(this, 'Positions')
 }
 Positions.prototype = Object.create(DataSet.prototype)
+Positions.prototype.add =  function (id, name) {
+	pn = new Position();
+	pn.id = id;
+	pn.name = name;
+	this.addItem(pn);
+}
 
 function SquadNos()
 {
 	DataSet.call(this, 'SquadNos')
 }
 SquadNos.prototype = Object.create(DataSet.prototype)
+SquadNos.prototype.add =  function (id, number) {
+	sn = new SquadNo();
+	sn.id = id;
+	sn.number = number;
+	this.addItem(sn);
+}
 
 function HasImages()
 {
 	DataSet.call(this, 'HasImages')
 }
 HasImages.prototype = Object.create(DataSet.prototype)
+HasImages.prototype.add =  function (id, text) {
+	hi = new HasImages();
+	hi.id = id;
+	hi.text = text;
+	this.addItem(hi);
+}
 
 function DataItem(id, typeName, sortProperty) {
 	this.id = id;

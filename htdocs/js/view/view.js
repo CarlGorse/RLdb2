@@ -5,17 +5,17 @@ function View()
 	this.events = new Events(this);
 	this.elements = new Elements(this);
 
-	this.clubFilter = new ViewFilterClub('clubFilter', this.elements.clubFilter);
-	this.positionsFilter = new ViewFilterPositions('positionsFilter', this.elements.positionsFilter);
-	this.squadNoFilter = new ViewFilterSquadNo('squadNoFilter'. this.elements.squadNoFilter);
-	this.hasImageFilter = new ViewFilterHasImage('hasImageFilter'. this.element.hasImageFilter);
-	this.playerFilter = new ViewFilterPlayer('playerFilter', this.element.playerFilter);
-	this.club2Filter = new ViewFilterClub('club2Filter', this.elements.club2Filter);
-	this.positions2Filter = new ViewFilterPositions('positions2Filter', this.elements.positions2Filter);
-	this.squadNo2Filter = new ViewFilterSquadNo('squadNo2Filter', this.elements.squadNo2Filter);
+	this.clubFilter = new ViewFilterClub('clubFilter', this.elements.clubFilter, 'name');
+	this.positionsFilter = new ViewFilterPositions('positionsFilter', this.elements.positionsFilter, 'name');
+	this.squadNoFilter = new ViewFilterSquadNo('squadNoFilter', this.elements.squadNoFilter, 'number');
+	this.hasImageFilter = new ViewFilterHasImage('hasImageFilter', this.elements.hasImageFilter, 'text');
+	this.playerFilter = new ViewFilterPlayer('playerFilter', this.elements.playerFilter, 'name');
+	this.pClub2 = new ViewFilterClub('pClub2', this.elements.pClub2, 'name');
+	this.pPositions2 = new ViewFilterPositions('pPositions2', this.elements.pPositions2, 'name');
+	this.pSquadNo2 = new ViewFilterSquadNo('pSquadNo2', this.elements.pSquadNo2, 'number');
 	
 	this.filters = new ViewFilters();
-	[this.clubFilter, this.positionsFilter, this.squadNoFilter, this.hasImageFilter, this.playerFilter, this.club2Filter, this.positions2Filter, this.squadNoFilter].forEach(
+	[this.clubFilter, this.positionsFilter, this.squadNoFilter, this.hasImageFilter, this.playerFilter, this.pClub2, this.pPositions2, this.pSquadNo2].forEach(
 		function (f) {
 			this.filters.items.push(f);
 		}, this
@@ -31,9 +31,7 @@ View.prototype.loadDisplay =  function () {
 }
 
 
-function Events(controller) {
-	this.controller = controller;
-	this.view = controller.view;
+function Events() {
 }
 Events.prototype.onSelectFilter = 	function (filterId) { this.view.selectFilter(filterId); }
 Events.prototype.onAddPlayer = 		function () 		{ this.view.addPlayer(); }	
@@ -106,7 +104,7 @@ View.prototype.hidePlayerDetails = 		function () { this.elements.playerDetails.h
 View.prototype.showEditPlayerDetails = 	function () { this.elements.editPlayerDetails.show(); }
 View.prototype.hideEditPlayerDetails = 	function () { this.elements.editPlayerDetails.hide(); }
 
-function Elements(view) {
+function Elements() {
 	
 	this.pName = 		this.element('pName');
 	this.pClub = 		this.element('pClub');
@@ -127,15 +125,10 @@ function Elements(view) {
 	this.positionsFilter =	this.element('positionsFilter');
 	this.squadNoFilter =	this.element('squadNoFilter');
 	this.hasImageFilter =	this.element('hasImageFilter');
-	this.club2Filter =	this.element('club2Filter');
-	this.positions2Filter =	this.element('positions2Filter');
-	this.squadNo2Filter =	this.element('squadNo2Filter');
+	this.playerFilter =	this.element('playerFilter');
 
 }
-Elements.prototype.element = 	function (elementId) { return new Element(elementId); }
+Elements.prototype.element = 	function (elementId) { return document.getElementById(elementId); }
 
-function Element(elementId) {
-	this.object = document.getElementById(elementId);
-}
-Element.prototype.show = function () { this.object.style = "block"; }
-Element.prototype.hide = function () { this.object.style = "none"; }
+Element.prototype.show = function () { this.style = "block"; }
+Element.prototype.hide = function () { this.style = "none"; }

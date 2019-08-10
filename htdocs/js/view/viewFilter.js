@@ -1,53 +1,56 @@
 
-function ViewFilter(id, dataSet, element)
+function ViewFilter(id, dataSet, element, displayProperty)
 {
 	this.id = id;
 	this.dataSet = dataSet;
 	this.element = element
+	this.displayProperty = displayProperty;
+	
 	this.items = new Array();
+	
 }
 
-function ViewFilterComboBox(id, dataSet, element)
+function ViewFilterComboBox(id, dataSet, element, displayProperty)
 {
-	ViewFilter.call(this, id, dataSet, element)
+	ViewFilter.call(this, id, dataSet, element, displayProperty);
 	this.Value = '';
 }
 ViewFilterComboBox.prototype = Object.create(ViewFilter.prototype)
 
-function ViewFilterCheckBoxList(id, dataSet, element)
+function ViewFilterCheckBoxList(id, dataSet, element, displayProperty)
 {
-	ViewFilter.call(this, id, dataSet, element)
+	ViewFilter.call(this, id, dataSet, element, displayProperty);
 	this.Values = '';
 }
 ViewFilterCheckBoxList.prototype = Object.create(ViewFilter.prototype)
 
-function ViewFilterClub(id, element)
+function ViewFilterClub(id, element, displayProperty)
 {
-	ViewFilterComboBox.call(this, id, data.clubs, element)
+	ViewFilterComboBox.call(this, id, data.clubs, element, displayProperty);
 }
 ViewFilterClub.prototype = Object.create(ViewFilterComboBox.prototype)
 
-function ViewFilterPositions(id, element)
+function ViewFilterPositions(id, element, displayProperty)
 {
-	ViewFilterCheckBoxList.call(this, id, data.positions, element)
+	ViewFilterCheckBoxList.call(this, id, data.positions, element, displayProperty);
 }
 ViewFilterPositions.prototype = Object.create(ViewFilterCheckBoxList.prototype)
 
-function ViewFilterSquadNo(id, element)
+function ViewFilterSquadNo(id, element, displayProperty)
 {
-	ViewFilterComboBox.call(this, id, data.squadNos), element
+	ViewFilterComboBox.call(this, id, data.squadNos, element, displayProperty);
 }
 ViewFilterSquadNo.prototype = Object.create(ViewFilterComboBox.prototype)
 
-function ViewFilterHasImage(id, element)
+function ViewFilterHasImage(id, element, displayProperty)
 {
-	ViewFilterComboBox.call(this, id, data.hasImages, element)
+	ViewFilterComboBox.call(this, id, data.hasImages, element, displayProperty)
 }
 ViewFilterHasImage.prototype = Object.create(ViewFilterComboBox.prototype)
 
-function ViewFilterPlayer(id, element)
+function ViewFilterPlayer(id, element, displayProperty)
 {
-	ViewFilterComboBox.call(this, id, data.players, element)
+	ViewFilterComboBox.call(this, id, data.players, element, displayProperty);
 }
 ViewFilterPlayer.prototype = Object.create(ViewFilterComboBox.prototype)
 
@@ -94,12 +97,14 @@ function ViewFilterItem(id) {
 
 ViewFilter.prototype.render = function() {}
 
-ViewFilterBomboBox.prototype.render = function() {
+ViewFilterComboBox.prototype.render = function() {
 	
-	this.items.forEach(
-		function (i) {
-			
-		}
+	this.dataSet.items.forEach(
+		function (di) {
+			option = document.createElement("option");
+			option.text = di[this.displayProperty];
+			this.element.options.add(option);
+		}, this
 	)
 	
 }

@@ -64,7 +64,7 @@
 
 			<span><label id="playerCountLabel"></label></span>
 
-			<select id="players2Filter" onchange="this.view.showPlayerDetails();"></select>		
+			<select id="playerFilter" onchange="this.view.showPlayerDetails();"></select>		
 
 			<button id="addPlayer" onclick="view.events.addPlayer()">Add new Player</button>
 			<button id="deletePlayer" onclick="view.events.deletePlayer()">Delete Player</button>
@@ -86,8 +86,8 @@
 					<tr><td width="30%">Name</td><td><input id="pName2"/></td></tr>
 					<tr><td width="30%">Club</td><td><select id="pClub2"></select></td></tr>
 					<tr><td width="30%">Positions</td><td><select id="pPositions2"/></select></td></tr>
-					<tr><td width="30%">Squad Number</td><td><input id="pSquadNo2"/></td></tr>
-					<tr><td width="30%">Image</td><td><select id="pImage2"/></select></td></tr>
+					<tr><td width="30%">Squad Number</td><td><select id="pSquadNo2"/></td></tr>
+					<tr><td width="30%">Image</td><td><input id="pImage2"/></td></tr>
 				</table>
 			
 				<button id="savePlayer" onclick="view.savePlayer();return false;">Save Player</button>
