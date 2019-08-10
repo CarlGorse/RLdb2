@@ -2,20 +2,12 @@
 function Filters()
 {
 	
-	this.filters = new Array();
-	
-	function add(filters)
-	{
-		filters.forEach( function (f) { this.filters.push(f); } )
-	}
-	
-	function refresh()
-	{
-		filters.forEach( function (f) { this.refreshFIlter(f); } )
-	}
-	
-	function refreshFilter(filter)
-	{
-	}
+	this.items = new Array();
 	
 }
+
+Filters.prototype.add = function (filter) { this.items.push(filter); } 
+
+Filters.prototype.refresh =  function () { this.items.forEach( function (f) { this.refreshFilter(f); } ) }
+
+Filters.prototype.refreshFilter = function (filter) { } 

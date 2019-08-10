@@ -4,23 +4,21 @@
 
 <head>
 
-	<link rel="stylesheet" type="text/css" href="\css\index.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
 
 	<script src="js/view/view.js?$$REVISION$$"></script>
+	<script src="js/view/filter.js?$$REVISION$$"></script>
+	<script src="js/view/filters.js?$$REVISION$$"></script>
+	<script src="js/controller/controller.js?$$REVISION$$"></script>
+	<script src="js/model/model.js?$$REVISION$$"></script>
+	<script src="js/model/classes.js?$$REVISION$$"></script>
 
-	<script
+	<script>
 	
-		function thisDoc()
+		function initialise()
 		{
-		
-			var view;
-			
-			function initialise()
-			{
-				this.view = new View();
-				this.view.onInitialise();
-			}
-			
+			this.controller = new Controller();
+			this.controller.initialise();
 		}
 
 	</script>
@@ -72,7 +70,7 @@
 			<button id="deletePlayer" onclick="view.events.deletePlayer()">Delete Player</button>
 			<button id="editPlayer" onclick="view.events.editPlayer()">Edit Player</button>
 
-			<table id="playerDetail" width="2000">
+			<table id="playerDetails" width="2000">
 				<tr><td width="30%">Name</td><td><span id="pName"></span></td></tr>
 				<tr><td width="30%">Club</td><td><span id="pClub"></span></td></tr>
 				<tr><td width="30%">Positions</td><td><span id="pPositions"></span></td></tr>
@@ -83,7 +81,7 @@
 				<img id="playerImage"/>
 			</div>
 
-			<div id="addPlayerDetail">
+			<div id="editPlayerDetails">
 				<table width="2000">
 					<tr><td width="30%">Name</td><td><input id="pName2"/></td></tr>
 					<tr><td width="30%">Club</td><td><select id="pClub2"></select></td></tr>

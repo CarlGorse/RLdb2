@@ -1,130 +1,128 @@
-function view()
+
+function View()
 {
 
-	src="js/controller/controller.js?$$REVISION$$"
-	src="js/model/model.js?$$REVISION$$"
+	this.clubFilter = new ClubFilter();
+	this.positionsFilter = new PositionsFilter();
+	this.squadNoFilter = new SquadNoFilter();
+	this.hasImageFilter = new HasImageFilter();
+	this.playerFilter = new PlayerFilter();
+	this.club2Filter = new ClubFilter();
+	this.positions2Filter = new PositionsFilter(Filter);
+	this.squadNoFilter = new SquadNoFilter();
+	
+	this.filters = new Filters();
+	this.filters.add([this.clubFilter, this.positionsFilter, this.squadNoFilter, this.hasImageFilter, this.playerFilter, this.club2Filter, this.positions2Filter, this.squadNoFilter]);
+	
+	this.events = new Events(this);
+	this.elements = new Elements(this);
+}
 
-	var clubFilter = new ClubFilter();
-	var positionsFilter = new PositionsFilter();
-	var squadNoFilter = new SquadNoFilter();
-	var hasImageFilter = new HasImageFilter();
-	var playerFilter = new PlayerFilter();
-	var club2Filter = new ClubFilter();
-	var positions2Filter = new Positions(Filter);
-	var squadNoFilter = new SquadNoFilter();
-	
-	var filters = new Filters();
-	filters.add([clubFilter, positionsFilter, squadNoFilter, hasImageFilter, playerFilter, club2Filter, positionFilter, squadNoFilter]);
-	
-	function.events()
-	{
+View.prototype.loadDisplay =  function () {
+	this.hidePlayerDetails();
+	this.hideEditPlayerDetails();
+	this.controller.loadData();
+	this.filters.refresh();
+}
 
-		function onInitialise();
-		function onSelectFilter(filterId) 	{ view.selectFilter(); }
-		function onSelectPlayer()			{ view.selectPlayer(); }
-		function onAddPlayer() 				{ view.addPlayer(); }	
-		function onEditPlayer(p) 			{ view.editPlayer(); }
-		function onCeletePlayer() 			{ view.deletePlayer(); }
-		function onSavePlayer() 			{ view.SavePlayer(); }
-	
-	}
-	
-	function element()
-	{
-		var pName = 		element.getElementById('pName');
-		var pClub = 		element.getElementById('pClub');
-		var pPositions = 	element.getElementById('pPositions');
-		var pSquadNo = 		element.getElementById('pSquadNo');
-		var pImage = 		element.getElementById('pImage');
-		
-		var pName2 = 		element.getElementById('pName2');
-		var pClub2 = 		element.getElementById('pClub2');
-		var pPositions2 = 	element.getElementById('pPositions2');
-		var pSquadNo2 = 	element.getElementById('pSquadNo2');
-		var pImage2 = 		element.getElementById('pImage2');
-		
-		function getElementById() { return document.getElementById(id); }
-		
-	}
 
-	function onInitialise()
-	{
-		view.hidePlayerDetails();
-		view.hideEditPlayerDetails();
-		data.load();
-		view.filters.refresh();
-	}
+function Events(controller) {
+	this.controller = controller;
+	this.view = controller.view;
+}
+Events.prototype.onSelectFilter = 	function (filterId) { this.view.selectFilter(filterId); }
+Events.prototype.onAddPlayer = 		function () 		{ this.view.addPlayer(); }	
+Events.prototype.onEditPlayer = 	function (p) 		{ this.view.editPlayer(p); }
+Events.prototype.onDeletePlayer = 	function () 		{ this.view.deletePlayer(); }
+Events.prototype.onSavePlayer = 	function () 		{ this.view.savePlayer(); }	
 
-	function selectFilter(filterId)
-	{
-		filter = view.getFilter(filterId);
-		filter.events.onSelect();
-	}
+View.prototype.selectFilter = function (filterId) {
+	filter = view.getFilter(filterId);
+	filter.events.onSelect();
+}
 
-	function selectPlayer()
-	{
-		view.hideEditPlayerDetails();
-		view.showPlayerDetails();
+View.prototype.selectPlayer = function () {
+	
+	view.hideEditPlayerDetails();
+	view.showPlayerDetails();
 		
-		p = view.element.playerFilter.player;
-		controller.setCurrentPlayer(p);
+	p = view.element.playerFilter.player;
+	controller.setCurrentPlayer(p);
 		
-		view.element.pName = p.name.displayValue;
-		view.element.pClub = p.club.name.displayValue;
-		view.element.pPositions = p.positions.displayValue;
-		view.element.pSquadNo = p.squadNo.displayValue;
-	}
+	view.element.pName = p.name.displayValue;
+	view.element.pClub = p.club.name.displayValue;
+	view.element.pPositions = p.positions.displayValue;
+	view.element.pSquadNo = p.squadNo.displayValue;
+}
 
-	function addPlayer()
-	{
-		var p = new Player();
-		controller.setCurrentPlayer(p);
-		view.showEditPlayer();
-	}
+View.prototype.addPlayer = function () {
+	var p = new Player();
+	controller.setCurrentPlayer(p);
+	view.showEditPlayer();
+}
 
-	function editPlayer()
-	{
-		var p = view.playerFilter.player;
-		controller.setCurrentPlayer(p);
-		view.showEditPlayer();
-	}
-	
-	function deletePlayer()
-	{
-		var p = controller.currentPlayer;	// save current player before deleted from data/controller
-		controller.deletePlayer(p);
-		view.showMessage('Player ' + p.name + ' deleted.');
-	}
-	
-	function savePlayer()
-	{
-		controller.savePlayer();
-		view.showMessage('Player ' + controller.currentPlayer.name + ' saved.');
-	}
-	
-	function getFilter(filterId)
-	{
-		return view.filters.First(f => f.filterId = filterId);
-	}
-	
-	function showEditPlayer()
-	{
-		view.hidePlayerDetails();
-		
-		view.element.pName2.setValue(p.name.value);
-		view.element.pClub2.setValue(p.club.value);
-		view.element.pPositions2.setValue(p.positions.values);
-		view.element.pSquadNo2.setValue(p.squadNo.value);
-		view.element.pImage2.setValue = p.image.value;
-		
-		this.showEditPlayerDetails();
-		
-	}
-	
-	function showPlayerDetails()		{ view.element.playerDetails.show(); }
-	function hidePlayerDetails()		{ view.element.playerDetails.hide(); }
-	function showEditPlayerDetails()	{ view.element.editPlayerDetails.show(); }
-	function hideEditPlayerDetails()	{ view.element.editPlayerDetails.hide(); }
+View.prototype.editPlayer = function () {
+	var p = view.playerFilter.player;
+	controller.setCurrentPlayer(p);
+	view.showEditPlayer();
+}
 
+View.prototype.deletePlayer = function () {
+	var p = controller.currentPlayer;	// save current player before deleted from data/controller
+	controller.deletePlayer(p);
+	view.showMessage('Player ' + p.name + ' deleted.');
+}
+
+View.prototype.savePlayer = function () {
+	controller.savePlayer();
+	view.showMessage('Player ' + controller.currentPlayer.name + ' saved.');
+}
+
+View.prototype.getFilter = function (filterId) {
+	return view.filters.First(f => f.filterId = filterId);
+}
+
+View.prototype.showEditPlayer = function () {
+
+	view.hidePlayerDetails();
+		
+	view.element.pName2.setValue(p.name.value);
+	view.element.pClub2.setValue(p.club.value);
+	view.element.pPositions2.setValue(p.positions.values);
+	view.element.pSquadNo2.setValue(p.squadNo.value);
+	view.element.pImage2.setValue = p.image.value;
+		
+	this.showEditPlayerDetails();
+		
+}
+
+View.prototype.showPlayerDetails = 		function () { this.elements.playerDetails.show(); }
+View.prototype.hidePlayerDetails = 		function () { this.elements.playerDetails.hide(); }
+View.prototype.showEditPlayerDetails = 	function () { this.elements.editPlayerDetails.show(); }
+View.prototype.hideEditPlayerDetails = 	function () { this.elements.editPlayerDetails.hide(); }
+
+function Elements(view) {
+	
+	this.pName = 		this.element('pName');
+	this.pClub = 		this.element('pClub');
+	this.pPositions = 	this.element('pPositions');
+	this.pSquadNo = 	this.element('pSquadNo');
+	this.pImage = 		this.element('pImage');
+		
+	this.pName2 = 		this.element('pName2');
+	this.pClub2 = 		this.element('pClub2');
+	this.pPositions2 = 	this.element('pPositions2');
+	this.pSquadNo2 = 	this.element('pSquadNo2');
+	this.pImage2 = 		this.element('pImage2');
+	
+	this.playerDetails =		this.element('playerDetails');
+	this.editPlayerDetails =	this.element('editPlayerDetails');
 
 }
+Elements.prototype.element = 	function (elementId) { return new Element(elementId); }
+
+function Element(elementId) {
+	this.object = document.getElementById(elementId);
+}
+Element.prototype.show = function () { this.object.style = "block"; }
+Element.prototype.hide = function () { this.object.style = "none"; }

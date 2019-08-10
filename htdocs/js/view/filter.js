@@ -1,16 +1,8 @@
 
-FilterComboBox.prototype = Object.create(Filter.prototype)
-FilterCheckBoxList.prototype = Object.create(Filter.prototype)
-ClubFilter.prototype = Object.create(FilterComboBox.prototype)
-PositionsFilter.prototype = Object.create(FilterCheckBoxList.prototype)
-SquadNoFilter.prototype = Object.create(FilterComboBox.prototype)
-HasImageFilter.prototype = Object.create(FilterComboBox.prototype)
-PlayerFilter.prototype = Object.create(FilterComboBox.prototype)
-
 function Filter(id)
 {
 	this.id = id;
-	this.items = new FilterItems();
+	//this.items = new FilterItems();
 	
 	function events()
 	{
@@ -33,37 +25,44 @@ function FilterComboBox(id)
 	Filter.call(this, id)
 	this.Value = '';
 }
+FilterComboBox.prototype = Object.create(Filter.prototype)
 
 function FilterCheckBoxList(id)
 {
 	Filter.call(this, id)
 	this.Values = '';
 }
+FilterCheckBoxList.prototype = Object.create(Filter.prototype)
 
 function ClubFilter(id)
 {
 	FilterComboBox.call(this, id)
 }
+ClubFilter.prototype = Object.create(FilterComboBox.prototype)
 
 function PositionsFilter(id)
 {
 	FilterCheckBoxList.call(this, id)
 }
+PositionsFilter.prototype = Object.create(FilterCheckBoxList.prototype)
 
 function SquadNoFilter(id)
 {
 	FilterComboBox.call(this, id)
 }
+SquadNoFilter.prototype = Object.create(FilterComboBox.prototype)
 
 function HasImageFilter(id)
 {
 	FilterComboBox.call(this, id)
 }
+HasImageFilter.prototype = Object.create(FilterComboBox.prototype)
 
 function PlayerFilter(id)
 {
 	FilterComboBox.call(this, id)
 }
+PlayerFilter.prototype = Object.create(FilterComboBox.prototype)
 
 function FilterItems()
 {
@@ -92,7 +91,7 @@ function FilterItem(id)
 	this.id = id;
 	this.selected == false;
 	
-	function select() { this.selected = true;)
-	function deselect() { this.selected = false;)
+	function select() { this.selected = true; }
+	function deselect() { this.selected = false; }
 	
 }
