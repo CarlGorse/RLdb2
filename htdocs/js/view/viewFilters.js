@@ -20,3 +20,15 @@ ViewFilters.prototype.refresh =  function () {
 	) 
 	
 }
+
+ViewFilters.prototype.first = function () {
+	this.items[0];
+} 
+
+ViewFilters.prototype.item = function (filterId) {
+	this.items.forEach( function (f)
+		{
+			if (f.filterId == filterId) return f;
+		}
+	)
+} 

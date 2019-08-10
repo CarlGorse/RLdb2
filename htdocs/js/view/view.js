@@ -30,9 +30,9 @@ View.prototype.loadDisplay =  function () {
 	this.filters.refresh();
 }
 
-
 function ViewEvents() {
 ViewEvents.prototype.selectFilter = function (filterId) { view.selectFilter(filterId); }
+ViewEvents.prototype.selectPlayer = function () 		{ view.selectPlayer(); }
 ViewEvents.prototype.addPlayer = 	function () 		{ view.addPlayer(); }	
 ViewEvents.prototype.editPlayer = 	function (p) 		{ view.editPlayer(p); }
 ViewEvents.prototype.deletePlayer = function () 		{ view.deletePlayer(); }
@@ -41,7 +41,6 @@ ViewEvents.prototype.savePlayer = 	function () 		{ view.savePlayer(); }
 
 View.prototype.selectFilter = function (filterId) {
 	filter = view.getFilter(filterId);
-	filter.events.onSelect();
 }
 
 View.prototype.selectPlayer = function () {
@@ -49,13 +48,13 @@ View.prototype.selectPlayer = function () {
 	view.hideEditPlayerDetails();
 	view.showPlayerDetails();
 		
-	p = view.element.playerFilter.player;
+	p = view.playerFilter.player();
 	controller.setCurrentPlayer(p);
 		
-	view.element.pName = p.name.displayValue;
-	view.element.pClub = p.club.name.displayValue;
-	view.element.pPositions = p.positions.displayValue;
-	view.element.pSquadNo = p.squadNo.displayValue;
+	view.elements.pName.setValue(p.name);
+	view.elements.pClub.setValue(data.getClubById(p.clubId).name2);
+	view.elements.pPositions.setValue(data.getPositionsTextByIds(p.positions));
+	view.elements.pSquadNo.setValue(p.squadNo);
 }
 
 View.prototype.addPlayer = function () {
@@ -80,7 +79,7 @@ View.prototype.savePlayer = function () {
 }
 
 View.prototype.getFilter = function (filterId) {
-	return view.filters.First(f => f.filterId = filterId);
+	return view.filters.item(filterId);
 }
 
 View.prototype.showEditPlayer = function () {
@@ -121,11 +120,11 @@ function ViewElements() {
 	this.playerDetails =		this.element('playerDetails');
 	this.editPlayerDetails =	this.element('editPlayerDetails');
 	
-	this.clubFilter =	this.element('clubFilter');
+	this.clubFilter =		this.element('clubFilter');
 	this.positionsFilter =	this.element('positionsFilter');
 	this.squadNoFilter =	this.element('squadNoFilter');
 	this.hasImageFilter =	this.element('hasImageFilter');
-	this.playerFilter =	this.element('playerFilter');
+	this.playerFilter =		this.element('playerFilter');
 
 }
 ViewElements.prototype.element = 	function (elementId) { return document.getElementById(elementId); }

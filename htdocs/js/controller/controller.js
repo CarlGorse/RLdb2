@@ -23,7 +23,7 @@ Controller.prototype.loadData =  function () {
 	
 }	
 
-Controller.prototype.setCurrentPlayer =  function () {
+Controller.prototype.setCurrentPlayer =  function (p) {
 		
 	this.currentPlayer = p;
 	
@@ -177,4 +177,9 @@ Controller.prototype.isPlayerMatchClub =  function (p, hasImage) {
 	return true;
 
 }
-	
+
+Controller.prototype.getClubFilterName = function () { return data.getClubById(this.clubFilter.value()).name; }
+Controller.prototype.getPositionFilterName = function () { return data.getPositionById(this.positionFilter.value()).name; }
+Controller.prototype.getSquadNoFilterSquadNo = function () { return data.squadNoFilter.value(); }
+Controller.prototype.getHasImagesFilterText = function () { return filters.hasImageFilter.value(); }
+

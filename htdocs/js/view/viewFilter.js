@@ -10,6 +10,12 @@ function ViewFilter(id, dataSet, element, displayProperty)
 	
 }
 
+ViewFilter.prototype.load = function () {
+	
+	this.clear();
+	
+}
+
 ViewFilter.prototype.events =  function (id, name) {
 	pn = new Position();
 	pn.id = id;
@@ -20,9 +26,12 @@ ViewFilter.prototype.events =  function (id, name) {
 function ViewFilterComboBox(id, dataSet, element, displayProperty)
 {
 	ViewFilter.call(this, id, dataSet, element, displayProperty);
-	this.Value = '';
 }
 ViewFilterComboBox.prototype = Object.create(ViewFilter.prototype)
+
+ViewFilter.prototype.value =  function () {
+	return this.element.options[this.element.selectedIndex].value;
+}
 
 function ViewFilterCheckBoxList(id, dataSet, element, displayProperty)
 {
@@ -61,6 +70,10 @@ function ViewFilterPlayer(id, element, displayProperty)
 }
 ViewFilterPlayer.prototype = Object.create(ViewFilterComboBox.prototype)
 
+ViewFilterPlayer.prototype.player = function () {
+	return data.getPlayerById(this.value());
+}
+
 ViewFilter.prototype.add = function (item) { this.items.push(item); }
 
 ViewFilter.prototype.index = function (id) { 
@@ -82,13 +95,16 @@ ViewFilter.prototype.clear = function (id) {
 	}
 }
 
-ViewFilter.prototype.load = function () {
+ViewFilterComboBox.prototype.load = function () {
 	
 	this.clear();
 	
 	this.dataSet.items.forEach(
 		function (i) {
-			this.add(i[this.dataSet.displayProperty]);
+			var option = document.createElement("option");
+			option.text = i[this.displayProperty];
+			option.value = i.id;
+			this.element.add(option);
 		}, this
 	)
 }

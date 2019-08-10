@@ -19,15 +19,20 @@ function Players()
 	DataSet.call(this, 'Players')
 }
 Players.prototype = Object.create(DataSet.prototype)
-Players.prototype.add =  function (id, name, clubId, positions, squadNo, image) {
-	p = new Player();
-	p.id = id;
-	p.name = name;
-	p.clubId = clubId;
-	p.positions = positions;
-	p.squadNo = squadNo;
-	p.image = image;
+Players.prototype.add =  function (name, clubId, positions, squadNo, image) {
+	p = new Player(name, clubId, positions, squadNo, image);
 	this.addItem(p);
+}
+
+Players.prototype.nextId = function () {
+	var result = 0;
+	this.items.forEach(
+		function (p)
+		{
+			if (p.id >= result) result = p.id + 1;
+		}
+	)
+	return result;
 }
 
 function Clubs()
@@ -86,8 +91,9 @@ function DataItem(id, typeName, sortProperty) {
 	this.sortProperty = sortProperty;
 }
 
-function Player(id, name, clubId, positions, squadNo, image)
+function Player(name, clubId, positions, squadNo, image)
 {
+	id = data.players.nextId();
 	DataItem.call(this, id, 'Player', 'name')
 	this.name = name;
 	this.clubId = clubId;
@@ -124,3 +130,48 @@ function Image(id, filename)
 	this.filename = filename;
 }
 Image.prototype = Object.create(DataItem.prototype)
+
+Data.prototype.getPlayerById = function (id) { 
+	var result = null;
+	this.players.items.forEach( 
+		function (p) { 
+			if (p.id.toString() == id)
+					result = p; } 
+	) 
+	return result;
+}
+
+Data.prototype.getClubById = function (id) { 
+	var result = null;
+	this.clubs.items.forEach( 
+		function (c) { 
+			if (c.id.toString() == id)
+					result = c; } 
+	) 
+	return result;
+}
+
+Data.prototype.getPositionById = function (id) {
+	var result = null;
+	this.positions.items.forEach( 
+		function (pn) { 
+			if (pn.id.toString() == id)
+					result = pn; } 
+	) 
+	return result;
+}
+
+Data.prototype.getPositionsTextByIds = function (ids) {
+	var result = "";
+	ids.forEach(
+		function (id) {
+			data.positions.items.forEach( 
+				function (pn) { 
+					if (pn.id.toString() == id)
+						result += pn.name; } 
+			) 
+		}
+	)
+
+	return result;
+}
