@@ -14,7 +14,6 @@ ViewFilters.prototype.refresh =  function () {
 	
 	this.items.forEach( 
 		function (f) { 
-			f.load();
 			f.render();
 		} 
 	) 

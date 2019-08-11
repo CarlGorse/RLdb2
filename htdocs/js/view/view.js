@@ -5,14 +5,14 @@ function View()
 	this.events = new ViewEvents(this);
 	this.elements = new ViewElements(this);
 
-	this.clubFilter = new ViewFilterClub('clubFilter', this.elements.clubFilter, 'name2');
-	this.positionsFilter = new ViewFilterPositions('positionsFilter', this.elements.positionsFilter, 'name');
-	this.squadNoFilter = new ViewFilterSquadNo('squadNoFilter', this.elements.squadNoFilter, 'number');
-	this.hasImageFilter = new ViewFilterHasImage('hasImageFilter', this.elements.hasImageFilter, 'text');
-	this.playerFilter = new ViewFilterPlayer('playerFilter', this.elements.playerFilter, 'name');
-	this.pClub2 = new ViewFilterClub('pClub2', this.elements.pClub2, 'name2');
-	this.pPositions2 = new ViewFilterPositions('pPositions2', this.elements.pPositions2, 'name');
-	this.pSquadNo2 = new ViewFilterSquadNo('pSquadNo2', this.elements.pSquadNo2, 'number');
+	this.clubFilter = new ViewFilterClub('clubFilter', this.elements.clubFilter.element, 'name2');
+	this.positionsFilter = new ViewFilterPositions('positionsFilter', this.elements.positionsFilter.element, 'name');
+	this.squadNoFilter = new ViewFilterSquadNo('squadNoFilter', this.elements.squadNoFilter.element, 'number');
+	this.hasImageFilter = new ViewFilterHasImage('hasImageFilter', this.elements.hasImageFilter.element, 'text');
+	this.playerFilter = new ViewFilterPlayer('playerFilter', this.elements.playerFilter.element, 'name');
+	this.pClub2 = new ViewFilterClub('pClub2', this.elements.pClub2.element, 'name2');
+	this.pPositions2 = new ViewFilterPositions('pPositions2', this.elements.pPositions2.element, 'name');
+	this.pSquadNo2 = new ViewFilterSquadNo('pSquadNo2', this.elements.pSquadNo2.element, 'number');
 	
 	this.filters = new ViewFilters();
 	[this.clubFilter, this.positionsFilter, this.squadNoFilter, this.hasImageFilter, this.playerFilter, this.pClub2, this.pPositions2, this.pSquadNo2].forEach(
@@ -28,6 +28,10 @@ View.prototype.loadDisplay =  function () {
 	this.hideEditPlayerDetails();
 	controller.loadData();
 	this.filters.refresh();
+	
+	p = view.playerFilter.player();
+	controller.setCurrentPlayer(p);
+	
 }
 
 function ViewEvents() {
@@ -105,30 +109,49 @@ View.prototype.hideEditPlayerDetails = 	function () { this.elements.editPlayerDe
 
 function ViewElements() {
 	
-	this.pName = 		this.element('pName');
-	this.pClub = 		this.element('pClub');
-	this.pPositions = 	this.element('pPositions');
-	this.pSquadNo = 	this.element('pSquadNo');
-	this.pImage = 		this.element('pImage');
+	this.pName = 		new ViewElement('pName');
+	this.pClub = 		new ViewElement('pClub');
+	this.pPositions = 	new ViewElement('pPositions');
+	this.pSquadNo = 	new ViewElement('pSquadNo');
+	this.pImage = 		new ViewElement('pImage');
 		
-	this.pName2 = 		this.element('pName2');
-	this.pClub2 = 		this.element('pClub2');
-	this.pPositions2 = 	this.element('pPositions2');
-	this.pSquadNo2 = 	this.element('pSquadNo2');
-	this.pImage2 = 		this.element('pImage2');
+	this.pName2 = 		new ViewElement('pName2');
+	this.pClub2 = 		new ViewElementComboBox('pClub2');
+	this.pPositions2 = 	new ViewElementComboBox('pPositions2');
+	this.pSquadNo2 = 	new ViewElementComboBox('pSquadNo2');
+	this.pImage2 = 		new ViewElement('pImage2');
 	
-	this.playerDetails =		this.element('playerDetails');
-	this.editPlayerDetails =	this.element('editPlayerDetails');
+	this.playerDetails =		new ViewElement('playerDetails');
+	this.editPlayerDetails =	new ViewElement('editPlayerDetails');
 	
-	this.clubFilter =		this.element('clubFilter');
-	this.positionsFilter =	this.element('positionsFilter');
-	this.squadNoFilter =	this.element('squadNoFilter');
-	this.hasImageFilter =	this.element('hasImageFilter');
-	this.playerFilter =		this.element('playerFilter');
+	this.clubFilter =		new ViewElement('clubFilter');
+	this.positionsFilter =	new ViewElement('positionsFilter');
+	this.squadNoFilter =	new ViewElement('squadNoFilter');
+	this.hasImageFilter =	new ViewElement('hasImageFilter');
+	this.playerFilter =		new ViewElement('playerFilter');
 
 }
-ViewElements.prototype.element = 	function (elementId) { return document.getElementById(elementId); }
 
-Element.prototype.show = function () { this.style.display = "block"; }
-Element.prototype.hide = function () { this.style.display = "none"; }
-Element.prototype.setValue = function (v) { this.innerHTML = v; }
+function ViewElement(elementId)
+{
+	this.elementId = elementId;
+	this.element = document.getElementById(elementId);
+}
+
+ViewElement.prototype.show = function () { this.element.style.display = "block"; }
+ViewElement.prototype.hide = function () { this.element.style.display = "none"; }
+ViewElement.prototype.setValue = function (value) { this.element.innerHTML = value; }
+
+function ViewElementComboBox(name)
+{
+	ViewElement.call(this, name);
+}
+
+ViewElementComboBox.prototype.setValue = function (id) { 
+	for (var x = 0; x < this.element.length; x ++)
+	{
+		o = this.element.options[x];
+		o.selected = false;
+		if (o.value == id) o.selected = true;
+	}
+}

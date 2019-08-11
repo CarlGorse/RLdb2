@@ -10,7 +10,7 @@ function ViewFilter(id, dataSet, element, displayProperty)
 	
 }
 
-ViewFilter.prototype.load = function () {
+ViewFilter.prototype.render = function () {
 	
 	this.clear();
 	
@@ -95,7 +95,7 @@ ViewFilter.prototype.clear = function (id) {
 	}
 }
 
-ViewFilterComboBox.prototype.load = function () {
+ViewFilterComboBox.prototype.render = function () {
 	
 	this.clear();
 	
@@ -118,17 +118,4 @@ function ViewFilterItem(id) {
 	
 }
 
-ViewFilter.prototype.render = function() {}
-
-ViewFilterComboBox.prototype.render = function() {
-	
-	this.dataSet.items.forEach(
-		function (di) {
-			option = document.createElement("option");
-			option.text = di[this.displayProperty];
-			this.element.options.add(option);
-		}, this
-	)
-	
-}
 
