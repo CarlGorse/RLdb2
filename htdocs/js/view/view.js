@@ -166,12 +166,12 @@ function ViewElementComboBox(name)
 	ViewElement.call(this, name);
 }
 
-ViewElementComboBox.prototype.setValue = function (id) { 
+ViewElementComboBox.prototype.setValue = function (itemId) { 
 	for (var x = 0; x < this.element.length; x ++)
 	{
 		o = this.element.options[x];
 		o.selected = false;
-		if (o.value == id) o.selected = true;
+		if (o.value == itemId) o.selected = true;
 	}
 }
 ViewElement.prototype.value = function () { return this.element[this.element.selectedindex].value; }

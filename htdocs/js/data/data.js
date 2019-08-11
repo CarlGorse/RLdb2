@@ -42,7 +42,17 @@ Data.prototype.loadFile = function (dataSet) {
 		
 }
 
-Data.prototype.loadPlayers = 	function (file) { file.clubs.forEach( 		function (c) { c.players.forEach( function(p) { data.players.add(p.name, c.clubId, p.positions, p.squadNo, p.img); } ) } ) }
+Data.prototype.loadPlayers = function (file) { 
+	file.clubs.forEach(
+		function (c) { 
+			c.players.forEach( 
+				function(p) { 
+					data.players.add(p.name, c.clubId, p.positions, p.squadNo, p.img); 
+				} 
+			) 
+		} 
+	) 
+}
 Data.prototype.loadClubs = 	function (file) { file.clubs.forEach( 		function (c) { data.clubs.add(c.clubId, c.name, c.name2); } ) }
 Data.prototype.loadPositions = function (file) { file.positions.forEach( 	function (pn) { data.positions.add(pn.positionId, pn.name); } ) }
 Data.prototype.loadSquadNos = function (file) { file.squadNos.forEach( 	function (sn) { data.squadNos.add(sn, sn); } ) }

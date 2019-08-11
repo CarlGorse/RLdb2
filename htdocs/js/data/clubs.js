@@ -4,10 +4,7 @@ function Clubs()
 	DataSet.call(this, 'Clubs')
 }
 Clubs.prototype = Object.create(DataSet.prototype)
-Clubs.prototype.add =  function (id, name, name2) {
-	c = new Club();
-	c.id = id;
-	c.name = name;
-	c.name2 = name2;
+Clubs.prototype.add =  function (clubId, name, name2) {
+	c = new Club(clubId, name, name2);
 	this.addItem(c);
 }

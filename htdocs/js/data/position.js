@@ -1,7 +1,8 @@
 
-function Position(id, name)
+function Position(positionId, name)
 {
-	DataItem.call(this, id, 'Position', 'name')
+	DataItem.call(this, positionId, 'Position', 'name')
+	this.positionId = positionId;
 	this.name = name;
 }
 Position.prototype = Object.create(DataItem.prototype)

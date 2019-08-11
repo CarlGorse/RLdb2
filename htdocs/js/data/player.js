@@ -1,8 +1,8 @@
 
 function Player(name, clubId, positions, squadNo, image)
 {
-	id = data.players.nextId();
-	DataItem.call(this, id, 'Player', 'name')
+	this.playerId = data.players.nextId();
+	DataItem.call(this, this.playerId, 'Player', 'name')
 	this.name = name;
 	this.clubId = clubId;
 	this.positions = positions;

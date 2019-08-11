@@ -14,7 +14,7 @@ Players.prototype.nextId = function () {
 	this.items.forEach(
 		function (p)
 		{
-			if (p.id >= result) result = p.id + 1;
+			if (p.playerId >= result) result = p.playerId + 1;
 		}
 	)
 	return result;
@@ -29,7 +29,7 @@ Players.prototype.save =  function () {
 	{
 		var xmlhttp = new XMLHttpRequest();
 		//var filename = 'players2.json';
-		var filename = 'C://Git//repos//RLdb//htdocs//files/players.json';
+		var filename = 'C://Git//repos//RLdb2//htdocs//files/players.json';
 		//var filename = 'C:\\Git\\repos\\RLdb\htdocs\\players.json';
 		
 		xmlhttp.open("POST","/php/saveFile.php?filename=" + filename,true);

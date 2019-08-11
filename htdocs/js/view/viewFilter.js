@@ -1,7 +1,7 @@
 
-function ViewFilter(id, dataSet, element, displayProperty)
+function ViewFilter(filterId, dataSet, element, displayProperty)
 {
-	this.id = id;
+	this.filterId = filterId;
 	this.dataSet = dataSet;
 	this.element = element
 	this.displayProperty = displayProperty;
@@ -16,16 +16,9 @@ ViewFilter.prototype.render = function () {
 	
 }
 
-ViewFilter.prototype.events =  function (id, name) {
-	pn = new Position();
-	pn.id = id;
-	pn.name = name;
-	this.addItem(pn);
-}
-
-function ViewFilterComboBox(id, dataSet, element, displayProperty)
+function ViewFilterComboBox(filterId, dataSet, element, displayProperty)
 {
-	ViewFilter.call(this, id, dataSet, element, displayProperty);
+	ViewFilter.call(this, filterId, dataSet, element, displayProperty);
 }
 ViewFilterComboBox.prototype = Object.create(ViewFilter.prototype)
 
@@ -33,40 +26,40 @@ ViewFilter.prototype.value =  function () {
 	return this.element.options[this.element.selectedIndex].value;
 }
 
-function ViewFilterCheckBoxList(id, dataSet, element, displayProperty)
+function ViewFilterCheckBoxList(filterId, dataSet, element, displayProperty)
 {
-	ViewFilter.call(this, id, dataSet, element, displayProperty);
+	ViewFilter.call(this, filterId, dataSet, element, displayProperty);
 	this.Values = '';
 }
 ViewFilterCheckBoxList.prototype = Object.create(ViewFilter.prototype)
 
-function ViewFilterClub(id, element, displayProperty)
+function ViewFilterClub(filterId, element, displayProperty)
 {
-	ViewFilterComboBox.call(this, id, data.clubs, element, displayProperty);
+	ViewFilterComboBox.call(this, filterId, data.clubs, element, displayProperty);
 }
 ViewFilterClub.prototype = Object.create(ViewFilterComboBox.prototype)
 
-function ViewFilterPositions(id, element, displayProperty)
+function ViewFilterPositions(filterId, element, displayProperty)
 {
-	ViewFilterCheckBoxList.call(this, id, data.positions, element, displayProperty);
+	ViewFilterCheckBoxList.call(this, filterId, data.positions, element, displayProperty);
 }
 ViewFilterPositions.prototype = Object.create(ViewFilterCheckBoxList.prototype)
 
-function ViewFilterSquadNo(id, element, displayProperty)
+function ViewFilterSquadNo(filterId, element, displayProperty)
 {
-	ViewFilterComboBox.call(this, id, data.squadNos, element, displayProperty);
+	ViewFilterComboBox.call(this, filterId, data.squadNos, element, displayProperty);
 }
 ViewFilterSquadNo.prototype = Object.create(ViewFilterComboBox.prototype)
 
-function ViewFilterHasImage(id, element, displayProperty)
+function ViewFilterHasImage(filterId, element, displayProperty)
 {
-	ViewFilterComboBox.call(this, id, data.hasImages, element, displayProperty)
+	ViewFilterComboBox.call(this, filterId, data.hasImages, element, displayProperty)
 }
 ViewFilterHasImage.prototype = Object.create(ViewFilterComboBox.prototype)
 
-function ViewFilterPlayer(id, element, displayProperty)
+function ViewFilterPlayer(filterId, element, displayProperty)
 {
-	ViewFilterComboBox.call(this, id, data.players, element, displayProperty);
+	ViewFilterComboBox.call(this, filterId, data.players, element, displayProperty);
 }
 ViewFilterPlayer.prototype = Object.create(ViewFilterComboBox.prototype)
 
@@ -76,19 +69,19 @@ ViewFilterPlayer.prototype.player = function () {
 
 ViewFilter.prototype.add = function (item) { this.items.push(item); }
 
-ViewFilter.prototype.index = function (id) { 
+ViewFilter.prototype.index = function (filterId) { 
 	for (i = 0; i < this.items.length; i++)
 	{
 		var i = this.items[i];
-		if (i.id == id) return i;
+		if (i.filterId == filterId) return i;
 	}
 }
 
-ViewFilter.prototype.remove = function (id) {
-		this.items = this.items.splice(index, 1);
+ViewFilter.prototype.remove = function (index) {
+	this.items = this.items.splice(index, 1);
 }
 
-ViewFilter.prototype.clear = function (id) {
+ViewFilter.prototype.clear = function () {
 	while(this.items.first)
 	{
 		this.items.remove(0);
@@ -109,8 +102,8 @@ ViewFilterComboBox.prototype.render = function () {
 	)
 }
 
-function ViewFilterItem(id) {
-	this.id = id;
+function ViewFilterItem(itemId) {
+	this.itemId = itemId;
 	this.selected == false;
 	
 	function select() { this.selected = true; }
