@@ -27,7 +27,7 @@ Controller.prototype.deletePlayer =  function () {
 	data.players.remove(p);
 }		
 
-Controller.prototype.savePlayer =  function () {
+Controller.prototype.savePlayers =  function (p) {
 	data.players.save(p);
 }	
 

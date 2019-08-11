@@ -78,8 +78,19 @@ View.prototype.deletePlayer = function () {
 }
 
 View.prototype.savePlayer = function () {
-	controller.savePlayer();
+	var p = controller.currentPlayer;
+	p.Name = view.elements.pName2.value;
+	p.Club = view.elements.pClub2.value;
+	p.Positions = view.elements.pPositions2.values;
+	p.SquadNo = view.elements.pSquadNo2.values;
+	p.Image = view.elements.pImage2.values;
+	
+	controller.savePlayers();
 	view.showMessage('Player ' + controller.currentPlayer.name + ' saved.');
+}
+
+View.prototype.showMessage = function (text) {
+	alert(text);
 }
 
 View.prototype.getFilter = function (filterId) {
@@ -115,20 +126,20 @@ function ViewElements() {
 	this.pSquadNo = 	new ViewElement('pSquadNo');
 	this.pImage = 		new ViewElement('pImage');
 		
-	this.pName2 = 		new ViewElement('pName2');
+	this.pName2 = 		new ViewElementInput('pName2');
 	this.pClub2 = 		new ViewElementComboBox('pClub2');
 	this.pPositions2 = 	new ViewElementComboBox('pPositions2');
 	this.pSquadNo2 = 	new ViewElementComboBox('pSquadNo2');
-	this.pImage2 = 		new ViewElement('pImage2');
+	this.pImage2 = 		new ViewElementInput('pImage2');
 	
 	this.playerDetails =		new ViewElement('playerDetails');
 	this.editPlayerDetails =	new ViewElement('editPlayerDetails');
 	
-	this.clubFilter =		new ViewElement('clubFilter');
-	this.positionsFilter =	new ViewElement('positionsFilter');
-	this.squadNoFilter =	new ViewElement('squadNoFilter');
-	this.hasImageFilter =	new ViewElement('hasImageFilter');
-	this.playerFilter =		new ViewElement('playerFilter');
+	this.clubFilter =		new ViewElementComboBox('clubFilter');
+	this.positionsFilter =	new ViewElementComboBox('positionsFilter');
+	this.squadNoFilter =	new ViewElementComboBox('squadNoFilter');
+	this.hasImageFilter =	new ViewElementComboBox('hasImageFilter');
+	this.playerFilter =		new ViewElementComboBox('playerFilter');
 
 }
 
@@ -141,6 +152,14 @@ function ViewElement(elementId)
 ViewElement.prototype.show = function () { this.element.style.display = "block"; }
 ViewElement.prototype.hide = function () { this.element.style.display = "none"; }
 ViewElement.prototype.setValue = function (value) { this.element.innerHTML = value; }
+ViewElement.prototype.value = function () { return this.element.innerHTML; }
+
+function ViewElementInput(elementId)
+{
+	ViewElement.call(this, elementId);
+}
+ViewElementInput.prototype.setValue = function (value) { this.element.value = value; }
+ViewElement.prototype.value = function () { return this.element.value; }
 
 function ViewElementComboBox(name)
 {
@@ -155,3 +174,4 @@ ViewElementComboBox.prototype.setValue = function (id) {
 		if (o.value == id) o.selected = true;
 	}
 }
+ViewElement.prototype.value = function () { return this.element[this.element.selectedindex].value; }

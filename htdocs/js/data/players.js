@@ -18,4 +18,27 @@ Players.prototype.nextId = function () {
 		}
 	)
 	return result;
+}	
+
+Players.prototype.save =  function () {
+	writePlayersJSON();
 }
+
+
+	function writePlayersJSON()
+	{
+		var xmlhttp = new XMLHttpRequest();
+		//var filename = 'players2.json';
+		var filename = 'C://Git//repos//RLdb//htdocs//files/players.json';
+		//var filename = 'C:\\Git\\repos\\RLdb\htdocs\\players.json';
+		
+		xmlhttp.open("POST","/php/saveFile.php?filename=" + filename,true);
+		//value="test my text";
+		//xmlhttp.send("value2="+value);
+		
+		Json = new Json();
+		var playersJSON = Json.getPlayersJSON();
+		var fd = new FormData();
+		fd.append("playersJSON", playersJSON);
+		xmlhttp.send(fd);
+	}
