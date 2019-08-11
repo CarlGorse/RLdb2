@@ -1,7 +1,7 @@
 
 function HasImage(hasImageId, filename)
 {
-	DataItem.call(this, hasIMageId, 'Image', 'text')
+	DataItem.call(this, hasImageId, 'Image', 'text')
 	this.hasImageId = hasImageId;
 	this.filename = filename;
 }

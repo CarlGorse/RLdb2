@@ -14,7 +14,7 @@ Club.prototype.clubPlayers =  function () {
 		function (p) {
 			if (p.clubId == this.clubId)
 			{
-				players.add(p);
+				players.addPlayer(p);
 			}
 		}, this
 	)

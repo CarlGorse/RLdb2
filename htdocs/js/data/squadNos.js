@@ -7,7 +7,7 @@ SquadNos.prototype = Object.create(DataSet.prototype)
 
 SquadNos.prototype.add =  function (squadNoId, number) {
 	sn = new SquadNo(squadNoId, number);
-	this.addItem(sn);
+	this.addSquadNo(sn);
 }
 
 SquadNos.prototype.loadFile = function (file) { 
@@ -18,3 +18,7 @@ SquadNos.prototype.loadFile = function (file) {
 	)
 }
 
+SquadNos.prototype.addSquadNo = function (pn)
+{
+	this.addItem(pn);
+}

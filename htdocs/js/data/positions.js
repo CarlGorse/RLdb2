@@ -7,7 +7,7 @@ Positions.prototype = Object.create(DataSet.prototype)
 
 Positions.prototype.add =  function (id, name) {
 	pn = new Position(id, name);
-	this.addItem(pn);
+	this.addPosition(pn);
 }
 
 Positions.prototype.position = function (id) { return this.item(id); }

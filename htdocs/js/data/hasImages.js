@@ -7,7 +7,7 @@ HasImages.prototype = Object.create(DataSet.prototype)
 
 HasImages.prototype.add =  function (hasImageId, text) {
 	hi = new HasImage(hasImageId, text);
-	this.addItem(hi);
+	this.addHasImage(hi);
 }
 
 HasImages.prototype.loadFile = function (file) { 
