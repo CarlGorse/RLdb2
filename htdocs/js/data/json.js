@@ -4,18 +4,14 @@ function Json() {}
 Json.prototype.getPlayersJSON = function () {
 
 	var playersJSON = '';
-		
+	var CRLF = '\r\n';	
+	
 	var clubsJSON = '';
 	clubsJSON += '{"clubs":';
-	clubsJSON += '\r\n';
-		
-	playersJSON += clubsJSON;
-	clubsJSON = "";
-	clubsJSON = padLine(clubsJSON, 8);
-		
+	clubsJSON += this.CRLF;
+	clubsJSON += this.tab(1);
 	clubsJSON += '[';
-	clubsJSON += '\r\n';
-		
+	clubsJSON += this.CRLF;
 	playersJSON += clubsJSON;
 		
 	data.clubs.items.forEach(
@@ -27,11 +23,7 @@ Json.prototype.getPlayersJSON = function () {
 			if (cp.items.length > 0)
 			{    
 				var clubJSON = '';
-					
-				playersJSON += clubJSON;
-				clubJSON = '';
-				clubJSON = padLine(clubJSON, 16);
-					
+				clubJSON += this.tab(2);
 				clubJSON += '{';
 				clubJSON += '\"';
 				clubJSON += 'clubId';
@@ -40,15 +32,10 @@ Json.prototype.getPlayersJSON = function () {
 				clubJSON += '\"';
 				clubJSON += ',';
 				clubJSON += '\"players\":';
-				clubJSON += '\r\n';
-					
-				playersJSON += clubJSON;
-				clubJSON = '';
-				clubJSON = padLine(clubJSON, 24);
-					
+				clubJSON += this.CRLF;
+				clubJSON += this.tab(3);
 				clubJSON += '[';
-				clubJSON += '\r\n';
-					
+				clubJSON += this.CRLF;
 				playersJSON += clubJSON;
 					
 				cp.items.forEach(
@@ -57,10 +44,7 @@ Json.prototype.getPlayersJSON = function () {
 							
 						var playerJSON = '';
 							
-						playersJSON += playerJSON;
-						playerJSON = '';
-						playerJSON = padLine(playerJSON, 32);
-							
+						playerJSON += this.tab(4);
 						playerJSON += '{';
 						playerJSON += '\"' + 'name' + '\"' + ':' + '\"' + p.name + '\"';
 							
@@ -87,37 +71,28 @@ Json.prototype.getPlayersJSON = function () {
 							
 						playerJSON += '}';
 						playerJSON += ',';
-						playerJSON += '\r\n';
+						playerJSON += this.CRLF;
 							
 						playersJSON += playerJSON;
 							
 					}
 				)
 
-				if (playersJSON.substring(playersJSON.length-'\r\n'.length-1, playersJSON.length-'\r\n'.length) == ",")
+				if (playersJSON.substring(playersJSON.length-this.CRLF;.length-1, playersJSON.length-this.CRLF;.length) == ",")
 				{
-					playersJSON = playersJSON.substring(0, playersJSON.length-'\r\n'.length-1);
+					playersJSON = playersJSON.substring(0, playersJSON.length-this.CRLF;.length-1);
 				}
 
 				clubJSON = '';
-				clubJSON += '\r\n';
-					
-				playersJSON += clubJSON;
-				clubJSON = '';
-				clubJSON = padLine(clubJSON, 24);
-						
+				clubJSON += this.CRLF;
+				clubJSON += this.tab(3);
 				clubJSON += ']';
-				clubJSON += '\r\n';
-					
-				playersJSON += clubJSON;
-				clubJSON = '';
-				clubJSON = padLine(clubJSON, 16);
-					
+				clubJSON += this.CRLF;
+				clubJSON += this.tab(2);
 				clubJSON += '}';
 				clubJSON += ',';
-				clubJSON += '\r\n';
-				clubJSON += '\r\n';
-					
+				clubJSON += this.CRLF;
+				clubJSON += this.CRLF;
 				playersJSON += clubJSON;
 					
 			}
@@ -125,21 +100,21 @@ Json.prototype.getPlayersJSON = function () {
 		}
 	)
 		
-	if (playersJSON.substring(playersJSON.length-2*('\r\n'.length)-1, playersJSON.length-2*('\r\n'.length)) == ",")
+	if (playersJSON.substring(playersJSON.length-2*(this.CRLF;.length)-1, playersJSON.length-2*(this.CRLF;.length)) == ",")
 	{
-		playersJSON = playersJSON.substring(0, playersJSON.length-2*('\r\n'.length)-1);
+		playersJSON = playersJSON.substring(0, playersJSON.length-2*(this.CRLF;.length)-1);
 	}
 		
 	clubsJSON = '';
 		
-	clubsJSON += '\r\n';
+	clubsJSON += this.CRLF;;
 		
 	playersJSON += clubsJSON;
 	clubsJSON = '';
 	clubsJSON = padLine(clubsJSON, 8);
 		
 	clubsJSON += ']';
-	clubsJSON += '\r\n';
+	clubsJSON += this.CRLF;
 	clubsJSON += '}';
 
 	playersJSON += clubsJSON;
@@ -153,5 +128,7 @@ Json.prototype.getPlayersJSON = function () {
 		}
 		return line;	
 	}
+	
+	function tab(count) { return ' '.repeat(count * 8); }
 	
 }

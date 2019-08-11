@@ -33,15 +33,6 @@ View.prototype.loadDisplay =  function () {
 	
 }
 
-function ViewEvents() {
-ViewEvents.prototype.selectFilter = function (filterId) { view.selectFilter(filterId); }
-ViewEvents.prototype.selectPlayer = function () 		{ view.selectPlayer(); }
-ViewEvents.prototype.addPlayer = 	function () 		{ view.addPlayer(); }	
-ViewEvents.prototype.editPlayer = 	function (p) 		{ view.editPlayer(p); }
-ViewEvents.prototype.deletePlayer = function () 		{ view.deletePlayer(); }
-ViewEvents.prototype.savePlayer = 	function () 		{ view.savePlayer(); }	
-}
-
 View.prototype.selectFilter = function (filterId) {
 	filter = view.getFilter(filterId);
 }
@@ -125,69 +116,11 @@ View.prototype.hidePlayerDetails = 		function () { this.elements.playerDetails.h
 View.prototype.showEditPlayerDetails = 	function () { this.elements.editPlayerDetails.show(); }
 View.prototype.hideEditPlayerDetails = 	function () { this.elements.editPlayerDetails.hide(); }
 
-function ViewElements() {
-	
-	this.pName = 		new ViewElement('pName');
-	this.pClub = 		new ViewElement('pClub');
-	this.pPosition = 	new ViewElement('pPosition');
-	this.pSquadNo = 	new ViewElement('pSquadNo');
-	this.pImage = 		new ViewElementImage('pImage');
-		
-	this.pName2 = 		new ViewElementInput('pName2');
-	this.pClub2 = 		new ViewElementComboBox('pClub2');
-	this.pPosition2 = 	new ViewElementComboBox('pPosition2');
-	this.pSquadNo2 = 	new ViewElementComboBox('pSquadNo2');
-	this.pImage2 = 		new ViewElementInput('pImage2');
-	
-	this.playerDetails =		new ViewElement('playerDetails');
-	this.editPlayerDetails =	new ViewElement('editPlayerDetails');
-	
-	this.clubFilter =		new ViewElementComboBox('clubFilter');
-	this.positionsFilter =	new ViewElementComboBox('positionsFilter');
-	this.squadNoFilter =	new ViewElementComboBox('squadNoFilter');
-	this.hasImageFilter =	new ViewElementComboBox('hasImageFilter');
-	this.playerFilter =		new ViewElementComboBox('playerFilter');
-
+function ViewEvents() {
+	ViewEvents.prototype.selectFilter = function (filterId) { view.selectFilter(filterId); }
+	ViewEvents.prototype.selectPlayer = function () 		{ view.selectPlayer(); }
+	ViewEvents.prototype.addPlayer = 	function () 		{ view.addPlayer(); }	
+	ViewEvents.prototype.editPlayer = 	function (p) 		{ view.editPlayer(p); }
+	ViewEvents.prototype.deletePlayer = function () 		{ view.deletePlayer(); }
+	ViewEvents.prototype.savePlayer = 	function () 		{ view.savePlayer(); }	
 }
-
-function ViewElement(elementId)
-{
-	this.elementId = elementId;
-	this.element = document.getElementById(elementId);
-}
-
-ViewElement.prototype.show = function () { this.element.style.display = "block"; }
-ViewElement.prototype.hide = function () { this.element.style.display = "none"; }
-ViewElement.prototype.setValue = function (value) { this.element.innerHTML = value; }
-ViewElement.prototype.value = function () { return this.element.innerHTML; }
-
-function ViewElementInput(elementId)
-{
-	ViewElement.call(this, elementId);
-}
-ViewElementInput.prototype = Object.create(ViewElement.prototype)
-ViewElementInput.prototype.setValue = function (value) { this.element.value = value; }
-ViewElementInput.prototype.value = function () { return this.element.value; }
-
-function ViewElementComboBox(name)
-{
-	ViewElement.call(this, name);
-}
-ViewElementComboBox.prototype = Object.create(ViewElement.prototype)
-
-ViewElementComboBox.prototype.setValue = function (itemId) { 
-	for (var x = 0; x < this.element.length; x ++)
-	{
-		o = this.element.options[x];
-		o.selected = false;
-		if (o.value == itemId) o.selected = true;
-	}
-}
-ViewElementComboBox.prototype.value = function () { return this.element.options[this.element.selectedIndex].value; }
-
-function ViewElementImage(name)
-{
-	ViewElement.call(this, name);
-}
-ViewElementImage.prototype = Object.create(ViewElement.prototype)
-ViewElementImage.prototype.setValue = function (value) { this.element.src = "images\\" + value; }

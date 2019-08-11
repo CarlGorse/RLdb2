@@ -9,14 +9,14 @@ function Club(clubId, name, name2)
 Club.prototype = Object.create(DataItem.prototype)
 
 Club.prototype.clubPlayers =  function () {
-	result = new Players();
+	var players = new Players();
 	data.players.items.forEach(
 		function (p) {
 			if (p.clubId == this.clubId)
 			{
-				result.items.push(p);
+				players.add(p);
 			}
 		}, this
 	)
-	return result;
+	return players;
 }

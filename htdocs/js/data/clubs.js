@@ -20,3 +20,7 @@ Clubs.prototype.loadFile = function (file) {
 	) 
 }
 
+Clubs.prototype.addClub = function (c)
+{
+	this.addItem(c);
+}

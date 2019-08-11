@@ -14,11 +14,6 @@ function Data()
 	this.squadNos.fileName = 	'squadNos.json';
 	this.hasImages.fileName = 	'hasImages.json';
 	
-	function getPlayerCountByClub(o) 		{ return getPlayerCount(o, null, null, null); }
-	function getPlayerCountByPosition(o) 	{ return getPlayerCount(null, o, null, null); }
-	function getPlayerCountBySquadNo(o) 	{ return getPlayerCount(null, null, o, null); }
-	function getPlayerCountByHasImage(o) 	{ return getPlayerCount(null, null, null, o); }
-
 	this.dataSets = [this.players, this.clubs, this.positions, this.squadNos, this.hasImages];
 
 }

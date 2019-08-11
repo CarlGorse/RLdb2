@@ -47,3 +47,8 @@ Players.prototype.getJSON = function ()
 	return Json.getPlayersJSON();
 
 }
+
+Players.prototype.addPlayer = function (p)
+{
+	this.addItem(p);
+}

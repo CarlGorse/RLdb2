@@ -20,5 +20,7 @@ Positions.prototype.loadFile = function (file) {
 	) 
 }
 
-
-
+Positions.prototype.addPosition = function (pn)
+{
+	this.addItem(pn);
+}
