@@ -66,11 +66,11 @@ Json.prototype.getPlayersJSON = function () {
 						playerJSON += '{';
 						playerJSON += '\"' + 'name' + '\"' + ':' + '\"' + p.name + '\"';
 							
-						if (p.positions)
+						if (p.positionId)
 						{
 							playerJSON += ', '
 							playerJSON = padLine(playerJSON, 72);
-							playerJSON += '\"' + 'positions' + '\"' + ':' + '[' + '\"' + p.positions + '\"' + ']'
+							playerJSON += '\"' + 'positions' + '\"' + ':' + '[' + '\"' + p.positionId + '\"' + ']'
 						}
 							
 						if (p.squadNo)

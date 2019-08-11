@@ -4,8 +4,8 @@ function Players()
 	DataSet.call(this, 'Players')
 }
 Players.prototype = Object.create(DataSet.prototype)
-Players.prototype.add =  function (name, clubId, positions, squadNo, image) {
-	p = new Player(name, clubId, positions, squadNo, image);
+Players.prototype.add =  function (name, clubId, positionId, squadNo, image) {
+	p = new Player(name, clubId, positionId, squadNo, image);
 	this.addItem(p);
 }
 

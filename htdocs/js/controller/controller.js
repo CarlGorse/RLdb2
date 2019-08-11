@@ -84,44 +84,39 @@ Controller.prototype.isPlayerMatchClub =  function (p, clubId) {
 
 }
 
-Controller.prototype.isPlayerMatchClub =  function (p, positionId) {
+Controller.prototype.isPlayerMatchPosition =  function (p, positionId) {
 
 	if (positionId && !(["all", "xx", "none", "multiple"].includes(positionId)))
 	{
 		var match = false;
-		if (p.positions && p.positions.includes(positionId) == true)
+		if (p.position && p.position == positionId)
 			match = true;;
 		if (match == false) return false;
 	}
 
 	if (positionId == "xx")
 	{
-		if (p.positions)
+		if (p.position)
 		{
-			p.positions.forEach(
-				function(pn2)
+			var match = false;
+			filters.positions.items.forEach (
+				function (pn)
 				{
-					var match = false;
-					filters.positions.items.forEach(
-						function (pn1)
-						{
-							if (pn1.positionId == pn2)
-							{
-								match = true;
-							}
-						}
-					)
-					if (!match) return true;
+					if (p1.positionId == p.positionId)
+					{
+						match = true;
+					}
 				}
 			)
+			if (!match) return true;
 		}
 		return false;
 	}
 
-	if (positionId == "none" && p.positions && p.positions.length > 0) return false;
-	if (positionId == "multiple" && p.positions && p.positions.length > 1) return true;
-	if (positionId == "multiple" && !p.positions) return false;
-	if (positionId == "multiple" && p.positions && p.positions.length <= 1) return false;
+	if (positionId == "none" && p.position && p.position.length > 0) return false;
+	if (positionId == "multiple" && p.position && p.position.length > 1) return true;
+	if (positionId == "multiple" && !p.position) return false;
+	if (positionId == "multiple" && p.position && p.position.length <= 1) return false;
 
 	return true;
 

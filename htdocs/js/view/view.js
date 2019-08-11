@@ -11,11 +11,11 @@ function View()
 	this.hasImageFilter = new ViewFilterHasImage('hasImageFilter', this.elements.hasImageFilter.element, 'text');
 	this.playerFilter = new ViewFilterPlayer('playerFilter', this.elements.playerFilter.element, 'name');
 	this.pClub2 = new ViewFilterClub('pClub2', this.elements.pClub2.element, 'name2');
-	this.pPositions2 = new ViewFilterPositions('pPositions2', this.elements.pPositions2.element, 'name');
+	this.pPosition2 = new ViewFilterPositions('pPositions2', this.elements.pPosition2.element, 'name');
 	this.pSquadNo2 = new ViewFilterSquadNo('pSquadNo2', this.elements.pSquadNo2.element, 'number');
 	
 	this.filters = new ViewFilters();
-	[this.clubFilter, this.positionsFilter, this.squadNoFilter, this.hasImageFilter, this.playerFilter, this.pClub2, this.pPositions2, this.pSquadNo2].forEach(
+	[this.clubFilter, this.positionsFilter, this.squadNoFilter, this.hasImageFilter, this.playerFilter, this.pClub2, this.pPosition2, this.pSquadNo2].forEach(
 		function (f) {
 			this.filters.items.push(f);
 		}, this
@@ -29,8 +29,7 @@ View.prototype.loadDisplay =  function () {
 	controller.loadData();
 	this.filters.refresh();
 	
-	p = view.playerFilter.player();
-	controller.setCurrentPlayer(p);
+	this.selectPlayer();
 	
 }
 
@@ -57,8 +56,15 @@ View.prototype.selectPlayer = function () {
 		
 	view.elements.pName.setValue(p.name);
 	view.elements.pClub.setValue(data.getClubById(p.clubId).name2);
-	view.elements.pPositions.setValue(data.getPositionsTextByIds(p.positions));
+	view.elements.pPosition.setValue(data.getPositionById(p.positionId).name);
 	view.elements.pSquadNo.setValue(p.squadNo);
+	
+	if (p.image)
+		view.elements.pImage.element.style.display = "block";
+	else
+		view.elements.pImage.element.style.display = "none";
+	view.elements.pImage.setValue(p.image);
+	
 }
 
 View.prototype.addPlayer = function () {
@@ -81,9 +87,9 @@ View.prototype.savePlayer = function () {
 	var p = controller.currentPlayer;
 	p.Name = view.elements.pName2.value;
 	p.Club = view.elements.pClub2.value;
-	p.Positions = view.elements.pPositions2.values;
-	p.SquadNo = view.elements.pSquadNo2.values;
-	p.Image = view.elements.pImage2.values;
+	p.Position = view.elements.pPosition2.value;
+	p.SquadNo = view.elements.pSquadNo2.value;
+	p.Image = view.elements.pImage2.value;
 	
 	controller.savePlayers();
 	view.showMessage('Player ' + controller.currentPlayer.name + ' saved.');
@@ -105,7 +111,7 @@ View.prototype.showEditPlayer = function () {
 	
 	view.elements.pName2.setValue(p.name);
 	view.elements.pClub2.setValue(p.clubId);
-	view.elements.pPositions2.setValue(p.positions);
+	view.elements.pPosition2.setValue(p.position);
 	view.elements.pSquadNo2.setValue(p.squadNo);
 	view.elements.pImage2.setValue(p.image);
 		
@@ -122,13 +128,13 @@ function ViewElements() {
 	
 	this.pName = 		new ViewElement('pName');
 	this.pClub = 		new ViewElement('pClub');
-	this.pPositions = 	new ViewElement('pPositions');
+	this.pPosition = 	new ViewElement('pPosition');
 	this.pSquadNo = 	new ViewElement('pSquadNo');
-	this.pImage = 		new ViewElement('pImage');
+	this.pImage = 		new ViewElementImage('pImage');
 		
 	this.pName2 = 		new ViewElementInput('pName2');
 	this.pClub2 = 		new ViewElementComboBox('pClub2');
-	this.pPositions2 = 	new ViewElementComboBox('pPositions2');
+	this.pPosition2 = 	new ViewElementComboBox('pPosition2');
 	this.pSquadNo2 = 	new ViewElementComboBox('pSquadNo2');
 	this.pImage2 = 		new ViewElementInput('pImage2');
 	
@@ -158,13 +164,15 @@ function ViewElementInput(elementId)
 {
 	ViewElement.call(this, elementId);
 }
+ViewElementInput.prototype = Object.create(ViewElement.prototype)
 ViewElementInput.prototype.setValue = function (value) { this.element.value = value; }
-ViewElement.prototype.value = function () { return this.element.value; }
+ViewElementInput.prototype.value = function () { return this.element.value; }
 
 function ViewElementComboBox(name)
 {
 	ViewElement.call(this, name);
 }
+ViewElementComboBox.prototype = Object.create(ViewElement.prototype)
 
 ViewElementComboBox.prototype.setValue = function (itemId) { 
 	for (var x = 0; x < this.element.length; x ++)
@@ -174,4 +182,11 @@ ViewElementComboBox.prototype.setValue = function (itemId) {
 		if (o.value == itemId) o.selected = true;
 	}
 }
-ViewElement.prototype.value = function () { return this.element[this.element.selectedindex].value; }
+ViewElementComboBox.prototype.value = function () { return this.element[this.element.selectedindex].value; }
+
+function ViewElementImage(name)
+{
+	ViewElement.call(this, name);
+}
+ViewElementImage.prototype = Object.create(ViewElement.prototype)
+ViewElementImage.prototype.setValue = function (value) { this.element.src = "images\\" + value; }

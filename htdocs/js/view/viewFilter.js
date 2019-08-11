@@ -26,13 +26,6 @@ ViewFilter.prototype.value =  function () {
 	return this.element.options[this.element.selectedIndex].value;
 }
 
-function ViewFilterCheckBoxList(filterId, dataSet, element, displayProperty)
-{
-	ViewFilter.call(this, filterId, dataSet, element, displayProperty);
-	this.Values = '';
-}
-ViewFilterCheckBoxList.prototype = Object.create(ViewFilter.prototype)
-
 function ViewFilterClub(filterId, element, displayProperty)
 {
 	ViewFilterComboBox.call(this, filterId, data.clubs, element, displayProperty);
@@ -41,9 +34,9 @@ ViewFilterClub.prototype = Object.create(ViewFilterComboBox.prototype)
 
 function ViewFilterPositions(filterId, element, displayProperty)
 {
-	ViewFilterCheckBoxList.call(this, filterId, data.positions, element, displayProperty);
+	ViewFilterComboBox.call(this, filterId, data.positions, element, displayProperty);
 }
-ViewFilterPositions.prototype = Object.create(ViewFilterCheckBoxList.prototype)
+ViewFilterPositions.prototype = Object.create(ViewFilterComboBox.prototype)
 
 function ViewFilterSquadNo(filterId, element, displayProperty)
 {
