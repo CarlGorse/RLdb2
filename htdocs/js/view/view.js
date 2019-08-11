@@ -68,7 +68,7 @@ View.prototype.selectPlayer = function () {
 }
 
 View.prototype.addPlayer = function () {
-	var p = new Player();
+	var p = controller.addPlayer();
 	controller.setCurrentPlayer(p);
 	view.showEditPlayer();
 }
@@ -80,6 +80,7 @@ View.prototype.editPlayer = function () {
 View.prototype.deletePlayer = function () {
 	var p = controller.currentPlayer;	// save current player before deleted from data/controller
 	controller.deletePlayer(p);
+	controller.savePlayers();
 	view.showMessage('Player ' + p.name + ' deleted.');
 }
 

@@ -7,6 +7,7 @@ Players.prototype = Object.create(DataSet.prototype)
 Players.prototype.add =  function (name, clubId, positionId, squadNo, image) {
 	p = new Player(name, clubId, positionId, squadNo, image);
 	this.addItem(p);
+	return p;
 }
 
 Players.prototype.nextId = function () {

@@ -42,14 +42,14 @@
 		<table>
 
 			<tr id="clubRow">
-				<td><label>Club</label></td>
+				<td><label>Club:</label></td>
 				<td>
 					<select id="clubFilter" onchange="view.events.selectFilter('clubFilter');"></select>
 				</td>
 			</tr>
 
 			<tr>
-				<td><label>Position</label></td>
+				<td><label>Position:</label></td>
 				<td>
 					<select id="positionsFilter" onclick="view.events.selectFilter('positionFilter');" onchange="filters.filterPlayers();"></select>
 					<ul id="position2Filter"></ul>
@@ -57,14 +57,14 @@
 			</tr>
 
 			<tr id="squadNoRow">
-				<td><label>Squad Number</label></td>
+				<td><label>Squad Number:</label></td>
 				<td>
 					<select id="squadNoFilter" onchange="view.events.selectFilter('squadNoFilter');"></select>
 				</td>
 			</tr>
 
 			<tr>
-				<td><label>Has image?</label></td>
+				<td><label>Has image?:</label></td>
 				<td>
 					<select id="hasImageFilter" onchange="view.events.selectFilter('hasImageFilter');"></select>
 				</td>
@@ -83,23 +83,22 @@
 			<button id="editPlayer" onclick="view.events.editPlayer()">Edit Player</button>
 
 			<table id="playerDetails" width="2000">
-				<tr><td width="30%">Name</td><td><span id="pName"></span></td></tr>
-				<tr><td width="30%">Club</td><td><span id="pClub"></span></td></tr>
-				<tr><td width="30%">Position</td><td><span id="pPosition"></span></td></tr>
-				<tr><td width="30%">Squad Number</td><td><span id="pSquadNo"></span></td></tr>
-			</table>
+				<tr><td width="30%">Name:</td><td><span id="pName"></span></td></tr>
+				<tr><td width="30%">Club:</td><td><span id="pClub"></span></td></tr>
+				<tr><td width="30%">Position:</td><td><span id="pPosition"></span></td></tr>
+				<tr><td width="30%">Squad Number:</td><td><span id="pSquadNo"></span></td></tr>
 
-			<div>
-				<img id="pImage"/>
-			</div>
+				<tr><td width="30%"></td><td><img id="pImage"/></td></tr>
+			
+			</table>
 
 			<div id="editPlayerDetails">
 				<table width="2000">
-					<tr><td width="30%">Name</td><td><input id="pName2"/></td></tr>
-					<tr><td width="30%">Club</td><td><select id="pClub2"></select></td></tr>
-					<tr><td width="30%">Position</td><td><select id="pPosition2"/></select></td></tr>
-					<tr><td width="30%">Squad Number</td><td><select id="pSquadNo2"/></td></tr>
-					<tr><td width="30%">Image</td><td><input id="pImage2"/></td></tr>
+					<tr><td width="30%">Name:</td><td><input id="pName2"/></td></tr>
+					<tr><td width="30%">Club:</td><td><select id="pClub2"></select></td></tr>
+					<tr><td width="30%">Position:</td><td><select id="pPosition2"/></select></td></tr>
+					<tr><td width="30%">Squad Number:</td><td><select id="pSquadNo2"/></td></tr>
+					<tr><td width="30%">Image:</td><td><input id="pImage2"/></td></tr>
 				</table>
 			
 				<button id="savePlayer" onclick="view.events.savePlayer();return false;">Save Player</button>

@@ -23,7 +23,11 @@ Controller.prototype.setCurrentPlayer =  function (p) {
 	this.currentPlayer = p;
 }		
 
-Controller.prototype.deletePlayer =  function () {
+Controller.prototype.addPlayer =  function (name, clubId, positionId, squadNo, image) {
+	return data.players.add(name, clubId, positionId, squadNo, image);
+}	
+
+Controller.prototype.deletePlayer =  function (p) {
 	data.players.remove(p);
 }		
 
