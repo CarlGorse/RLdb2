@@ -85,11 +85,11 @@ View.prototype.deletePlayer = function () {
 
 View.prototype.savePlayer = function () {
 	var p = controller.currentPlayer;
-	p.Name = view.elements.pName2.value;
-	p.Club = view.elements.pClub2.value;
-	p.Position = view.elements.pPosition2.value;
-	p.SquadNo = view.elements.pSquadNo2.value;
-	p.Image = view.elements.pImage2.value;
+	p.name = view.elements.pName2.value();
+	p.clubId = view.elements.pClub2.value();
+	p.positionId = view.elements.pPosition2.value();
+	p.squadNo = view.elements.pSquadNo2.value();
+	p.image = view.elements.pImage2.value();
 	
 	controller.savePlayers();
 	view.showMessage('Player ' + controller.currentPlayer.name + ' saved.');
@@ -182,7 +182,7 @@ ViewElementComboBox.prototype.setValue = function (itemId) {
 		if (o.value == itemId) o.selected = true;
 	}
 }
-ViewElementComboBox.prototype.value = function () { return this.element[this.element.selectedindex].value; }
+ViewElementComboBox.prototype.value = function () { return this.element.options[this.element.selectedIndex].value; }
 
 function ViewElementImage(name)
 {

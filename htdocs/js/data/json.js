@@ -70,7 +70,7 @@ Json.prototype.getPlayersJSON = function () {
 						{
 							playerJSON += ', '
 							playerJSON = padLine(playerJSON, 72);
-							playerJSON += '\"' + 'positions' + '\"' + ':' + '[' + '\"' + p.positionId + '\"' + ']'
+							playerJSON += '\"' + 'positionId' + '\"' + ':' + '\"' + p.positionId + '\"';
 						}
 							
 						if (p.squadNo)
@@ -80,11 +80,11 @@ Json.prototype.getPlayersJSON = function () {
 							playerJSON += '\"' + 'squadNo' + '\"' + ':' + '\"' + p.squadNo + '\"';
 						}
 							
-						if (p.img)
+						if (p.image)
 						{
 							playerJSON += ', '
 							playerJSON = padLine(playerJSON, 128);
-							playerJSON += '\"' + 'img' + '\"' + ':' + '\"' + p.img + '\"';
+							playerJSON += '\"' + 'image' + '\"' + ':' + '\"' + p.image + '\"';
 						}
 							
 						playerJSON += '}';

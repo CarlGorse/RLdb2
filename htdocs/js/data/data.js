@@ -47,7 +47,7 @@ Data.prototype.loadPlayers = function (file) {
 		function (c) { 
 			c.players.forEach( 
 				function(p) { 
-					data.players.add(p.name, c.clubId, p.positionId, p.squadNo, p.img); 
+					data.players.add(p.name, c.clubId, p.positionId, p.squadNo, p.image);
 				} 
 			) 
 		} 
