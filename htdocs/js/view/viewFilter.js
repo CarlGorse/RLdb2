@@ -57,7 +57,7 @@ function ViewFilterPlayer(filterId, element, displayProperty)
 ViewFilterPlayer.prototype = Object.create(ViewFilterComboBox.prototype)
 
 ViewFilterPlayer.prototype.player = function () {
-	return data.getPlayerById(this.value());
+	return data.players.player(this.value());
 }
 
 ViewFilter.prototype.add = function (item) { this.items.push(item); }

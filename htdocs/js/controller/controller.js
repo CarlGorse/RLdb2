@@ -6,18 +6,12 @@ function Controller()
 {
 	data = new Data();
 	view = new View();
-
+	
 	this.currentPlayer = null;
-
 }
 
-Controller.prototype.initialise =  function () {
-	view.loadDisplay();
-}
-
-Controller.prototype.loadData =  function () {
-	data.loadData();
-}	
+Controller.prototype.initialise =  function () { view.loadDisplay(); }
+Controller.prototype.loadData =  function () { data.loadData(); }	
 
 Controller.prototype.setCurrentPlayer =  function (p) {
 	this.currentPlayer = p;
@@ -27,13 +21,8 @@ Controller.prototype.addPlayer =  function (name, clubId, positionId, squadNo, i
 	return data.players.add(name, clubId, positionId, squadNo, image);
 }	
 
-Controller.prototype.deletePlayer =  function (p) {
-	data.players.remove(p);
-}		
-
-Controller.prototype.savePlayers =  function (p) {
-	data.players.save(p);
-}	
+Controller.prototype.deletePlayer =  function (p) { data.players.remove(p); }		
+Controller.prototype.savePlayers =  function (p) { data.players.save(p); }	
 
 Controller.prototype.isPlayerMatchObject =  function (p, clubId, positionId, squadNo, hasImage) {
 		
@@ -167,8 +156,9 @@ Controller.prototype.isPlayerMatchClub =  function (p, hasImage) {
 
 }
 
+/*
 Controller.prototype.getClubFilterName = function () { return data.getClubById(this.clubFilter.value()).name; }
 Controller.prototype.getPositionFilterName = function () { return data.getPositionById(this.positionFilter.value()).name; }
 Controller.prototype.getSquadNoFilterSquadNo = function () { return data.squadNoFilter.value(); }
 Controller.prototype.getHasImagesFilterText = function () { return filters.hasImageFilter.value(); }
-
+*/

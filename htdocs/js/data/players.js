@@ -4,8 +4,10 @@ function Players()
 	DataSet.call(this, 'Players')
 }
 Players.prototype = Object.create(DataSet.prototype)
+
 Players.prototype.add =  function (name, clubId, positionId, squadNo, image) {
-	p = new Player(name, clubId, positionId, squadNo, image);
+	playerId = this.nextId();
+	p = new Player(playerId, name, clubId, positionId, squadNo, image);
 	this.addItem(p);
 	return p;
 }
@@ -22,24 +24,26 @@ Players.prototype.nextId = function () {
 }	
 
 Players.prototype.save =  function () {
-	writePlayersJSON();
+	this.writeJSON();
 }
 
+Players.prototype.player = function (id) { return this.item(id); }
 
-	function writePlayersJSON()
-	{
-		var xmlhttp = new XMLHttpRequest();
-		//var filename = 'players2.json';
-		var filename = 'C://Git//repos//RLdb2//htdocs//files/players.json';
-		//var filename = 'C:\\Git\\repos\\RLdb\htdocs\\players.json';
-		
-		xmlhttp.open("POST","/php/saveFile.php?filename=" + filename,true);
-		//value="test my text";
-		//xmlhttp.send("value2="+value);
-		
-		Json = new Json();
-		var playersJSON = Json.getPlayersJSON();
-		var fd = new FormData();
-		fd.append("playersJSON", playersJSON);
-		xmlhttp.send(fd);
-	}
+Players.prototype.loadFile = function (file) { 
+	file.clubs.forEach(
+		function (c) { 
+			c.players.forEach( 
+				function(p) { 
+					data.players.add(p.name, c.clubId, p.positionId, p.squadNo, p.image);
+				} 
+			) 
+		} 
+	) 
+}
+
+Players.prototype.getJSON = function ()
+{
+	Json = new Json();
+	return Json.getPlayersJSON();
+
+}

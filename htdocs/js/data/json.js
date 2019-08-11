@@ -1,7 +1,5 @@
 
-function Json()
-{	
-}
+function Json() {}
 
 Json.prototype.getPlayersJSON = function () {
 

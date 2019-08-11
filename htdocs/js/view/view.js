@@ -55,8 +55,8 @@ View.prototype.selectPlayer = function () {
 	controller.setCurrentPlayer(p);
 		
 	view.elements.pName.setValue(p.name);
-	view.elements.pClub.setValue(data.getClubById(p.clubId).name2);
-	view.elements.pPosition.setValue(data.getPositionById(p.positionId).name);
+	view.elements.pClub.setValue(data.clubs.club(p.clubId).name2);
+	view.elements.pPosition.setValue(data.positions.position(p.positionId).name);
 	view.elements.pSquadNo.setValue(p.squadNo);
 	
 	if (p.image)

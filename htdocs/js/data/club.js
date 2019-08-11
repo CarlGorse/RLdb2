@@ -4,7 +4,7 @@ function Club(clubId, name, name2)
 	DataItem.call(this, clubId, 'Club', 'name')
 	this.clubId = clubId;
 	this.name = name;
-	this.name2 = name2;
+	this.name2 = name2 ? name2 : "";
 }
 Club.prototype = Object.create(DataItem.prototype)
 
