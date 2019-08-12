@@ -62,6 +62,7 @@ View.prototype.selectPlayer = function () {
 }
 
 View.prototype.addPlayer = function () {
+	view.playerFilter.clearValue();
 	var p = controller.addPlayer();
 	controller.setCurrentPlayer(p);
 	view.showEditPlayer();

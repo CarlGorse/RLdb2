@@ -19,5 +19,9 @@ ViewFilterComboBox.prototype.render = function () {
 	)
 
 	if (this.setInitialValueEmpty)
+		this.clearValue();
+}
+
+ViewFilterComboBox.prototype.clearValue = function () {
 		this.element.value = "";
 }

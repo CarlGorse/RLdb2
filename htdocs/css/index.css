@@ -5,41 +5,20 @@
 }
 
 select { height:3em; }
-#areaFilter { height:9em; }
 
 #clubFilter	{ width: 16em; }
 #positionFilter	{ width: 16em; }
-#squadFilterFilter	{ width: 16em;  }
+#squadFilter	{ width: 16em;  }
 
-#resultsSelect  { width: 26em; }
-
-table {
-	padding-bottom:2em;
-}
-
-#resultsSelect {
-}
-
-#clubLabel::after { content: ":"; }
-#positionnLabel::after { content: ":"; }
-#squadNoLabel::after { content: ":"; }
-#detailLabel::after { content: ":"; }
-#resultsCount::after { content: ":"; }
-
-.detailText { padding-left:1em }
-
-#spanResultsCount {
-	display:block;
-	padding-bottom:1em;
-	font-weight:bold;
-}
+.filterLabel::after { content: ":"; }
+.detailLabel::after { content: ":"; }
 
 #playerDetail {
 	padding-top:2em;
 	width: 26em;
 }
 
-#divImages {
+#pImage {
 	padding-top:1em;
 	display:block;
 	max-width:14em;
@@ -47,13 +26,22 @@ table {
 	height:auto;
 }
 
-#filters { font-weight: bold; }
+#divFilteredPlayersCount {
+	padding-top:1em;
+}
 
-#divName { font-weight:bold;}
-#divClub { padding-bottom:1em;}
-#divSquadNo { padding-bottom:1em;}
+#divPlayerFilter {
+	padding-top:1em;
+}
 
-#position2Filter {
-	display:none;
-	list-style:none;
+#divButtons1 {
+	padding-top:1em;
+}
+
+#divPlayerDetails {
+	padding-top:1em;
+}
+
+#divEditPlayerDetails {
+	padding-top:1em;
 }
