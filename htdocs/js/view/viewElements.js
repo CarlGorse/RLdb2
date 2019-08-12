@@ -17,11 +17,15 @@ function ViewElements() {
 	this.editPlayerDetails =	new ViewElement('editPlayerDetails');
 	
 	this.clubFilter =		new ViewElementComboBox('clubFilter');
-	this.positionsFilter =	new ViewElementComboBox('positionsFilter');
+	this.positionFilter =	new ViewElementComboBox('positionFilter');
 	this.squadNoFilter =	new ViewElementComboBox('squadNoFilter');
 	this.hasImageFilter =	new ViewElementComboBox('hasImageFilter');
 	this.playerFilter =		new ViewElementComboBox('playerFilter');
 
 	this.filteredPlayersCount = new ViewElementSpan('filteredPlayersCount');
+
+	this.addPlayer = new ViewElement('addPlayer');
+	this.editPlayer = new ViewElement('editPlayer');
+	this.deletePlayer = new ViewElement('deletePlayer');
 
 }

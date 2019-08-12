@@ -6,22 +6,30 @@ function View()
 	this.elements = new ViewElements(this);
 
 	this.clubFilter = new ViewFilterClub('clubFilter', this.elements.clubFilter.element, 'name2');
-	this.positionsFilter = new ViewFilterPositions('positionsFilter', this.elements.positionsFilter.element, 'name');
+	this.positionFilter = new ViewFilterPositions('positionFilter', this.elements.positionFilter.element, 'name');
 	this.squadNoFilter = new ViewFilterSquadNo('squadNoFilter', this.elements.squadNoFilter.element, 'number');
 	this.hasImageFilter = new ViewFilterHasImage('hasImageFilter', this.elements.hasImageFilter.element, 'text');
 	this.playerFilter = new ViewFilterPlayer('playerFilter', this.elements.playerFilter.element, 'name');
 	this.pClub2 = new ViewFilterClub('pClub2', this.elements.pClub2.element, 'name2');
 	this.pPosition2 = new ViewFilterPositions('pPositions2', this.elements.pPosition2.element, 'name');
 	this.pSquadNo2 = new ViewFilterSquadNo('pSquadNo2', this.elements.pSquadNo2.element, 'number');
-	
-	this.playerFilter.setInitialValueEmpty = true;
 
-	this.filters = new ViewFilters();
-	[this.clubFilter, this.positionsFilter, this.squadNoFilter, this.hasImageFilter, this.playerFilter, this.pClub2, this.pPosition2, this.pSquadNo2].forEach(
+
+	this.searchFilters = new ViewFilters();
+	[this.clubFilter, this.positionFilter, this.squadNoFilter, this.hasImageFilter].forEach ( 
+		function (f) { 
+			f.element.onclick = function() {view.events.selectPlayer(f);}
+			this.searchFilters.items.push(f); 
+		}, this ) ;
+
+	this.allFilters = new ViewFilters();
+	[this.clubFilter, this.positionFilter, this.squadNoFilter, this.hasImageFilter, this.playerFilter, this.pClub2, this.pPosition2, this.pSquadNo2].forEach(
 		function (f) {
-			this.filters.items.push(f);
+			this.allFilters.items.push(f);
 		}, this
 	);
+
+	this.playerFilter.setInitialValueEmpty = true;
 	
 }
 
@@ -29,7 +37,7 @@ View.prototype.loadDisplay =  function () {
 	this.hidePlayerDetails();
 	this.hideEditPlayerDetails();
 	controller.loadData();
-	this.filters.render();
+	this.allFilters.render();
 	
 	var count = functions.getCountDescription(data.players.count(), 'player');
 	this.elements.filteredPlayersCount.setValue(count);

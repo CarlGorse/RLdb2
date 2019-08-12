@@ -32,6 +32,7 @@
 	<script src="js/view/viewElementInput.js?$$REVISION$$"></script>
 	<script src="js/view/viewElementSpan.js?$$REVISION$$"></script>
 	<script src="js/view/viewElements.js?$$REVISION$$"></script>
+	<script src="js/view/viewEvents.js?$$REVISION$$"></script>
 	<script src="js/view/viewFilter.js?$$REVISION$$"></script>
 	<script src="js/view/viewFilterComboBox.js?$$REVISION$$"></script>
 	<script src="js/view/viewFilterClub.js?$$REVISION$$"></script>
@@ -61,28 +62,28 @@
 			<tr id="clubRow">
 				<td><label class="filterLabel">Club</label></td>
 				<td>
-					<select id="clubFilter" onchange="view.events.selectFilter('clubFilter');"></select>
+					<select id="clubFilter"></select>
 				</td>
 			</tr>
 
 			<tr>
 				<td><label class="filterLabel">Position</label></td>
 				<td>
-					<select id="positionsFilter" onclick="view.events.selectFilter('positionFilter');" onchange="filters.filterPlayers();"></select>
+					<select id="positionFilter"></select>
 				</td>
 			</tr>
 
 			<tr id="squadNoRow">
 				<td><label class="filterLabel">Squad Number</label></td>
 				<td>
-					<select id="squadNoFilter" onchange="view.events.selectFilter('squadNoFilter');"></select>
+					<select id="squadNoFilter"></select>
 				</td>
 			</tr>
 
 			<tr>
 				<td><label class="filterLabel">Has image?</label></td>
 				<td>
-					<select id="hasImageFilter" onchange="view.events.selectFilter('hasImageFilter');"></select>
+					<select id="hasImageFilter"></select>
 				</td>
 			</tr>	  
 		
@@ -99,9 +100,9 @@
 			</div>
 
 			<div id="divButtons1"> 
-				<button id="addPlayer" onclick="view.events.addPlayer()">Add new Player</button>
-				<button id="deletePlayer" onclick="view.events.deletePlayer()">Delete Player</button>
-				<button id="editPlayer" onclick="view.events.editPlayer()">Edit Player</button>
+				<button id="addPlayer">Add new Player</button>
+				<button id="deletePlayer">Delete Player</button>
+				<button id="editPlayer">Edit Player</button>
 			</div>
 
 			<div id="divPlayerDetails"> 
@@ -124,7 +125,7 @@
 					<tr><td width="30%"><label class="detailLabel">Squad Number</label></td><td><select id="pSquadNo2"/></td></tr>
 					<tr><td width="30%"><label class="detailLabel">Image</label></td><td><input id="pImage2"/></td></tr>
 				</table>
-			</div>
+			
 				<div id="divButtons1"> 
 					<button id="savePlayer" onclick="view.events.savePlayer();return false;">Save Player</button>
 				</div>

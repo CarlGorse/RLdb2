@@ -15,6 +15,10 @@ DataSet.prototype.sort =  function () {
 	this.items.sort(function(i1, i2){return i1[i1.sortProperty] > i2[i2.sortProperty]});
 }
 
+DataSet.prototype.count = function () { 
+	return Functions.Array.count(this.items);
+}
+
 DataSet.prototype.item = function (id) { 
 	var result = null;
 	this.items.forEach( 
