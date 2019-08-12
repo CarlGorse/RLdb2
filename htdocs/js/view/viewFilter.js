@@ -7,6 +7,7 @@ function ViewFilter(filterId, dataSet, element, displayProperty)
 	this.displayProperty = displayProperty;
 	
 	this.items = new Array();
+	this.setInitalValueEmpty = false;
 	
 }
 

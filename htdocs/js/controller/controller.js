@@ -1,6 +1,7 @@
 
 var data;
 var view;
+var functions;
 
 function Controller()
 {

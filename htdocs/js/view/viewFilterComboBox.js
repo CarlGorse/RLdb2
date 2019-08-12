@@ -17,4 +17,7 @@ ViewFilterComboBox.prototype.render = function () {
 			this.element.add(option);
 		}, this
 	)
+
+	if (this.setInitialValueEmpty)
+		this.element.value = "";
 }

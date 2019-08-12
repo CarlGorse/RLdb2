@@ -14,7 +14,7 @@ function Data()
 	this.squadNos.fileName = 	'squadNos.json';
 	this.hasImages.fileName = 	'hasImages.json';
 	
-	this.dataSets = [this.players, this.clubs, this.positions, this.squadNos, this.hasImages];
+	this.dataSets = [this.players, this.clubs, this.positions, this.squadNos, this.hasImages,];
 
 }
 
@@ -24,5 +24,9 @@ Data.prototype.loadData = function () {
 			ds.load();
 		}
 	)
+	this.initialiseFilteredPlayers();
 }
 
+Data.prototype.initialiseFilteredPlayers = function () {
+	this.filteredPlayers = this.players.slice(0);
+}
