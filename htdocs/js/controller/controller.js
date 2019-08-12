@@ -28,9 +28,40 @@ Controller.prototype.deletePlayer =  function (p) { data.players.remove(p); }
 
 Controller.prototype.savePlayers =  function (p) { data.players.save(p); }	
 
-Controller.prototype.playerCountByFilter =  function (f, i) {
+Controller.prototype.playerCountByFilter =  function (f, fi) {
 
-	// loop through filters <> f and query each for player count by value, then query player count for i
+	var count = 0;
 
-	return 0;
+	data.players.items.forEach (
+		function (p)
+		{
+
+			// query player count for i, then loop through filters <> f and query each for player count by value
+
+			var isMatch = true;
+
+			if (p[f.searchProperty] != fi[f.searchProperty]) {
+				isMatch = false;
+				return;
+			}
+
+			view.searchFilters.items.forEach(
+				function (f2) { 
+					if (f2.filterId == f.filterId) return;
+					if (f2.value() != "")
+					{
+						if (p[f2.searchProperty] != f2.value())
+						{
+							isMatch = false;
+							return;
+						}
+					}
+				}, this
+			)
+
+			if (isMatch) count += 1;
+		}
+	)
+
+	return count;
 }	

@@ -1,10 +1,11 @@
 
-function ViewFilter(filterId, dataSet, element, displayProperty)
+function ViewFilter(filterId, dataSet, element, displayProperty, searchProperty)
 {
 	this.filterId = filterId;
 	this.dataSet = dataSet;
 	this.element = element
 	this.displayProperty = displayProperty;
+	this.searchProperty = searchProperty;
 	
 	this.items = new Array();
 	this.setInitalValueEmpty = false;

@@ -1,7 +1,7 @@
 
 function ViewFilterPlayer(filterId, element, displayProperty)
 {
-	ViewFilterComboBox.call(this, filterId, data.players, element, displayProperty);
+	ViewFilterComboBox.call(this, filterId, data.players, element, displayProperty, 'playerId');
 }
 ViewFilterPlayer.prototype = Object.create(ViewFilterComboBox.prototype)
 
