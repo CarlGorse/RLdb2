@@ -10,7 +10,7 @@ ViewFilters.prototype.add = function (filter) {
 	this.items.push(filter);
 } 
 
-ViewFilters.prototype.refresh =  function () { 
+ViewFilters.prototype.render =  function () { 
 	
 	this.items.forEach( 
 		function (f) { 
