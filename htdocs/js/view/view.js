@@ -17,7 +17,7 @@ function View()
 	this.searchFilters = new ViewFilters();
 	[this.clubFilter, this.positionFilter, this.squadNoFilter, this.hasImageFilter].forEach ( 
 		function (f) { 
-			f.element.onclick = function() {view.events.selectPlayer(f);}
+			f.element.onchange = function() {view.events.changeFilter(f);}
 			this.searchFilters.items.push(f); 
 		}, this ) ;
 
