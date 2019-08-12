@@ -1,4 +1,7 @@
-Controller.prototype.functions = function() {}
+
+function Functions()
+{
+}
 
 Functions.prototype.getCountDescription = function(count, description) {
     var result = count;

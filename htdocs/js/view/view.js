@@ -14,7 +14,7 @@ function View()
 	this.pPosition2 = new ViewFilterPositions('pPositions2', this.elements.pPosition2.element, 'name');
 	this.pSquadNo2 = new ViewFilterSquadNo('pSquadNo2', this.elements.pSquadNo2.element, 'number');
 	
-	this.playerFilter.setInitalValueEmpty = true;
+	this.playerFilter.setInitialValueEmpty = true;
 
 	this.filters = new ViewFilters();
 	[this.clubFilter, this.positionsFilter, this.squadNoFilter, this.hasImageFilter, this.playerFilter, this.pClub2, this.pPosition2, this.pSquadNo2].forEach(

@@ -7,8 +7,10 @@ function Controller()
 {
 	data = new Data();
 	view = new View();
+	functions = new Functions();
 	
 	this.currentPlayer = null;
+	
 }
 
 Controller.prototype.initialise =  function () { view.loadDisplay(); }
