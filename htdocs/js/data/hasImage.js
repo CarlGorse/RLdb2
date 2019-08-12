@@ -1,8 +1,8 @@
 
-function HasImage(hasImageId, filename)
+function HasImage(hasImageId, text)
 {
 	DataItem.call(this, hasImageId, 'Image', 'text')
 	this.hasImageId = hasImageId;
-	this.filename = filename;
+	this.text = text;
 }
 HasImage.prototype = Object.create(DataItem.prototype)
