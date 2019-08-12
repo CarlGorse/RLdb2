@@ -5,5 +5,5 @@ function ViewEvents()
 }
 
 ViewEvents.prototype.selectPlayer = function (filter) {	
-    alert("there are " + filter.dataSet.count() + " items");
+    //alert("there are " + filter.dataSet.count() + " items");
 }

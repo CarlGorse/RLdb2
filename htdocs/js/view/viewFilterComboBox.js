@@ -11,10 +11,17 @@ ViewFilterComboBox.prototype.render = function () {
 	
 	this.dataSet.items.forEach(
 		function (i) {
+			
 			var option = document.createElement("option");
 			option.text = i[this.displayProperty];
+
+			var playerCount = controller.playerCountByFilter(this, i);
+			option.text += " (" + playerCount + ")";
+
 			option.value = i.id;
+			
 			this.element.add(option);
+
 		}, this
 	)
 

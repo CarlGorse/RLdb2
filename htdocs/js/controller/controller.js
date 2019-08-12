@@ -25,4 +25,12 @@ Controller.prototype.addPlayer =  function (name, clubId, positionId, squadNo, i
 }	
 
 Controller.prototype.deletePlayer =  function (p) { data.players.remove(p); }		
+
 Controller.prototype.savePlayers =  function (p) { data.players.save(p); }	
+
+Controller.prototype.playerCountByFilter =  function (f, i) {
+
+	// loop through filters <> f and query each for player count by value, then query player count for i
+
+	return 0;
+}	
