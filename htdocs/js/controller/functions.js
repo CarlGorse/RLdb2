@@ -1,6 +1,7 @@
 
 function Functions()
 {
+	this.array = new ArrayFunctions();
 }
 
 Functions.prototype.getCountDescription = function(count, description) {

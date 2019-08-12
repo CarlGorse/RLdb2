@@ -28,5 +28,5 @@ Data.prototype.loadData = function () {
 }
 
 Data.prototype.initialiseFilteredPlayers = function () {
-	this.filteredPlayers = this.players.items.slice(0);
+	this.filteredPlayers = functions.array.clone(this.players.items);
 }
