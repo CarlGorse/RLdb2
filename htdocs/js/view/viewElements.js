@@ -22,4 +22,6 @@ function ViewElements() {
 	this.hasImageFilter =	new ViewElementComboBox('hasImageFilter');
 	this.playerFilter =		new ViewElementComboBox('playerFilter');
 
+	this.filteredPlayersCount = new ViewElementSpan('filteredPlayersCount');
+
 }

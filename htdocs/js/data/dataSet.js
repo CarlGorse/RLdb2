@@ -26,6 +26,10 @@ DataSet.prototype.item = function (id) {
 	return result;
 }
 
+DataSet.prototype.count = function () { 
+	return this.items.length;
+}
+
 DataSet.prototype.getIdIndex = function (id) {
 	for (var x = 0; x < this.items.length; x++)
 	{

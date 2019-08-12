@@ -31,7 +31,8 @@ View.prototype.loadDisplay =  function () {
 	controller.loadData();
 	this.filters.render();
 	
-	this.elements.filteredPlayersCount = functions.getCountDescription(data.players.count, data.players.typename);
+	var count = functions.getCountDescription(data.players.count(), 'player');
+	this.elements.filteredPlayersCount.setValue(count);
 	
 }
 
