@@ -1,7 +1,8 @@
 
 function Functions()
 {
-	this.array = new ArrayFunctions();
+    this.Array = new ArrayFunctions();
+    this.Select = new SelectFunctions();
 }
 
 Functions.prototype.getCountDescription = function(count, description) {

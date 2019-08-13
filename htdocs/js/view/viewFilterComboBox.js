@@ -37,20 +37,8 @@ ViewFilterComboBox.prototype.render = function () {
 	if (this.setInitialValueEmpty)
 		this.clearValue();
 	else {
-
-		// select new option that matches previous value
 		if (currentValue)
-		{
-			for (var i = 0; i < this.element.options.length; i ++)
-			{
-				o = this.element.options[i];
-				if (o.value == currentValue)
-				{
-					this.element.options[o.index].selected = 'selected';
-					break;
-				}
-			}
-		}
+			functions.Select.selectOptionByValue(this.element, currentValue);
 	}
 
 }
