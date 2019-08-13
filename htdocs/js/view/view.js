@@ -1,5 +1,5 @@
 
-function View()
+varfunction View()
 {
 
 	this.events = new ViewEvents(this);
@@ -32,7 +32,7 @@ function View()
 	
 }
 
-View.prototype.loadDisplay =  function () {
+View.prototype.loadDisplay = function () {
 	this.hidePlayerDetails();
 	this.hideEditPlayerDetails();
 	controller.loadData();

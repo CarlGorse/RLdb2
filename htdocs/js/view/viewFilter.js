@@ -41,13 +41,3 @@ ViewFilter.prototype.clear = function () {
 	}
 }
 
-function ViewFilterItem(itemId) {
-	this.itemId = itemId;
-	this.selected == false;
-	
-	function select() { this.selected = true; }
-	function deselect() { this.selected = false; }
-	
-}
-
-

@@ -28,7 +28,7 @@ Controller.prototype.deletePlayer =  function (p) { data.players.remove(p); }
 
 Controller.prototype.savePlayers =  function (p) { data.players.save(p); }	
 
-Controller.prototype.playerCountByFilter =  function (f, fi) {
+Controller.prototype.playerCountByFilter =  function (f, di) {
 
 	var count = 0;
 
@@ -36,11 +36,11 @@ Controller.prototype.playerCountByFilter =  function (f, fi) {
 		function (p)
 		{
 
-			// query player count for i, then loop through filters <> f and query each for player count by value
+			// query player count for di, then loop through filters <> f and query each for player count by value
 
 			var isMatch = true;
 
-			if (p[f.searchProperty] != fi[f.searchProperty]) {
+			if (p[f.searchProperty] != di[f.searchProperty]) {
 				isMatch = false;
 				return;
 			}
@@ -48,7 +48,7 @@ Controller.prototype.playerCountByFilter =  function (f, fi) {
 			view.searchFilters.items.forEach(
 				function (f2) { 
 					if (f2.filterId == f.filterId) return;
-					if (f2.value() != "")
+					if ((f2.value() != "") && (f2.value() != "all"))
 					{
 						if (p[f2.searchProperty] != f2.value())
 						{
