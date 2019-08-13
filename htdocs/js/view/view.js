@@ -1,5 +1,5 @@
 
-varfunction View()
+function View()
 {
 
 	this.events = new ViewEvents(this);

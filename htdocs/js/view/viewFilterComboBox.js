@@ -44,9 +44,9 @@ ViewFilterComboBox.prototype.render = function () {
 			for (var i = 0; i < this.element.options.length; i ++)
 			{
 				o = this.element.options[i];
-				if (o.value == this.currentValue)
+				if (o.value == currentValue)
 				{
-					this.element.options[o.index].selected = selected;
+					this.element.options[o.index].selected = 'selected';
 					break;
 				}
 			}
@@ -59,9 +59,17 @@ ViewFilterComboBox.prototype.clearValue = function () {
 		this.element.value = "";
 }
 
-ViewFilter.prototype.value =  function () {
+ViewFilterComboBox.prototype.value =  function () {
 	if (!this.element.options) return "";
+	if (this.element.options.length == 0) return "";
 	if (!this.element.selectedIndex) return "";
-	if (this.element.length == 0) return "";
+	if (this.element.selectedIndex < 0) return "";
 	return this.element.options[this.element.selectedIndex].value;
+}
+
+ViewFilterComboBox.prototype.clear = function () {
+	while(this.element.options.length > 0)
+	{
+		this.element.options.remove(0);
+	}
 }

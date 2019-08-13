@@ -35,9 +35,6 @@ ViewFilter.prototype.remove = function (index) {
 }
 
 ViewFilter.prototype.clear = function () {
-	while(this.items.first)
-	{
-		this.items.remove(0);
-	}
+	
 }
 
