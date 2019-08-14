@@ -9,7 +9,7 @@ function View()
 	this.positionFilter = new ViewFilterPositions('positionFilter', this.elements.positionFilter.element, 'name');
 	this.squadNoFilter = new ViewFilterSquadNo('squadNoFilter', this.elements.squadNoFilter.element, 'number');
 	this.hasImageFilter = new ViewFilterHasImage('hasImageFilter', this.elements.hasImageFilter.element, 'text');
-	this.playerFilter = new ViewComboBoxPlayer('playerFilter', this.elements.playerFilter.element, 'name');
+	this.playerFilter = new ViewFilterPlayer('playerFilter', this.elements.playerFilter.element, 'name');
 	this.pClub2 = new ViewComboBox('pClub2', data.clubs, this.elements.pClub2.element, 'name2');
 	this.pPosition2 = new ViewComboBox('pPositions2', data.positions, this.elements.pPosition2.element, 'name');
 	this.pSquadNo2 = new ViewComboBox('pSquadNo2', data.squadNos, this.elements.pSquadNo2.element, 'number');
@@ -26,19 +26,12 @@ function View()
 	this.elements.editPlayer.element.onclick = function() { view.events.editPlayer(); }
 	this.elements.deletePlayer.element.onclick = function() { view.events.deletePlayer(); }
 
-	this.allFilters = new ViewFilters();
+	this.allComboBoxes = new ViewFilters();
 	[this.clubFilter, this.positionFilter, this.squadNoFilter, this.hasImageFilter, this.playerFilter, this.pClub2, this.pPosition2, this.pSquadNo2].forEach(
 		function (f) {
-			this.allFilters.items.push(f);
+			this.allComboBoxes.items.push(f);
 		}, this
 	);
-
-	this.playerFilter.setInitialValueEmpty = true;
-
-	
-	this.pClub2.setInitialValueEmpty = true;
-	this.pPosition2.setInitialValueEmpty = true;
-	this.pSquadNo2.setInitialValueEmpty = true;
 	
 }
 
@@ -46,7 +39,7 @@ View.prototype.loadDisplay = function () {
 	this.elements.playerDetails.hide();
 	this.elements.editPlayerDetails.hide();
 	controller.loadData();
-	this.allFilters.render();	
+	this.allComboBoxes.render();	
 }
 
 //View.prototype.selectFilter = function (filterId) {
@@ -88,7 +81,18 @@ View.prototype.editPlayer = function () {
 		alert('No player is currently selected');
 		return;
 	}
+	this.elements.playerDetails.hide();
+
+	p = controller.currentPlayer;
+	
+	view.elements.pName2.setValue(p.name);
+	view.elements.pClub2.setValue(p.clubId);
+	view.elements.pPosition2.setValue(p.position);
+	view.elements.pSquadNo2.setValue(p.squadNo);
+	view.elements.pImage2.setValue(p.image);
+
 	this.elements.editPlayerDetails.show();
+
 }
 
 View.prototype.deletePlayer = function () {	
@@ -123,22 +127,6 @@ View.prototype.showMessage = function (text) {
 
 View.prototype.getFilter = function (filterId) {
 	return view.filters.item(filterId);
-}
-
-View.prototype.showEditPlayer = function () {
-
-	view.hidePlayerDetails();
-	
-	p = controller.currentPlayer;
-	
-	view.elements.pName2.setValue(p.name);
-	view.elements.pClub2.setValue(p.clubId);
-	view.elements.pPosition2.setValue(p.position);
-	view.elements.pSquadNo2.setValue(p.squadNo);
-	view.elements.pImage2.setValue(p.image);
-		
-	this.elements.showEditPlayer.show();
-		
 }
 
 function ViewEvents() {

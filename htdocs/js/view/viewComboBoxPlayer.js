@@ -1,17 +1,17 @@
 
-function ViewComboBoxPlayer(filterId, element, displayProperty)
+function ViewFilterPlayer(filterId, element, displayProperty)
 {
-	ViewComboBox.call(this, filterId, data.players, element, displayProperty, 'playerId');
+	ViewFilterComboBox.call(this, filterId, data.players, element, displayProperty, 'playerId');
 	this.showNonMatchingDataItems = false;
 	this.showDataItemCount = false;
 }
-ViewComboBoxPlayer.prototype = Object.create(ViewComboBox.prototype)
+ViewFilterPlayer.prototype = Object.create(ViewFilterComboBox.prototype)
 
-ViewComboBoxPlayer.prototype.player = function () {
+ViewFilterPlayer.prototype.player = function () {
 	return data.players.player(this.value());
 }
 
-ViewComboBoxPlayer.prototype.render = function ()
+ViewFilterPlayer.prototype.render = function ()
 {
 	ViewComboBox.prototype.render.call(this);
 

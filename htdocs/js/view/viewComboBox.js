@@ -8,7 +8,7 @@ function ViewComboBox(filterId, dataSet, element, displayProperty)
 	
 	this.items = new Array();
 	
-	this.setInitalValueEmpty = true;
+	this.setInitialValueEmpty = true;
 	this.showDataItemCount = false;
 
 }
