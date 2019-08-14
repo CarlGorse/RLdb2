@@ -8,18 +8,15 @@ function ViewFilter(filterId, dataSet, element, displayProperty, searchProperty)
 	this.searchProperty = searchProperty;
 	
 	this.items = new Array();
-	this.setInitalValueEmpty = false;
-
-	this.showNonMatchingDataItems = true;
 	
+	this.setInitalValueEmpty = false;
+	this.showNonMatchingDataItems = false;
+	this.showDataItemCount = true;
+
 }
 
 ViewFilter.prototype.render = function () {
 	this.clear();
-}
-
-ViewFilter.prototype.value =  function () {
-	return this.element.options[this.element.selectedIndex].value;
 }
 
 ViewFilter.prototype.add = function (item) { this.items.push(item); }
@@ -37,6 +34,19 @@ ViewFilter.prototype.remove = function (index) {
 }
 
 ViewFilter.prototype.clear = function () {
+	while(this.items.first)
+	{
+		this.items.remove(0);
+	}
+}
+
+function ViewFilterItem(itemId) {
+	this.itemId = itemId;
+	this.selected == false;
+	
+	function select() { this.selected = true; }
+	function deselect() { this.selected = false; }
 	
 }
+
 

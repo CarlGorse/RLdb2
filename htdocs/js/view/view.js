@@ -21,6 +21,8 @@ function View()
 			this.searchFilters.items.push(f); 
 		}, this ) ;
 
+	this.playerFilter.element.onchange = function() { view.selectPlayer(); }
+
 	this.allFilters = new ViewFilters();
 	[this.clubFilter, this.positionFilter, this.squadNoFilter, this.hasImageFilter, this.playerFilter, this.pClub2, this.pPosition2, this.pSquadNo2].forEach(
 		function (f) {

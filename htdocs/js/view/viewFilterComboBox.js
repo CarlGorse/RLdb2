@@ -20,13 +20,16 @@ ViewFilterComboBox.prototype.render = function () {
 		function (di) {
 
 			var playerCount = controller.playerCountByFilter(this, di);
-			if (this.showNonMatchingDataItems || (playerCount > 0))
+			if ((this.showNonMatchingDataItems) || (playerCount > 0))
 			{
 				var option = document.createElement("option");
 				option.text = di[this.displayProperty];
 
-				if (playerCount > 0)
-					option.text += " (" + playerCount + ")";
+				if (this.showDataItemCount)
+				{
+					if (playerCount > 0)
+						option.text += " (" + playerCount + ")";
+				}
 
 				option.value = di.id;
 				
