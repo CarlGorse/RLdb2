@@ -13,7 +13,7 @@ function ViewElements() {
 	this.pSquadNo2 = 	new ViewElementComboBox('pSquadNo2');
 	this.pImage2 = 		new ViewElementInput('pImage2');
 	
-	this.playerDetails =		new ViewElement('playerDetails');
+	this.playerDetails =		new ViewElement('divPlayerDetails');
 	this.editPlayerDetails =	new ViewElement('editPlayerDetails');
 	
 	this.clubFilter =		new ViewElementComboBox('clubFilter');

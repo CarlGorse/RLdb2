@@ -3,6 +3,7 @@ function Functions()
 {
     this.Array = new ArrayFunctions();
     this.Select = new SelectFunctions();
+    this.Element = new ElementFunctions();
 }
 
 Functions.prototype.getCountDescription = function(count, description) {

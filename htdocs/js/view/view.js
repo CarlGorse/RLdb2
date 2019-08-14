@@ -9,10 +9,10 @@ function View()
 	this.positionFilter = new ViewFilterPositions('positionFilter', this.elements.positionFilter.element, 'name');
 	this.squadNoFilter = new ViewFilterSquadNo('squadNoFilter', this.elements.squadNoFilter.element, 'number');
 	this.hasImageFilter = new ViewFilterHasImage('hasImageFilter', this.elements.hasImageFilter.element, 'text');
-	this.playerFilter = new ViewFilterPlayer('playerFilter', this.elements.playerFilter.element, 'name');
-	this.pClub2 = new ViewFilterClub('pClub2', this.elements.pClub2.element, 'name2');
-	this.pPosition2 = new ViewFilterPositions('pPositions2', this.elements.pPosition2.element, 'name');
-	this.pSquadNo2 = new ViewFilterSquadNo('pSquadNo2', this.elements.pSquadNo2.element, 'number');
+	this.playerFilter = new ViewComboBoxPlayer('playerFilter', this.elements.playerFilter.element, 'name');
+	this.pClub2 = new ViewComboBox('pClub2', data.clubs, this.elements.pClub2.element, 'name2');
+	this.pPosition2 = new ViewComboBox('pPositions2', data.positions, this.elements.pPosition2.element, 'name');
+	this.pSquadNo2 = new ViewComboBox('pSquadNo2', data.squadNos, this.elements.pSquadNo2.element, 'number');
 
 	this.searchFilters = new ViewFilters();
 	[this.clubFilter, this.positionFilter, this.squadNoFilter, this.hasImageFilter].forEach ( 
@@ -21,7 +21,10 @@ function View()
 			this.searchFilters.items.push(f); 
 		}, this ) ;
 
-	this.playerFilter.element.onchange = function() { view.selectPlayer(); }
+	this.playerFilter.element.onchange = function() { view.events.selectPlayer(); }
+	this.elements.addPlayer.element.onclick = function() { view.events.addPlayer(); }
+	this.elements.editPlayer.element.onclick = function() { view.events.editPlayer(); }
+	this.elements.deletePlayer.element.onclick = function() { view.events.deletePlayer(); }
 
 	this.allFilters = new ViewFilters();
 	[this.clubFilter, this.positionFilter, this.squadNoFilter, this.hasImageFilter, this.playerFilter, this.pClub2, this.pPosition2, this.pSquadNo2].forEach(
@@ -31,24 +34,29 @@ function View()
 	);
 
 	this.playerFilter.setInitialValueEmpty = true;
+
+	
+	this.pClub2.setInitialValueEmpty = true;
+	this.pPosition2.setInitialValueEmpty = true;
+	this.pSquadNo2.setInitialValueEmpty = true;
 	
 }
 
 View.prototype.loadDisplay = function () {
-	this.hidePlayerDetails();
-	this.hideEditPlayerDetails();
+	this.elements.playerDetails.hide();
+	this.elements.editPlayerDetails.hide();
 	controller.loadData();
 	this.allFilters.render();	
 }
 
-View.prototype.selectFilter = function (filterId) {
-	filter = view.getFilter(filterId);
-}
+//View.prototype.selectFilter = function (filterId) {
+	//filter = view.getFilter(filterId);
+//}
 
 View.prototype.selectPlayer = function () {
 
-	view.hideEditPlayerDetails();
-	view.showPlayerDetails();
+	this.elements.editPlayerDetails.hide();
+	this.elements.playerDetails.show();
 
 	p = view.playerFilter.player();
 	controller.setCurrentPlayer(p);
@@ -59,9 +67,9 @@ View.prototype.selectPlayer = function () {
 	view.elements.pSquadNo.setValue(p.squadNo);
 	
 	if (p.image)
-		view.elements.pImage.element.style.display = "block";
+		this.elements.pImage.show();
 	else
-		view.elements.pImage.element.style.display = "none";
+		this.elements.pImage.hide();
 	view.elements.pImage.setValue(p.image);
 	
 }
@@ -70,14 +78,27 @@ View.prototype.addPlayer = function () {
 	view.playerFilter.clearValue();
 	var p = controller.addPlayer();
 	controller.setCurrentPlayer(p);
-	view.showEditPlayer();
+	this.pClub2.render();
+	this.elements.editPlayerDetails.show();
 }
 
 View.prototype.editPlayer = function () {
-	view.showEditPlayer();
+	if (!controller.currentPlayer)
+	{
+		alert('No player is currently selected');
+		return;
+	}
+	this.elements.editPlayerDetails.show();
 }
 
-View.prototype.deletePlayer = function () {
+View.prototype.deletePlayer = function () {	
+	if (!controller.currentPlayer)
+	{
+		alert('No player is currently selected');
+		return;
+	}
+	if (confirm('Do you wish to delete player ' + controller.currentPlayer.name + '?') == false)
+		return;
 	var p = controller.currentPlayer;	// save current player before deleted from data/controller
 	controller.deletePlayer(p);
 	controller.savePlayers();
@@ -116,17 +137,12 @@ View.prototype.showEditPlayer = function () {
 	view.elements.pSquadNo2.setValue(p.squadNo);
 	view.elements.pImage2.setValue(p.image);
 		
-	this.showEditPlayerDetails();
+	this.elements.showEditPlayer.show();
 		
 }
 
-View.prototype.showPlayerDetails = 		function () { this.elements.playerDetails.show(); }
-View.prototype.hidePlayerDetails = 		function () { this.elements.playerDetails.hide(); }
-View.prototype.showEditPlayerDetails = 	function () { this.elements.editPlayerDetails.show(); }
-View.prototype.hideEditPlayerDetails = 	function () { this.elements.editPlayerDetails.hide(); }
-
 function ViewEvents() {
-	ViewEvents.prototype.selectFilter = function (filterId) { view.selectFilter(filterId); }
+//	ViewEvents.prototype.selectFilter = function (filterId) { view.selectFilter(filterId); }
 	ViewEvents.prototype.selectPlayer = function () 		{ view.selectPlayer(); }
 	ViewEvents.prototype.addPlayer = 	function () 		{ view.addPlayer(); }	
 	ViewEvents.prototype.editPlayer = 	function (p) 		{ view.editPlayer(p); }

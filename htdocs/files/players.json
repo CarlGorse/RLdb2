@@ -65,7 +65,8 @@
                                 {"name":"Mark Flanagan",                "positionId":"lf",              "squadNo":"13",         "image":"mark-flanagan.jpg"},
                                 {"name":"Niall Evalds",                 "positionId":"fb",              "squadNo":"1"},
                                 {"name":"Tuimoala Lolohea",             "positionId":"so",              "squadNo":"6"},
-                                {"name":"Tyrone McCarthy",              "positionId":"lf",              "squadNo":"17",         "image":"tyrone-mccarthy.jpg"}
+                                {"name":"Tyrone McCarthy",              "positionId":"lf",              "squadNo":"17",         "image":"tyrone-mccarthy.jpg"},
+                                {"name":"qwerty",                       "positionId":"c",               "squadNo":"9"}
                         ]
                 },
 
