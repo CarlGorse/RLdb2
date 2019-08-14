@@ -36,11 +36,7 @@ View.prototype.loadDisplay = function () {
 	this.hidePlayerDetails();
 	this.hideEditPlayerDetails();
 	controller.loadData();
-	this.allFilters.render();
-	
-	var count = functions.getCountDescription(data.players.count(), 'player');
-	this.elements.filteredPlayersCount.setValue(count);
-	
+	this.allFilters.render();	
 }
 
 View.prototype.selectFilter = function (filterId) {
@@ -48,13 +44,13 @@ View.prototype.selectFilter = function (filterId) {
 }
 
 View.prototype.selectPlayer = function () {
-	
+
 	view.hideEditPlayerDetails();
 	view.showPlayerDetails();
-		
+
 	p = view.playerFilter.player();
 	controller.setCurrentPlayer(p);
-		
+
 	view.elements.pName.setValue(p.name);
 	view.elements.pClub.setValue(data.clubs.club(p.clubId).name2);
 	view.elements.pPosition.setValue(data.positions.position(p.positionId).name);

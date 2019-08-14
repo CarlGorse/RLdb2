@@ -24,9 +24,4 @@ Data.prototype.loadData = function () {
 			ds.load();
 		}
 	)
-	this.initialiseFilteredPlayers();
-}
-
-Data.prototype.initialiseFilteredPlayers = function () {
-	this.filteredPlayers = functions.Array.clone(this.players.items);
 }

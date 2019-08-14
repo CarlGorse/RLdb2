@@ -18,16 +18,20 @@ ViewFilterComboBox.prototype.render = function () {
 
 	this.dataSet.items.forEach(
 		function (di) {
-			
-			var option = document.createElement("option");
-			option.text = di[this.displayProperty];
 
 			var playerCount = controller.playerCountByFilter(this, di);
-			option.text += " (" + playerCount + ")";
+			if (this.showNonMatchingDataItems || (playerCount > 0))
+			{
+				var option = document.createElement("option");
+				option.text = di[this.displayProperty];
 
-			option.value = di.id;
-			
-			this.element.add(option);
+				if (playerCount > 0)
+					option.text += " (" + playerCount + ")";
+
+				option.value = di.id;
+				
+				this.element.add(option);
+			}
 
 		}, this
 	)

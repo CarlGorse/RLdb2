@@ -9,6 +9,8 @@ function ViewFilter(filterId, dataSet, element, displayProperty, searchProperty)
 	
 	this.items = new Array();
 	this.setInitalValueEmpty = false;
+
+	this.showNonMatchingDataItems = true;
 	
 }
 

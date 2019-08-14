@@ -5,8 +5,8 @@ function SquadNos()
 }
 SquadNos.prototype = Object.create(DataSet.prototype)
 
-SquadNos.prototype.add =  function (squadNoId, number) {
-	sn = new SquadNo(squadNoId, number);
+SquadNos.prototype.add =  function (squadNo) {
+	sn = new SquadNo(squadNo);
 	this.addSquadNo(sn);
 }
 

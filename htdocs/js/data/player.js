@@ -9,6 +9,8 @@ function Player(playerId, name, clubId, positionId, squadNo, image)
 	this.positionId = positionId ? positionId : "";
 	this.squadNo = squadNo ? squadNo : "";
 	this.image = image ? image : "";
+	
+	this.hasImageId = this.image ? "Yes" : "No";
 
 }
 Player.prototype = Object.create(DataItem.prototype)
