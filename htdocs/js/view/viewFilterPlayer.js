@@ -1,7 +1,7 @@
 
-function ViewFilterPlayer(filterId, element, displayProperty)
+function ViewFilterPlayer(filterId, viewElement, displayProperty)
 {
-	ViewFilterComboBox.call(this, filterId, data.players, element, displayProperty, 'playerId');
+	ViewFilterComboBox.call(this, filterId, data.players, viewElement, displayProperty, 'playerId');
 	this.showNonMatchingDataItems = false;
 	this.showDataItemCount = false;
 	this.showOptionAll = false;
@@ -16,7 +16,7 @@ ViewFilterPlayer.prototype.render = function ()
 {
 	ViewComboBox.prototype.render.call(this);
 
-	count = this.element.options.length;
+	count = this.element().options.length;
 	//count -= 1; // exclude 'all'
 
 	var countDescription = functions.getCountDescription(count, 'player');

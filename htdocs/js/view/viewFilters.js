@@ -5,11 +5,11 @@ function ViewFilters()
 }
 
 ViewFilters.prototype.initialise = function () {
-	this.club = new ViewFilterClub('filterClub', view.elements.clubFilter.element, 'name2');
-	this.position = new ViewFilterPositions('filterPosition', view.elements.positionFilter.element, 'name');
-	this.squadNo = new ViewFilterSquadNo('filterSquadNo', view.elements.squadNoFilter.element, 'number');
-	this.hasImage = new ViewFilterHasImage('filterHasImage', view.elements.hasImageFilter.element, 'text');
-	this.player = new ViewFilterPlayer('filterPlayer', view.elements.playerFilter.element, 'name');
+	this.club = new ViewFilterClub('filterClub', view.elements.clubFilter, 'name2');
+	this.position = new ViewFilterPositions('filterPosition', view.elements.positionFilter, 'name');
+	this.squadNo = new ViewFilterSquadNo('filterSquadNo', view.elements.squadNoFilter, 'number');
+	this.hasImage = new ViewFilterHasImage('filterHasImage', view.elements.hasImageFilter, 'text');
+	this.player = new ViewFilterPlayer('filterPlayer', view.elements.playerFilter, 'name');
 
 	this.player.element.onchange = function() { view.events.selectPlayer(); }
 }

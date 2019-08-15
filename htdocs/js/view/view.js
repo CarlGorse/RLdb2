@@ -18,9 +18,9 @@ View.prototype.loadDisplay = function () {
 	this.elements.initialise();
 	this.filters.initialise();
 
-	this.pComboClub = new ViewComboBox('pComboClub', data.clubs, this.elements.pComboClub.element, 'name2');
-	this.pComboPosition = new ViewComboBox('pPositions2', data.positions, this.elements.pComboPosition.element, 'name');
-	this.pComboSquadNo = new ViewComboBox('pComboSquadNo', data.squadNos, this.elements.pComboSquadNo.element, 'number');
+	this.pComboClub = new ViewComboBox('pComboClub', data.clubs, this.elements.pComboClub, 'name2');
+	this.pComboPosition = new ViewComboBox('pPositions2', data.positions, this.elements.pComboPosition, 'name');
+	this.pComboSquadNo = new ViewComboBox('pComboSquadNo', data.squadNos, this.elements.pComboSquadNo, 'number');
 
 	this.filters.render();
 
@@ -55,7 +55,13 @@ View.prototype.addPlayer = function () {
 	view.filters.player.clearValue();
 	var p = controller.addPlayer();
 	controller.setCurrentPlayer(p);
+	this.showEditPlayerDetails();
+}
+
+View.prototype.showEditPlayerDetails = function () {
 	this.pComboClub.render();
+	this.pComboPosition.render();
+	this.pComboSquadNo.render();
 	this.elements.editPlayerDetails.show();
 }
 
@@ -75,7 +81,7 @@ View.prototype.editPlayer = function () {
 	view.elements.pComboSquadNo.setValue(p.squadNo);
 	view.elements.pImage2.setValue(p.image);
 
-	this.elements.editPlayerDetails.show();
+	this.showEditPlayerDetails();
 
 }
 

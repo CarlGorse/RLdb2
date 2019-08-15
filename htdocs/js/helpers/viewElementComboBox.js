@@ -13,4 +13,17 @@ ViewElementComboBox.prototype.setValue = function (itemId) {
 		if (o.value == itemId) o.selected = true;
 	}
 }
-ViewElementComboBox.prototype.value = function () { return this.element.options[this.element.selectedIndex].value; }
+ViewElementComboBox.prototype.value = function () { 
+	if (!this.element.options) return "";
+	if (this.element.options.length == 0) return "";
+	//if (!this.element.selectedIndex) return ""; errors for first index = 0
+	if (this.element.selectedIndex < 0) return "";
+	return this.element.options[this.element.selectedIndex].value;
+}
+
+ViewElementComboBox.prototype.clear = function () {
+	while(this.element.options.length > 0)
+	{
+		this.element.options.remove(0);
+	}
+}

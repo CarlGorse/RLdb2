@@ -1,9 +1,9 @@
 
-function ViewComboBox(filterId, dataSet, element, displayProperty)
+function ViewComboBox(filterId, dataSet, viewElement, displayProperty)
 {
 	this.filterId = filterId;
 	this.dataSet = dataSet;
-	this.element = element
+	this.viewElement = viewElement
 	this.displayProperty = displayProperty;
 	
 	this.items = new Array();
@@ -51,7 +51,7 @@ ViewComboBox.prototype.render = function () {
 		var option = document.createElement("option");
 		option.text = '[all]';
 		option.value = 'all';		
-		this.element.add(option);
+		this.element().add(option);
 	}
 
 	this.dataSet.items.forEach(
@@ -71,13 +71,13 @@ ViewComboBox.prototype.render = function () {
 
 				option.value = di.id;
 				
-				this.element.add(option);
+				this.element().add(option);
 			}
 
 		}, this
 	)
 
-	this.element.options[0].selected = 'selected';
+	this.element().options[0].selected = 'selected';
 
 	if (this.setInitialValueEmpty)
 		this.clearValue();
@@ -92,17 +92,14 @@ ViewComboBox.prototype.clearValue = function () {
 		this.element.value = "";
 }
 
-ViewComboBox.prototype.value =  function () {
-	if (!this.element.options) return "";
-	if (this.element.options.length == 0) return "";
-	//if (!this.element.selectedIndex) return ""; errors for first index = 0
-	if (this.element.selectedIndex < 0) return "";
-	return this.element.options[this.element.selectedIndex].value;
+ViewComboBox.prototype.clear = function () {
+	this.viewElement.clear();
 }
 
-ViewComboBox.prototype.clear = function () {
-	while(this.element.options.length > 0)
-	{
-		this.element.options.remove(0);
-	}
+ViewComboBox.prototype.value = function () {
+	return this.viewElement.value();
+}
+
+ViewComboBox.prototype.element = function () { 
+	return this.viewElement.element; 
 }

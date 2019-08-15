@@ -1,7 +1,7 @@
 
-function ViewFilterComboBox(filterId, dataSet, element, displayProperty, searchProperty)
+function ViewFilterComboBox(filterId, dataSet, viewElement, displayProperty, searchProperty)
 {
-	ViewFilter.call(this, filterId, dataSet, element, displayProperty, searchProperty);
+	ViewFilter.call(this, filterId, dataSet, viewElement, displayProperty, searchProperty);
 	this.setInitialValueEmpty = false;
 }
 ViewFilterComboBox.prototype = Object.create(ViewFilter.prototype)

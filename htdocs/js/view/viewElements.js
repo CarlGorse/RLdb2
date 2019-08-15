@@ -30,6 +30,7 @@ function ViewElements() {
 
 }
 ViewElements.prototype.initialise = function () {
+	view.elements.playerFilter.element.onclick = function() { view.events.selectPlayer(); }
 	view.elements.addPlayer.element.onclick = function() { view.events.addPlayer(); }
 	view.elements.editPlayer.element.onclick = function() { view.events.editPlayer(); }
 	view.elements.deletePlayer.element.onclick = function() { view.events.deletePlayer(); }
