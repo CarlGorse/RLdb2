@@ -13,7 +13,6 @@ function Controller()
 	
 }
 
-Controller.prototype.initialise =  function () { view.loadDisplay(); }
 Controller.prototype.loadData =  function () { data.loadData(); }	
 
 Controller.prototype.setCurrentPlayer =  function (p) {

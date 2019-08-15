@@ -4,24 +4,23 @@ function View()
 
 	this.events = new ViewEvents(this);
 	this.elements = new ViewElements(this);
+	this.filters = new ViewFilters();
 }
 
 View.prototype.loadDisplay = function () {
 
 	this.elements.playerDetails.hide();
 	this.elements.editPlayerDetails.hide();
+	
 	controller.loadData();
 
-	this.filters = new ViewFilters();	
+	this.events.initialise();
+	this.elements.initialise();
 	this.filters.initialise();
 
 	this.pComboClub = new ViewComboBox('pComboClub', data.clubs, this.elements.pComboClub.element, 'name2');
 	this.pComboPosition = new ViewComboBox('pPositions2', data.positions, this.elements.pComboPosition.element, 'name');
 	this.pComboSquadNo = new ViewComboBox('pComboSquadNo', data.squadNos, this.elements.pComboSquadNo.element, 'number');
-
-	this.elements.addPlayer.element.onclick = function() { view.events.addPlayer(); }
-	this.elements.editPlayer.element.onclick = function() { view.events.editPlayer(); }
-	this.elements.deletePlayer.element.onclick = function() { view.events.deletePlayer(); }
 
 	this.filters.render();
 
@@ -112,13 +111,4 @@ View.prototype.showMessage = function (text) {
 
 View.prototype.getFilter = function (filterId) {
 	return view.filters.item(filterId);
-}
-
-function ViewEvents() {
-//	ViewEvents.prototype.selectFilter = function (filterId) { view.selectFilter(filterId); }
-	ViewEvents.prototype.selectPlayer = function () 		{ view.selectPlayer(); }
-	ViewEvents.prototype.addPlayer = 	function () 		{ view.addPlayer(); }	
-	ViewEvents.prototype.editPlayer = 	function (p) 		{ view.editPlayer(p); }
-	ViewEvents.prototype.deletePlayer = function () 		{ view.deletePlayer(); }
-	ViewEvents.prototype.savePlayer = 	function () 		{ view.savePlayer(); }	
 }
