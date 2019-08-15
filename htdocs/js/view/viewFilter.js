@@ -21,4 +21,3 @@ function ViewFilter(filterId, dataSet, viewElement, displayProperty, searchPrope
 }
 ViewFilter.prototype = Object.create(ViewComboBox.prototype)
 
-ViewFilter.prototype.element = function () { return this.viewElement.element; }

@@ -13,8 +13,6 @@ function ViewComboBox(filterId, dataSet, viewElement, displayProperty)
 
 }
 
-ViewComboBox.prototype.render = function () {}
-
 ViewComboBox.prototype.add = function (item) { this.items.push(item); }
 
 ViewComboBox.prototype.index = function (filterId) { 
@@ -29,17 +27,6 @@ ViewComboBox.prototype.remove = function (index) {
 	this.items = this.items.splice(index, 1);
 }
 
-
-/*
-function ViewComboBox(itemId) {
-	this.itemId = itemId;
-	this.selected == false;
-}
-ViewComboBox.prototype.select = function() { this.selected = true; }
-ViewComboBox.prototype.deselect = function() { this.selected = false; }
-
-*/
-
 ViewComboBox.prototype.render = function () {
 	
 	currentValue = this.value();
@@ -50,7 +37,7 @@ ViewComboBox.prototype.render = function () {
 	{
 		var option = document.createElement("option");
 		option.text = '[all]';
-		option.value = 'all';		
+		option.value = 'all';
 		this.element().add(option);
 	}
 

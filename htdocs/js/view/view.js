@@ -58,13 +58,6 @@ View.prototype.addPlayer = function () {
 	this.showEditPlayerDetails();
 }
 
-View.prototype.showEditPlayerDetails = function () {
-	this.pComboClub.render();
-	this.pComboPosition.render();
-	this.pComboSquadNo.render();
-	this.elements.editPlayerDetails.show();
-}
-
 View.prototype.editPlayer = function () {
 	if (!controller.currentPlayer)
 	{
@@ -83,6 +76,14 @@ View.prototype.editPlayer = function () {
 
 	this.showEditPlayerDetails();
 
+}
+
+View.prototype.showEditPlayerDetails = function () {
+	this.pComboClub.render();
+	this.pComboPosition.render();
+	this.pComboSquadNo.render();
+
+	this.elements.editPlayerDetails.show();
 }
 
 View.prototype.deletePlayer = function () {	
