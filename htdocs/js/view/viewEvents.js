@@ -2,7 +2,7 @@
 function ViewEvents() {}
 
 ViewEvents.prototype.changeFilter = function (filter) {	
-    view.allComboBoxes.render(); 
+    view.filters.render(); 
 }
 ViewEvents.prototype.selectPlayer = function (filter) {	view.selectPlayer(); }
 ViewEvents.prototype.addPlayer = function (filter) {view.addPlayer(); }

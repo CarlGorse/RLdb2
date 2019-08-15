@@ -4,42 +4,27 @@ function View()
 
 	this.events = new ViewEvents(this);
 	this.elements = new ViewElements(this);
+}
 
-	this.clubFilter = new ViewFilterClub('clubFilter', this.elements.clubFilter.element, 'name2');
-	this.positionFilter = new ViewFilterPositions('positionFilter', this.elements.positionFilter.element, 'name');
-	this.squadNoFilter = new ViewFilterSquadNo('squadNoFilter', this.elements.squadNoFilter.element, 'number');
-	this.hasImageFilter = new ViewFilterHasImage('hasImageFilter', this.elements.hasImageFilter.element, 'text');
-	this.playerFilter = new ViewFilterPlayer('playerFilter', this.elements.playerFilter.element, 'name');
-	this.pClub2 = new ViewComboBox('pClub2', data.clubs, this.elements.pClub2.element, 'name2');
-	this.pPosition2 = new ViewComboBox('pPositions2', data.positions, this.elements.pPosition2.element, 'name');
-	this.pSquadNo2 = new ViewComboBox('pSquadNo2', data.squadNos, this.elements.pSquadNo2.element, 'number');
+View.prototype.loadDisplay = function () {
 
-	this.searchFilters = new ViewFilters();
-	[this.clubFilter, this.positionFilter, this.squadNoFilter, this.hasImageFilter].forEach ( 
-		function (f) { 
-			f.element.onchange = function() {view.events.changeFilter(f);}
-			this.searchFilters.items.push(f); 
-		}, this ) ;
+	this.elements.playerDetails.hide();
+	this.elements.editPlayerDetails.hide();
+	controller.loadData();
 
-	this.playerFilter.element.onchange = function() { view.events.selectPlayer(); }
+	this.filters = new ViewFilters();	
+	this.filters.initialise();
+
+	this.pComboClub = new ViewComboBox('pComboClub', data.clubs, this.elements.pComboClub.element, 'name2');
+	this.pComboPosition = new ViewComboBox('pPositions2', data.positions, this.elements.pComboPosition.element, 'name');
+	this.pComboSquadNo = new ViewComboBox('pComboSquadNo', data.squadNos, this.elements.pComboSquadNo.element, 'number');
+
 	this.elements.addPlayer.element.onclick = function() { view.events.addPlayer(); }
 	this.elements.editPlayer.element.onclick = function() { view.events.editPlayer(); }
 	this.elements.deletePlayer.element.onclick = function() { view.events.deletePlayer(); }
 
-	this.allComboBoxes = new ViewFilters();
-	[this.clubFilter, this.positionFilter, this.squadNoFilter, this.hasImageFilter, this.playerFilter, this.pClub2, this.pPosition2, this.pSquadNo2].forEach(
-		function (f) {
-			this.allComboBoxes.items.push(f);
-		}, this
-	);
-	
-}
+	this.filters.render();
 
-View.prototype.loadDisplay = function () {
-	this.elements.playerDetails.hide();
-	this.elements.editPlayerDetails.hide();
-	controller.loadData();
-	this.allComboBoxes.render();	
 }
 
 //View.prototype.selectFilter = function (filterId) {
@@ -51,7 +36,7 @@ View.prototype.selectPlayer = function () {
 	this.elements.editPlayerDetails.hide();
 	this.elements.playerDetails.show();
 
-	p = view.playerFilter.player();
+	p = view.filters.player.player();
 	controller.setCurrentPlayer(p);
 
 	view.elements.pName.setValue(p.name);
@@ -68,10 +53,10 @@ View.prototype.selectPlayer = function () {
 }
 
 View.prototype.addPlayer = function () {
-	view.playerFilter.clearValue();
+	view.filters.player.clearValue();
 	var p = controller.addPlayer();
 	controller.setCurrentPlayer(p);
-	this.pClub2.render();
+	this.pComboClub.render();
 	this.elements.editPlayerDetails.show();
 }
 
@@ -86,9 +71,9 @@ View.prototype.editPlayer = function () {
 	p = controller.currentPlayer;
 	
 	view.elements.pName2.setValue(p.name);
-	view.elements.pClub2.setValue(p.clubId);
-	view.elements.pPosition2.setValue(p.position);
-	view.elements.pSquadNo2.setValue(p.squadNo);
+	view.elements.pComboClub.setValue(p.clubId);
+	view.elements.pComboPosition.setValue(p.position);
+	view.elements.pComboSquadNo.setValue(p.squadNo);
 	view.elements.pImage2.setValue(p.image);
 
 	this.elements.editPlayerDetails.show();
@@ -112,9 +97,9 @@ View.prototype.deletePlayer = function () {
 View.prototype.savePlayer = function () {
 	var p = controller.currentPlayer;
 	p.name = view.elements.pName2.value();
-	p.clubId = view.elements.pClub2.value();
-	p.positionId = view.elements.pPosition2.value();
-	p.squadNo = view.elements.pSquadNo2.value();
+	p.clubId = view.elements.pComboClub.value();
+	p.positionId = view.elements.pComboPosition.value();
+	p.squadNo = view.elements.pComboSquadNo.value();
 	p.image = view.elements.pImage2.value();
 	
 	controller.savePlayers();

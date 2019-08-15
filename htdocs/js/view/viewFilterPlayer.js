@@ -4,6 +4,7 @@ function ViewFilterPlayer(filterId, element, displayProperty)
 	ViewFilterComboBox.call(this, filterId, data.players, element, displayProperty, 'playerId');
 	this.showNonMatchingDataItems = false;
 	this.showDataItemCount = false;
+	this.showOptionAll = false;
 }
 ViewFilterPlayer.prototype = Object.create(ViewFilterComboBox.prototype)
 

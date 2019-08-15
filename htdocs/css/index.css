@@ -6,8 +6,8 @@
 
 select { height:3em; }
 
-#clubFilter	{ width: 16em; }
-#positionFilter	{ width: 16em; }
+#filterClub	{ width: 16em; }
+#filterPosition	{ width: 16em; }
 #squadFilter	{ width: 16em;  }
 
 .filterLabel::after { content: ":"; }

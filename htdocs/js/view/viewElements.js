@@ -8,9 +8,9 @@ function ViewElements() {
 	this.pImage = 		new ViewElementImage('pImage');
 		
 	this.pName2 = 		new ViewElementInput('pName2');
-	this.pClub2 = 		new ViewElementComboBox('pClub2');
-	this.pPosition2 = 	new ViewElementComboBox('pPosition2');
-	this.pSquadNo2 = 	new ViewElementComboBox('pSquadNo2');
+	this.pComboClub = 		new ViewElementComboBox('pComboClub');
+	this.pComboPosition = 	new ViewElementComboBox('pComboPosition');
+	this.pComboSquadNo = 	new ViewElementComboBox('pComboSquadNo');
 	this.pImage2 = 		new ViewElementInput('pImage2');
 	
 	this.playerDetails =		new ViewElement('divPlayerDetails');
