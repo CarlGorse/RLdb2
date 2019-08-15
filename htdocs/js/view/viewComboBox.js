@@ -8,7 +8,7 @@ function ViewComboBox(filterId, dataSet, viewElement, displayProperty)
 	
 	this.items = new Array();
 	
-	this.setInitialValueEmpty = true;
+	this.setInitialValueEmpty = false;
 	this.showDataItemCount = false;
 
 }
@@ -29,7 +29,7 @@ ViewComboBox.prototype.remove = function (index) {
 
 ViewComboBox.prototype.render = function () {
 	
-	currentValue = this.value();
+	currentValue = this.element().value;
 
 	this.clear();
 	
@@ -70,7 +70,7 @@ ViewComboBox.prototype.render = function () {
 		this.clearValue();
 	else {
 		if (currentValue)
-			functions.Select.selectOptionByValue(this.element, currentValue);
+			functions.Select.selectOptionByValue(this.element(), currentValue);
 	}
 
 }

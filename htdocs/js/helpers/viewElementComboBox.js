@@ -14,11 +14,7 @@ ViewElementComboBox.prototype.setValue = function (itemId) {
 	}
 }
 ViewElementComboBox.prototype.value = function () { 
-	if (!this.element.options) return "";
-	if (this.element.options.length == 0) return "";
-	//if (!this.element.selectedIndex) return ""; errors for first index = 0
-	if (this.element.selectedIndex < 0) return "";
-	return this.element.options[this.element.selectedIndex].value;
+	return this.element.value;
 }
 
 ViewElementComboBox.prototype.clear = function () {
