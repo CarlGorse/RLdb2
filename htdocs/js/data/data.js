@@ -21,6 +21,7 @@ function Data()
 Data.prototype.loadData = function () {
 	this.dataSets.forEach(
 		function (ds) {
+			ds.clear();
 			ds.load();
 		}
 	)

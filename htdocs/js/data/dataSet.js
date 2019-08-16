@@ -7,12 +7,27 @@ function DataSet(typeName)
 	this.fileName = "";
 }
 
+DataSet.prototype.load = function () {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("GET", "files\\" + this.fileName, false);
+	xmlhttp.send();
+
+	var file = JSON.parse(xmlhttp.responseText); 
+	eval('this.loadFile')(file);
+
+	this.sort();		
+}
+
 DataSet.prototype.addItem = function (i) {
 	this.items.push(i);
 }
 
 DataSet.prototype.sort =  function () {
-	this.items.sort(function(i1, i2){return i1[i1.sortProperty] > i2[i2.sortProperty]});
+	this.items.sort(function(i1, i2){
+		if (i1[i1.sortProperty] < i2[i2.sortProperty]) { return -1};
+		if (i1[i1.sortProperty] > i2[i2.sortProperty]) { return 1};
+		return 0;
+	});
 }
 
 DataSet.prototype.count = function () { 
@@ -28,6 +43,11 @@ DataSet.prototype.item = function (id) {
 		}
 	) 
 	return result;
+}
+
+DataSet.prototype.clear = function ()
+{
+	functions.Array.clear(this.items);
 }
 
 DataSet.prototype.count = function () { 
@@ -59,15 +79,4 @@ DataSet.prototype.writeJSON = function ()
 	var fd = new FormData();
 	fd.append("playersJSON", dataSetJSON);
 	xmlhttp.send(fd);
-}
-
-DataSet.prototype.load = function () {
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("GET", "files\\" + this.fileName, false);
-	xmlhttp.send();
-
-	var file = JSON.parse(xmlhttp.responseText); 
-	eval('this.loadFile')(file);
-
-	this.sort();		
 }

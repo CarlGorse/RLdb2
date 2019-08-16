@@ -80,12 +80,15 @@ View.prototype.showEditPlayerDetails = function () {
 }
 
 View.prototype.deletePlayer = function () {	
-	if (confirm('Do you wish to delete player ' + controller.currentPlayer.name + '?') == false)
+	if (confirm('Do you wish to delete player \'' + controller.currentPlayer.name + '\'?') == false)
 		return;
 	var p = controller.currentPlayer;	// save current player before deleted from data/controller
 	controller.deletePlayer(p);
 	controller.savePlayers();
-	view.showMessage('Player ' + p.name + ' deleted.');
+	
+	this.loadDisplay();
+
+	view.showMessage('Player \'' + p.name + '\' deleted.');
 }
 
 View.prototype.savePlayer = function () {
@@ -97,7 +100,11 @@ View.prototype.savePlayer = function () {
 	p.image = view.elements.pImage2.value();
 	
 	controller.savePlayers();
-	view.showMessage('Player ' + controller.currentPlayer.name + ' saved.');
+	
+	this.loadDisplay();
+
+	view.showMessage('Player \'' + controller.currentPlayer.name + '\' saved.');
+
 }
 
 View.prototype.showMessage = function (text) {
