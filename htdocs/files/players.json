@@ -38,48 +38,6 @@
                         ]
                 },
 
-                {"clubId":"lee","players":
-                        [
-								{"name":"Adam Cuthbertson",		"positionId":"pf",		"squadNo":"8",          "image":"adam-cuthbertson.jpg"},		
-								{"name":"Alex Sutcliffe",		"positionId":"c",		"squadNo":"30"},
-								{"name":"Ash Handley",			"positionId":"w",		"squadNo":"5"},
-								{"name":"Ashton Golding",		"positionId":"fb",		"squadNo":"21"},
-								{"name":"Ava Seumanufagai",		"positionId":"fb",		"squadNo":"0"},
-								{"name":"Brad Singleton",		"positionId":"pf",		"squadNo":"10",          "image":"brad-singleton.jpg"},		
-								{"name":"Brad Dwyer",			"positionId":"h",		"squadNo":"14",          "image":"brad-dwyer.jpg"},		
-								{"name":"Brett Ferres",			"positionId":"sr",		"squadNo":"16",          "image":"brett-ferres.jpg"},		
-								{"name":"Callum McLelland",		"positionId":"so",		"squadNo":"23"},
-								{"name":"Cameron Smith",		"positionId":"sr",		"squadNo":"22"},
-								{"name":"Carl Ablett",			"positionId":"sr",		"squadNo":"12",          "image":"carl-ablett.jpg"},		
-								{"name":"Corey Johnson",		"positionId":"h",		"squadNo":"34"},
-								{"name":"Dan Waite-Pullan",		"positionId":"sr",		"squadNo":"31"},
-								{"name":"Dominic Crosby",		"positionId":"pf",		"squadNo":"17",          "image":"dominic-crosby.jpg"},		
-								{"name":"Harry Newman",			"positionId":"w",		"squadNo":"29"},
-								{"name":"Jack Walker",			"positionId":"fb",		"squadNo":"1"},
-								{"name":"Jack Ormondroyd",		"positionId":"pf",		"squadNo":"27"},
-								{"name":"James Donaldson",		"positionId":"pf",		"squadNo":"25",          "image":"james-donaldson.jpg"},	
-								{"name":"Jamie Jones-Buchanan",	"positionId":"sr",		"squadNo":"20",          "image":"jamie-jones-buchanan.jpg"},		
-								{"name":"Josh Walters",			"positionId":"sr",		"squadNo":"28",          "image":""},
-								{"name":"Konrad Hurrell",		"positionId":"c",		"squadNo":"4"},
-								{"name":"Liam Sutcliffe",		"positionId":"so",		"squadNo":"15"},
-								{"name":"Luke Briscoe",			"positionId":"c",		"squadNo":"24",          "image":"luke-briscoe.jpg"},		
-								{"name":"Mikolaj Oledzki",		"positionId":"pf",		"squadNo":"19"},
-								{"name":"Nathaniel Peteru",		"positionId":"pf",		"squadNo":"18"},
-								{"name":"Owen Trout",			"positionId":"lf",		"squadNo":"33"},
-								{"name":"Rhyse Martin",									"squadNo":"0"},
-								{"name":"Richie Myler",			"positionId":"sh",		"squadNo":"7",			"image":"richie-myler.jpg"},		
-								{"name":"Robert Lui",			"positionId":"sh",		"squadNo":"6"},
-								{"name":"Shaun Lunt",			"positionId":"h",		"squadNo":"9",			"image":"shaun-lunt.jpg"},		
-								{"name":"Stevie Ward",			"positionId":"lf",		"squadNo":"13",			"image":"stevie-ward.jpg"},		
-								{"name":"Tom Holroyd",			"positionId":"pf",		"squadNo":"32"},
-								{"name":"Tom Briscoe",			"positionId":"w",		"squadNo":"2"},
-								{"name":"Trent Merrin",			"positionId":"pf",		"squadNo":"11"},
-								{"name":"Tyler Dupree",									"squadNo":"35"},
-								{"name":"Wellington Albert",	"positionId":"pf",		"squadNo":"14"}
-								
-                        ]
-                },
-				
                 {"clubId":"cat","players":
                         [
                                 {"name":"Alrix Da Costa",               "positionId":"h",               "squadNo":"18"},
@@ -219,6 +177,47 @@
                                 {"name":"Weller Hauraki",               "positionId":"sr",              "squadNo":"13",         "image":"weller-hauraki.jpg"},
                                 {"name":"Will Dagger",                  "positionId":"fb",              "squadNo":"26"},
                                 {"name":"Will Oakes",                   "positionId":"w",               "squadNo":"25"}
+                        ]
+                },
+
+                {"clubId":"lee","players":
+                        [
+                                {"name":"Adam Cuthbertson",             "positionId":"pf",              "squadNo":"8",          "image":"adam-cuthbertson.jpg"},
+                                {"name":"Alex Sutcliffe",               "positionId":"c",               "squadNo":"30"},
+                                {"name":"Ash Handley",                  "positionId":"w",               "squadNo":"5"},
+                                {"name":"Ashton Golding",               "positionId":"fb",              "squadNo":"21"},
+                                {"name":"Ava Seumanufagai",             "positionId":"fb",              "squadNo":"0"},
+                                {"name":"Brad Dwyer",                   "positionId":"h",               "squadNo":"14",         "image":"brad-dwyer.jpg"},
+                                {"name":"Brad Singleton",               "positionId":"pf",              "squadNo":"10",         "image":"brad-singleton.jpg"},
+                                {"name":"Brett Ferres",                 "positionId":"sr",              "squadNo":"16",         "image":"brett-ferres.jpg"},
+                                {"name":"Callum McLelland",             "positionId":"so",              "squadNo":"23"},
+                                {"name":"Cameron Smith",                "positionId":"sr",              "squadNo":"22"},
+                                {"name":"Carl Ablett",                  "positionId":"sr",              "squadNo":"12",         "image":"carl-ablett.jpg"},
+                                {"name":"Corey Johnson",                "positionId":"h",               "squadNo":"34"},
+                                {"name":"Dan Waite-Pullan",             "positionId":"sr",              "squadNo":"31"},
+                                {"name":"Dominic Crosby",               "positionId":"pf",              "squadNo":"17",         "image":"dominic-crosby.jpg"},
+                                {"name":"Harry Newman",                 "positionId":"w",               "squadNo":"29"},
+                                {"name":"Jack Ormondroyd",              "positionId":"pf",              "squadNo":"27"},
+                                {"name":"Jack Walker",                  "positionId":"fb",              "squadNo":"1"},
+                                {"name":"James Donaldson",              "positionId":"pf",              "squadNo":"25",         "image":"james-donaldson.jpg"},
+                                {"name":"Jamie Jones-Buchanan",         "positionId":"sr",              "squadNo":"20",         "image":"jamie-jones-buchanan.jpg"},
+                                {"name":"Josh Walters",                 "positionId":"sr",              "squadNo":"28"},
+                                {"name":"Konrad Hurrell",               "positionId":"c",               "squadNo":"4"},
+                                {"name":"Liam Sutcliffe",               "positionId":"so",              "squadNo":"15"},
+                                {"name":"Luke Briscoe",                 "positionId":"c",               "squadNo":"24",         "image":"luke-briscoe.jpg"},
+                                {"name":"Mikolaj Oledzki",              "positionId":"pf",              "squadNo":"19"},
+                                {"name":"Nathaniel Peteru",             "positionId":"pf",              "squadNo":"18"},
+                                {"name":"Owen Trout",                   "positionId":"lf",              "squadNo":"33"},
+                                {"name":"Rhyse Martin",                                                 "squadNo":"0"},
+                                {"name":"Richie Myler",                 "positionId":"sh",              "squadNo":"7",          "image":"richie-myler.jpg"},
+                                {"name":"Robert Lui",                   "positionId":"sh",              "squadNo":"6"},
+                                {"name":"Shaun Lunt",                   "positionId":"h",               "squadNo":"9",          "image":"shaun-lunt.jpg"},
+                                {"name":"Stevie Ward",                  "positionId":"lf",              "squadNo":"13",         "image":"stevie-ward.jpg"},
+                                {"name":"Tom Briscoe",                  "positionId":"w",               "squadNo":"2"},
+                                {"name":"Tom Holroyd",                  "positionId":"pf",              "squadNo":"32"},
+                                {"name":"Trent Merrin",                 "positionId":"pf",              "squadNo":"11"},
+                                {"name":"Tyler Dupree",                                                 "squadNo":"35"},
+                                {"name":"Wellington Albert",            "positionId":"pf",              "squadNo":"14"}
                         ]
                 },
 
