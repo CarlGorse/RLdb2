@@ -17,7 +17,9 @@ ViewFilters.prototype.render =  function () {
 		function (f) { 
 			f.render();
 		} 
-	) 
+	)
+
+	view.elements.playersTable.render();
 	
 }
 

@@ -35,6 +35,7 @@
 	<script src="js/helpers/documentInput.js?$$REVISION$$"></script>
 	<script src="js/helpers/documentSelect.js?$$REVISION$$"></script>
 	<script src="js/helpers/documentSpan.js?$$REVISION$$"></script>
+	<script src="js/helpers/documentTable.js?$$REVISION$$"></script>
 
 	<script src="js/view/view.js?$$REVISION$$"></script>
 	<script src="js/view/viewElements.js?$$REVISION$$"></script>
@@ -49,6 +50,7 @@
 	<script src="js/view/ViewFilterPosition.js?$$REVISION$$"></script>
 	<script src="js/view/viewFilterSquadNo.js?$$REVISION$$"></script>
 	<script src="js/view/viewFilters.js?$$REVISION$$"></script>
+	<script src="js/view/viewTable.js?$$REVISION$$"></script>
 
 </head>
 
@@ -91,10 +93,10 @@
 			<div id="divFilteredPlayersCount">
 				<span id="filteredPlayersCount"></span>
 			</div>
-	
+
 			<div id="divPlayerFilter">
 				<select id="playerFilter"></select>
-			</div>
+			</div>	
 
 			<div id="divButtons1"> 
 				<button id="addPlayer">Add new Player</button>
@@ -102,17 +104,17 @@
 				<button id="editPlayer">Edit Player</button>
 			</div>
 
-		<div id="divPlayerDetails"> 
-			<table id="playerDetails" width="1000">
-				<tr><td width="30%"><label class="detailLabel">Name</label></td><td><span id="pName"/></td></tr>
-				<tr><td width="30%"><label class="detailLabel">Club</label></td><td><span id="pClub"/></td></tr>
-				<tr><td width="30%"><label class="detailLabel">Position</label></td><td><span id="pPosition"/></td></tr>
-				<tr><td width="30%"><label class="detailLabel">Squad Number</label></td><td><span id="pSquadNo"/></td></tr>
+			<div id="divPlayerDetails"> 
+				<table id="playerDetails" width="1000">
+					<tr><td width="30%"><label class="detailLabel">Name</label></td><td><span id="pName"/></td></tr>
+					<tr><td width="30%"><label class="detailLabel">Club</label></td><td><span id="pClub"/></td></tr>
+					<tr><td width="30%"><label class="detailLabel">Position</label></td><td><span id="pPosition"/></td></tr>
+					<tr><td width="30%"><label class="detailLabel">Squad Number</label></td><td><span id="pSquadNo"/></td></tr>
 
-				<tr><td width="30%"></td><td><img id="pImage"/></td></tr>
+					<tr><td width="30%"></td><td><img id="pImage"/></td></tr>
 			
-			</table>
-		</div>
+				</table>
+			</div>
 
 			<div id="editPlayerDetails">
 				<table width="1000">
@@ -127,6 +129,17 @@
 					<button id="savePlayer" onclick="view.events.savePlayer();return false;">Save Player</button>
 				</div>
 			
+			</div>
+
+			<div id="divPlayersTable">
+				<table id="playersTable" width="600">
+					<tr>
+						<th>Name</th>
+						<th>Club</th>
+						<th>Position</th>
+						<th>Squad Number</th>
+					</tr>
+				</table>
 			</div>
 
 		</div>

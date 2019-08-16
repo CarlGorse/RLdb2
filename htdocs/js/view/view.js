@@ -38,7 +38,7 @@ View.prototype.selectPlayer = function () {
 
 	view.elements.pName.setValue(p.name);
 	view.elements.pClub.setValue(data.clubs.club(p.clubId).name2);
-	view.elements.pPosition.setValue(data.positions.position(p.positionId).name);
+	view.elements.pPosition.setValue( p.positionId ? data.positions.position(p.positionId).name : '');
 	view.elements.pSquadNo.setValue(p.squadNo);
 	
 	if (p.image)

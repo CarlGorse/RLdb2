@@ -32,6 +32,7 @@ select { height:3em; }
 
 #divPlayerFilter {
 	padding-top:1em;
+	padding-bottom:1em;
 }
 
 #divButtons1 {
@@ -44,4 +45,12 @@ select { height:3em; }
 
 #divEditPlayerDetails {
 	padding-top:1em;
+}
+
+#playersTable {
+	border-collapse: collapse;
+}
+
+#playersTable td {
+	border-bottom: 1px solid black;
 }
