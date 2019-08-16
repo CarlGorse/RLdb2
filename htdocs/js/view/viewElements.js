@@ -7,7 +7,7 @@ ViewElements.prototype.initialise = function () {
 	this.editPlayerDetails =	new DocumentElement('editPlayerDetails');
 
 	this.clubFilter = new ViewFilterClub('filterClub', new DocumentSelect('clubFilter'), 'name2');
-	this.positionFilter = new ViewFilterPositions('filterPosition', new DocumentSelect('positionFilter'), 'name');
+	this.positionFilter = new ViewFilterPosition('filterPosition', new DocumentSelect('positionFilter'), 'name');
 	this.squadNoFilter = new ViewFilterSquadNo('filterSquadNo', new DocumentSelect('squadNoFilter'), 'number');
 	this.hasImageFilter = new ViewFilterHasImage('filterHasImage', new DocumentSelect('hasImageFilter'), 'text');
 	this.playerFilter = new ViewFilterPlayer('filterPlayer', new DocumentSelect('playerFilter'), 'name');
