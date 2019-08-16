@@ -78,7 +78,7 @@ ViewComboBox.prototype.render = function () {
 }
 
 ViewComboBox.prototype.clearValue = function () {
-		this.element.value = "";
+	this.element.value = "";
 }
 
 ViewComboBox.prototype.clear = function () {
@@ -88,8 +88,6 @@ ViewComboBox.prototype.clear = function () {
 ViewComboBox.prototype.value = function () {
 	return this.viewElement.value();
 }
-
-
 
 ViewComboBox.prototype.setValue = function (value) {
 	return this.viewElement.setValue(value);
