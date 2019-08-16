@@ -90,3 +90,7 @@ ViewComboBox.prototype.value = function () {
 ViewComboBox.prototype.element = function () { 
 	return this.viewElement.element; 
 }
+
+ViewComboBox.prototype.setValue = function (value) {
+	return this.viewElement.setValue(value);
+}

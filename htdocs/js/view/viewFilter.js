@@ -8,7 +8,7 @@ function ViewFilter(filterId, dataSet, viewElement, displayProperty, searchPrope
 	
 	view.filters.items.push(this); 
 	
-	this.element.onchange = function() {
+	this.element().onchange = function() {
 		view.events.changeFilter(this);
 	}
 	

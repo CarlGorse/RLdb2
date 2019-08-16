@@ -1,6 +1,5 @@
 
-function View()
-{
+function View() {
 
 	this.events = new ViewEvents(this);
 	this.elements = new ViewElements(this);
@@ -9,18 +8,14 @@ function View()
 
 View.prototype.loadDisplay = function () {
 
-	this.elements.playerDetails.hide();
-	this.elements.editPlayerDetails.hide();
-	
-	controller.loadData();
-
 	this.events.initialise();
 	this.elements.initialise();
 	this.filters.initialise();
 
-	this.pComboClub = new ViewComboBox('pComboClub', data.clubs, this.elements.pComboClub, 'name2');
-	this.pComboPosition = new ViewComboBox('pPositions2', data.positions, this.elements.pComboPosition, 'name');
-	this.pComboSquadNo = new ViewComboBox('pComboSquadNo', data.squadNos, this.elements.pComboSquadNo, 'number');
+	this.elements.playerDetails.hide();
+	this.elements.editPlayerDetails.hide();
+	
+	controller.loadData();
 
 	this.filters.render();
 
@@ -35,7 +30,7 @@ View.prototype.selectPlayer = function () {
 	this.elements.editPlayerDetails.hide();
 	this.elements.playerDetails.show();
 
-	p = view.filters.player.player();
+	p = view.elements.playerFilter.player();
 	controller.setCurrentPlayer(p);
 
 	view.elements.pName.setValue(p.name);
@@ -52,7 +47,7 @@ View.prototype.selectPlayer = function () {
 }
 
 View.prototype.addPlayer = function () {
-	view.filters.player.clearValue();
+	view.elements.playerFilter.clearValue();
 	var p = controller.addPlayer();
 	controller.setCurrentPlayer(p);
 	this.showEditPlayerDetails();
@@ -79,9 +74,9 @@ View.prototype.editPlayer = function () {
 }
 
 View.prototype.showEditPlayerDetails = function () {
-	this.pComboClub.render();
-	this.pComboPosition.render();
-	this.pComboSquadNo.render();
+	this.elements.pComboClub.render();
+	this.elements.pComboPosition.render();
+	this.elements.pComboSquadNo.render();
 
 	this.elements.editPlayerDetails.show();
 }

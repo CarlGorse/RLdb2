@@ -1,19 +1,23 @@
 
+var controller;
 var data;
 var view;
 var functions;
-
+	
 function Controller()
 {
 	data = new Data();
 	view = new View();
 	functions = new Functions();
-	
-	this.currentPlayer = null;
-	
 }
+Controller.prototype.initialise =  function () {
+	this.currentPlayer = null;
+	view.loadDisplay();
+}	
 
-Controller.prototype.loadData =  function () { data.loadData(); }	
+Controller.prototype.loadData =  function () { 
+	data.loadData();
+}	
 
 Controller.prototype.setCurrentPlayer =  function (p) {
 	this.currentPlayer = p;
