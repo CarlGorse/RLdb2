@@ -64,16 +64,16 @@ View.prototype.showEditPlayerDetails = function () {
 	
 	this.elements.playerDetails.hide();
 
-	this.elements.pSelectClub.render();
-	this.elements.pSelectPosition.render();
-	this.elements.pSelectSquadNo.render();
+	this.elements.pClub2.render();
+	this.elements.pPosition2.render();
+	this.elements.pSquadNo2.render();
 
 	p = controller.currentPlayer;
 
 	view.elements.pName2.setValue(p.name);
-	view.elements.pSelectClub.setValue(p.clubId);
-	view.elements.pSelectPosition.setValue(p.positionId);
-	view.elements.pSelectSquadNo.setValue(p.squadNo);
+	view.elements.pClub2.setValue(p.clubId);
+	view.elements.pPosition2.setValue(p.positionId);
+	view.elements.pSquadNo2.setValue(p.squadNo);
 	view.elements.pImage2.setValue(p.image);
 
 	this.elements.editPlayerDetails.show();
@@ -94,9 +94,9 @@ View.prototype.deletePlayer = function () {
 View.prototype.savePlayer = function () {
 	var p = controller.currentPlayer;
 	p.name = view.elements.pName2.value();
-	p.clubId = view.elements.pSelectClub.value();
-	p.positionId = view.elements.pSelectPosition.value();
-	p.squadNo = view.elements.pSelectSquadNo.value();
+	p.clubId = view.elements.pClub2.value();
+	p.positionId = view.elements.pPosition2.value();
+	p.squadNo = view.elements.pSquadNo2.value();
 	p.image = view.elements.pImage2.value();
 	
 	controller.savePlayers();
