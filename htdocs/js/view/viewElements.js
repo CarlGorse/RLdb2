@@ -3,34 +3,34 @@ function ViewElements() {}
 
 ViewElements.prototype.initialise = function () {
 
-	this.playerDetails =		new ViewElement('divPlayerDetails');
-	this.editPlayerDetails =	new ViewElement('editPlayerDetails');
+	this.playerDetails =		new DocumentElement('divPlayerDetails');
+	this.editPlayerDetails =	new DocumentElement('editPlayerDetails');
 
-	this.clubFilter = new ViewFilterClub('filterClub', new ViewElementComboBox('clubFilter'), 'name2');
-	this.positionFilter = new ViewFilterPositions('filterPosition', new ViewElementComboBox('positionFilter'), 'name');
-	this.squadNoFilter = new ViewFilterSquadNo('filterSquadNo', new ViewElementComboBox('squadNoFilter'), 'number');
-	this.hasImageFilter = new ViewFilterHasImage('filterHasImage', new ViewElementComboBox('hasImageFilter'), 'text');
-	this.playerFilter = new ViewFilterPlayer('filterPlayer', new ViewElementComboBox('playerFilter'), 'name');
+	this.clubFilter = new ViewFilterClub('filterClub', new DocumentComboBox('clubFilter'), 'name2');
+	this.positionFilter = new ViewFilterPositions('filterPosition', new DocumentComboBox('positionFilter'), 'name');
+	this.squadNoFilter = new ViewFilterSquadNo('filterSquadNo', new DocumentComboBox('squadNoFilter'), 'number');
+	this.hasImageFilter = new ViewFilterHasImage('filterHasImage', new DocumentComboBox('hasImageFilter'), 'text');
+	this.playerFilter = new ViewFilterPlayer('filterPlayer', new DocumentComboBox('playerFilter'), 'name');
 
 	this.playerFilter.element.onchange = function() { view.events.selectPlayer(); }
 
-	this.filteredPlayersCount = new ViewElementSpan('filteredPlayersCount');
+	this.filteredPlayersCount = new DocumentSpan('filteredPlayersCount');
 
-	this.pName = 		new ViewElement('pName');
-	this.pClub = 		new ViewElement('pClub');
-	this.pPosition = 	new ViewElement('pPosition');
-	this.pSquadNo = 	new ViewElement('pSquadNo');
-	this.pImage = 		new ViewElementImage('pImage');
+	this.pName = 		new DocumentElement('pName');
+	this.pClub = 		new DocumentElement('pClub');
+	this.pPosition = 	new DocumentElement('pPosition');
+	this.pSquadNo = 	new DocumentElement('pSquadNo');
+	this.pImage = 		new DocumentImage('pImage');
 		
-	this.pName2 = 			new ViewElementInput('pName2');
-	this.pComboClub = 		new ViewComboBox('pComboClub', data.clubs, new ViewElementComboBox('pComboClub'), 'name2');
-	this.pComboPosition = 	new ViewComboBox('pPositions2', data.positions, new ViewElementComboBox('pComboPosition'), 'name');
-	this.pComboSquadNo = 	new ViewComboBox('pComboSquadNo', data.squadNos, new ViewElementComboBox('pComboSquadNo'), 'number');
-	this.pImage2 = 			new ViewElementInput('pImage2');
+	this.pName2 = 			new DocumentInput('pName2');
+	this.pComboClub = 		new ViewComboBox('pComboClub', data.clubs, new DocumentComboBox('pComboClub'), 'name2');
+	this.pComboPosition = 	new ViewComboBox('pPositions2', data.positions, new DocumentComboBox('pComboPosition'), 'name');
+	this.pComboSquadNo = 	new ViewComboBox('pComboSquadNo', data.squadNos, new DocumentComboBox('pComboSquadNo'), 'number');
+	this.pImage2 = 			new DocumentInput('pImage2');
 
-	this.addPlayer = 	new ViewButton('addPlayer');
-	this.editPlayer = 	new ViewButton('editPlayer');
-	this.deletePlayer = new ViewButton('deletePlayer');
+	this.addPlayer = 	new DocumentButton('addPlayer');
+	this.editPlayer = 	new DocumentButton('editPlayer');
+	this.deletePlayer = new DocumentButton('deletePlayer');
 	this.editPlayer.disable();
 	this.deletePlayer.disable();
 
