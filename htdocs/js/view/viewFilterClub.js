@@ -1,6 +1,6 @@
 
 function ViewFilterClub(filterId, viewElement, displayProperty)
 {
-	ViewFilterComboBox.call(this, filterId, data.clubs, viewElement, displayProperty, 'clubId');
+	ViewFilterSelect.call(this, filterId, data.clubs, viewElement, displayProperty, 'clubId');
 }
-ViewFilterClub.prototype = Object.create(ViewFilterComboBox.prototype)
+ViewFilterClub.prototype = Object.create(ViewFilterSelect.prototype)

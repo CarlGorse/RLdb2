@@ -1,11 +1,11 @@
 
-function DocumentComboBox(name)
+function DocumentSelect(name)
 {
 	DocumentElement.call(this, name);
 }
-DocumentComboBox.prototype = Object.create(DocumentElement.prototype)
+DocumentSelect.prototype = Object.create(DocumentElement.prototype)
 
-DocumentComboBox.prototype.setValue = function (itemId) { 
+DocumentSelect.prototype.setValue = function (itemId) { 
 	for (var x = 0; x < this.element.length; x ++)
 	{
 		o = this.element.options[x];
@@ -13,11 +13,11 @@ DocumentComboBox.prototype.setValue = function (itemId) {
 		if (o.value == itemId) o.selected = true;
 	}
 }
-DocumentComboBox.prototype.value = function () { 
+DocumentSelect.prototype.value = function () { 
 	return this.element.value;
 }
 
-DocumentComboBox.prototype.clear = function () {
+DocumentSelect.prototype.clear = function () {
 	while(this.element.options.length > 0)
 	{
 		this.element.options.remove(0);

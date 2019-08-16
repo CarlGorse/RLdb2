@@ -6,11 +6,11 @@ ViewElements.prototype.initialise = function () {
 	this.playerDetails =		new DocumentElement('divPlayerDetails');
 	this.editPlayerDetails =	new DocumentElement('editPlayerDetails');
 
-	this.clubFilter = new ViewFilterClub('filterClub', new DocumentComboBox('clubFilter'), 'name2');
-	this.positionFilter = new ViewFilterPositions('filterPosition', new DocumentComboBox('positionFilter'), 'name');
-	this.squadNoFilter = new ViewFilterSquadNo('filterSquadNo', new DocumentComboBox('squadNoFilter'), 'number');
-	this.hasImageFilter = new ViewFilterHasImage('filterHasImage', new DocumentComboBox('hasImageFilter'), 'text');
-	this.playerFilter = new ViewFilterPlayer('filterPlayer', new DocumentComboBox('playerFilter'), 'name');
+	this.clubFilter = new ViewFilterClub('filterClub', new DocumentSelect('clubFilter'), 'name2');
+	this.positionFilter = new ViewFilterPositions('filterPosition', new DocumentSelect('positionFilter'), 'name');
+	this.squadNoFilter = new ViewFilterSquadNo('filterSquadNo', new DocumentSelect('squadNoFilter'), 'number');
+	this.hasImageFilter = new ViewFilterHasImage('filterHasImage', new DocumentSelect('hasImageFilter'), 'text');
+	this.playerFilter = new ViewFilterPlayer('filterPlayer', new DocumentSelect('playerFilter'), 'name');
 
 	this.playerFilter.element.onchange = function() { view.events.selectPlayer(); }
 
@@ -23,9 +23,9 @@ ViewElements.prototype.initialise = function () {
 	this.pImage = 		new DocumentImage('pImage');
 		
 	this.pName2 = 			new DocumentInput('pName2');
-	this.pComboClub = 		new ViewComboBox('pComboClub', data.clubs, new DocumentComboBox('pComboClub'), 'name2');
-	this.pComboPosition = 	new ViewComboBox('pPositions2', data.positions, new DocumentComboBox('pComboPosition'), 'name');
-	this.pComboSquadNo = 	new ViewComboBox('pComboSquadNo', data.squadNos, new DocumentComboBox('pComboSquadNo'), 'number');
+	this.pSelectClub = 		new ViewSelect('pSelectClub', data.clubs, new DocumentSelect('pSelectClub'), 'name2');
+	this.pSelectPosition = 	new ViewSelect('pPositions2', data.positions, new DocumentSelect('pSelectPosition'), 'name');
+	this.pSelectSquadNo = 	new ViewSelect('pSelectSquadNo', data.squadNos, new DocumentSelect('pSelectSquadNo'), 'number');
 	this.pImage2 = 			new DocumentInput('pImage2');
 
 	this.addPlayer = 	new DocumentButton('addPlayer');

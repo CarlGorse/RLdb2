@@ -2,7 +2,7 @@
 function ViewFilter(filterId, dataSet, viewElement, displayProperty, searchProperty)
 {
 
-	ViewComboBox.call(this, filterId, dataSet, viewElement, displayProperty);
+	ViewSelect.call(this, filterId, dataSet, viewElement, displayProperty);
 
 	this.showOptionAll = true;
 	
@@ -19,5 +19,5 @@ function ViewFilter(filterId, dataSet, viewElement, displayProperty, searchPrope
 	this.showDataItemCount = true;
 
 }
-ViewFilter.prototype = Object.create(ViewComboBox.prototype)
+ViewFilter.prototype = Object.create(ViewSelect.prototype)
 

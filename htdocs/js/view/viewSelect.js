@@ -1,5 +1,5 @@
 
-function ViewComboBox(filterId, dataSet, viewElement, displayProperty)
+function ViewSelect(filterId, dataSet, viewElement, displayProperty)
 {
 	this.filterId = filterId;
 	this.dataSet = dataSet;
@@ -15,9 +15,9 @@ function ViewComboBox(filterId, dataSet, viewElement, displayProperty)
 
 }
 
-ViewComboBox.prototype.add = function (item) { this.items.push(item); }
+ViewSelect.prototype.add = function (item) { this.items.push(item); }
 
-ViewComboBox.prototype.index = function (filterId) { 
+ViewSelect.prototype.index = function (filterId) { 
 	for (i = 0; i < this.items.length; i++)
 	{
 		var i = this.items[i];
@@ -25,11 +25,11 @@ ViewComboBox.prototype.index = function (filterId) {
 	}
 }
 
-ViewComboBox.prototype.remove = function (index) {
+ViewSelect.prototype.remove = function (index) {
 	this.items = this.items.splice(index, 1);
 }
 
-ViewComboBox.prototype.render = function () {
+ViewSelect.prototype.render = function () {
 	
 	currentValue = this.element.value;
 
@@ -77,18 +77,18 @@ ViewComboBox.prototype.render = function () {
 
 }
 
-ViewComboBox.prototype.clearValue = function () {
+ViewSelect.prototype.clearValue = function () {
 	this.element.value = "";
 }
 
-ViewComboBox.prototype.clear = function () {
+ViewSelect.prototype.clear = function () {
 	this.viewElement.clear();
 }
 
-ViewComboBox.prototype.value = function () {
+ViewSelect.prototype.value = function () {
 	return this.viewElement.value();
 }
 
-ViewComboBox.prototype.setValue = function (value) {
+ViewSelect.prototype.setValue = function (value) {
 	return this.viewElement.setValue(value);
 }
