@@ -28,12 +28,12 @@ ViewElements.prototype.initialise = function () {
 	this.pComboSquadNo = 	new ViewComboBox('pComboSquadNo', data.squadNos, new ViewElementComboBox('pComboSquadNo'), 'number');
 	this.pImage2 = 			new ViewElementInput('pImage2');
 
-	this.addPlayer = 	new ViewButton('addPlayer', view.events.addPlayer)
-	this.editPlayer = 	new ViewButton('editPlayer', view.events.editPlayer)
-	this.deletePlayer = new ViewButton('deletePlayer', view.events.deletePlayer)
+	this.addPlayer = 	new ViewButton('addPlayer');
+	this.editPlayer = 	new ViewButton('editPlayer');
+	this.deletePlayer = new ViewButton('deletePlayer');
 
-	this.addPlayer.setOnClick = view.events.addPlayer;
-	this.editPlayer.setOnClick = view.events.editPlayer;
-	this.deletePlayer.setOnClick = view.events.deletePlayer;
+	this.addPlayer.setOnClick(view.events.addPlayer);
+	this.editPlayer.setOnClick(view.events.editPlayer);
+	this.deletePlayer.setOnClick(view.events.deletePlayer);
 
 }

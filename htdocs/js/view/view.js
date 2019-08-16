@@ -59,24 +59,26 @@ View.prototype.editPlayer = function () {
 		alert('No player is currently selected');
 		return;
 	}
-	this.elements.playerDetails.hide();
-
-	p = controller.currentPlayer;
-	
-	view.elements.pName2.setValue(p.name);
-	view.elements.pComboClub.setValue(p.clubId);
-	view.elements.pComboPosition.setValue(p.position);
-	view.elements.pComboSquadNo.setValue(p.squadNo);
-	view.elements.pImage2.setValue(p.image);
 
 	this.showEditPlayerDetails();
 
 }
 
 View.prototype.showEditPlayerDetails = function () {
+	
+	this.elements.playerDetails.hide();
+	
 	this.elements.pComboClub.render();
 	this.elements.pComboPosition.render();
 	this.elements.pComboSquadNo.render();
+
+	p = controller.currentPlayer;
+
+	view.elements.pName2.setValue(p.name);
+	view.elements.pComboClub.setValue(p.clubId);
+	view.elements.pComboPosition.setValue(p.positionId);
+	view.elements.pComboSquadNo.setValue(p.squadNo);
+	view.elements.pImage2.setValue(p.image);
 
 	this.elements.editPlayerDetails.show();
 }

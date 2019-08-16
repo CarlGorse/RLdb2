@@ -1,7 +1,7 @@
 
-function ViewButton(elementId, func)
+function ViewButton(elementId)
 {
-    ViewElement.call(elementId);
+    ViewElement.call(this, elementId);
 }
 ViewButton.prototype = Object.create(ViewElement.prototype)
 
