@@ -31,6 +31,8 @@ ViewElements.prototype.initialise = function () {
 	this.addPlayer = 	new ViewButton('addPlayer');
 	this.editPlayer = 	new ViewButton('editPlayer');
 	this.deletePlayer = new ViewButton('deletePlayer');
+	this.editPlayer.disable();
+	this.deletePlayer.disable();
 
 	this.addPlayer.setOnClick(view.events.addPlayer);
 	this.editPlayer.setOnClick(view.events.editPlayer);

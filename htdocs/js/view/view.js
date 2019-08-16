@@ -33,6 +33,9 @@ View.prototype.selectPlayer = function () {
 	p = view.elements.playerFilter.player();
 	controller.setCurrentPlayer(p);
 
+	view.elements.editPlayer.enable();
+	view.elements.deletePlayer.enable();
+
 	view.elements.pName.setValue(p.name);
 	view.elements.pClub.setValue(data.clubs.club(p.clubId).name2);
 	view.elements.pPosition.setValue(data.positions.position(p.positionId).name);
@@ -54,20 +57,13 @@ View.prototype.addPlayer = function () {
 }
 
 View.prototype.editPlayer = function () {
-	if (!controller.currentPlayer)
-	{
-		alert('No player is currently selected');
-		return;
-	}
-
 	this.showEditPlayerDetails();
-
 }
 
 View.prototype.showEditPlayerDetails = function () {
 	
 	this.elements.playerDetails.hide();
-	
+
 	this.elements.pComboClub.render();
 	this.elements.pComboPosition.render();
 	this.elements.pComboSquadNo.render();
@@ -84,11 +80,6 @@ View.prototype.showEditPlayerDetails = function () {
 }
 
 View.prototype.deletePlayer = function () {	
-	if (!controller.currentPlayer)
-	{
-		alert('No player is currently selected');
-		return;
-	}
 	if (confirm('Do you wish to delete player ' + controller.currentPlayer.name + '?') == false)
 		return;
 	var p = controller.currentPlayer;	// save current player before deleted from data/controller
