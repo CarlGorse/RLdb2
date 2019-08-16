@@ -11,6 +11,8 @@ function ViewComboBox(filterId, dataSet, viewElement, displayProperty)
 	this.setInitialValueEmpty = false;
 	this.showDataItemCount = false;
 
+	this.element = this.viewElement.element;
+
 }
 
 ViewComboBox.prototype.add = function (item) { this.items.push(item); }
@@ -29,7 +31,7 @@ ViewComboBox.prototype.remove = function (index) {
 
 ViewComboBox.prototype.render = function () {
 	
-	currentValue = this.element().value;
+	currentValue = this.element.value;
 
 	this.clear();
 	
@@ -38,7 +40,7 @@ ViewComboBox.prototype.render = function () {
 		var option = document.createElement("option");
 		option.text = '[all]';
 		option.value = 'all';
-		this.element().add(option);
+		this.element.add(option);
 	}
 
 	this.dataSet.items.forEach(
@@ -58,19 +60,19 @@ ViewComboBox.prototype.render = function () {
 
 				option.value = di.id;
 				
-				this.element().add(option);
+				this.element.add(option);
 			}
 
 		}, this
 	)
 
-	this.element().options[0].selected = 'selected';
+	this.element.options[0].selected = 'selected';
 
 	if (this.setInitialValueEmpty)
 		this.clearValue();
 	else {
 		if (currentValue)
-			functions.Select.selectOptionByValue(this.element(), currentValue);
+			functions.Select.selectOptionByValue(this.element, currentValue);
 	}
 
 }
@@ -87,9 +89,7 @@ ViewComboBox.prototype.value = function () {
 	return this.viewElement.value();
 }
 
-ViewComboBox.prototype.element = function () { 
-	return this.viewElement.element; 
-}
+
 
 ViewComboBox.prototype.setValue = function (value) {
 	return this.viewElement.setValue(value);

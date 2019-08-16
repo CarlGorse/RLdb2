@@ -17,7 +17,7 @@ ViewFilterPlayer.prototype.render = function ()
 {
 	ViewComboBox.prototype.render.call(this);
 
-	count = this.element().options.length;
+	count = this.element.options.length;
 	//count -= 1; // exclude 'all'
 
 	var countDescription = functions.getCountDescription(count, 'player');

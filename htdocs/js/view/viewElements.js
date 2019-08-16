@@ -2,18 +2,6 @@
 function ViewElements() {}
 
 ViewElements.prototype.initialise = function () {
-	
-	this.pName = 		new ViewElement('pName');
-	this.pClub = 		new ViewElement('pClub');
-	this.pPosition = 	new ViewElement('pPosition');
-	this.pSquadNo = 	new ViewElement('pSquadNo');
-	this.pImage = 		new ViewElementImage('pImage');
-		
-	this.pName2 = 		new ViewElementInput('pName2');
-	this.pComboClub = new ViewComboBox('pComboClub', data.clubs, new ViewElementComboBox('pComboClub'), 'name2');
-	this.pComboPosition = new ViewComboBox('pPositions2', data.positions, new ViewElementComboBox('pComboPosition'), 'name');
-	this.pComboSquadNo = new ViewComboBox('pComboSquadNo', data.squadNos, new ViewElementComboBox('pComboSquadNo'), 'number');
-	this.pImage2 = 		new ViewElementInput('pImage2');
 
 	this.playerDetails =		new ViewElement('divPlayerDetails');
 	this.editPlayerDetails =	new ViewElement('editPlayerDetails');
@@ -24,17 +12,28 @@ ViewElements.prototype.initialise = function () {
 	this.hasImageFilter = new ViewFilterHasImage('filterHasImage', new ViewElementComboBox('hasImageFilter'), 'text');
 	this.playerFilter = new ViewFilterPlayer('filterPlayer', new ViewElementComboBox('playerFilter'), 'name');
 
-	this.playerFilter.element().onchange = function() { view.events.selectPlayer(); }
+	this.playerFilter.element.onchange = function() { view.events.selectPlayer(); }
 
 	this.filteredPlayersCount = new ViewElementSpan('filteredPlayersCount');
 
-	this.addPlayer = new ViewElement('addPlayer');
-	this.editPlayer = new ViewElement('editPlayer');
-	this.deletePlayer = new ViewElement('deletePlayer');
+	this.pName = 		new ViewElement('pName');
+	this.pClub = 		new ViewElement('pClub');
+	this.pPosition = 	new ViewElement('pPosition');
+	this.pSquadNo = 	new ViewElement('pSquadNo');
+	this.pImage = 		new ViewElementImage('pImage');
+		
+	this.pName2 = 			new ViewElementInput('pName2');
+	this.pComboClub = 		new ViewComboBox('pComboClub', data.clubs, new ViewElementComboBox('pComboClub'), 'name2');
+	this.pComboPosition = 	new ViewComboBox('pPositions2', data.positions, new ViewElementComboBox('pComboPosition'), 'name');
+	this.pComboSquadNo = 	new ViewComboBox('pComboSquadNo', data.squadNos, new ViewElementComboBox('pComboSquadNo'), 'number');
+	this.pImage2 = 			new ViewElementInput('pImage2');
 
-	this.playerFilter.element().onclick = function() { view.events.selectPlayer(); }
-	this.addPlayer.element.onclick = function() { view.events.addPlayer(); }
-	this.editPlayer.element.onclick = function() { view.events.editPlayer(); }
-	this.deletePlayer.element.onclick = function() { view.events.deletePlayer(); }
+	this.addPlayer = 	new ViewButton('addPlayer', view.events.addPlayer)
+	this.editPlayer = 	new ViewButton('editPlayer', view.events.editPlayer)
+	this.deletePlayer = new ViewButton('deletePlayer', view.events.deletePlayer)
+
+	this.addPlayer.setOnClick = view.events.addPlayer;
+	this.editPlayer.setOnClick = view.events.editPlayer;
+	this.deletePlayer.setOnClick = view.events.deletePlayer;
 
 }
