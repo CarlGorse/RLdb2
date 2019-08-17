@@ -19,8 +19,10 @@ Controller.prototype.loadData =  function () {
 	data.loadData();
 }	
 
-Controller.prototype.setCurrentPlayer =  function (p) {
+Controller.prototype.setCurrentPlayer =  function (playerId) {
+	p = data.players.item(playerId);
 	this.currentPlayer = p;
+	return p;
 }		
 
 Controller.prototype.addPlayer =  function (name, clubId, positionId, squadNo, image) {

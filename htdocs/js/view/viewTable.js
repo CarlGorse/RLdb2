@@ -10,24 +10,33 @@ ViewTable.prototype.render = function() {
 
 	view.elements.playersTable.clear();
 
-	for (var playerPtr = view.pagePtr * 10; playerPtr < Math.min((view.pagePtr + 1) * 10, view.elements.playerFilter.dataSet.count()); playerPtr ++)
+	filteredPlayerIds = new Array();
+	data.players.items.forEach (
+		function(di) {
+			var playerCount = controller.playerCountByFilter(view.elements.playerFilter, di);
+			if (playerCount > 0)
+				filteredPlayerIds.push(di.playerId);
+		}	
+	)
+
+	for (var x = view.pagePtr * 10; x < Math.min(((view.pagePtr + 1) * 10), filteredPlayerIds.length); x++)
 	{
 
-		var di = view.elements.playerFilter.dataSet.items[playerPtr];
-
-		var playerCount = controller.playerCountByFilter(view.elements.playerFilter, di);
-		if (playerCount > 0)
-		{
-			var row = this.element.insertRow();
-			var cell0 = row.insertCell(0);
-			var cell1 = row.insertCell(1);
-			var cell2 = row.insertCell(2);
-			var cell3 = row.insertCell(3);
-			cell0.innerHTML = di.name;
-			cell1.innerHTML = data.clubs.club(di.clubId).name2
-			cell2.innerHTML = di.positionId ? data.positions.position(di.positionId).name : '';
-			cell3.innerHTML = di.squadNo;
+		var row = this.element.insertRow();
+		var playerId = filteredPlayerIds[x]
+		row.playerId = playerId;
+		row.onclick = function() { 
+			view.events.selectPlayerByTable(this); 
 		}
+		var cell0 = row.insertCell(0);
+		var cell1 = row.insertCell(1);
+		var cell2 = row.insertCell(2);	
+		var cell3 = row.insertCell(3);
+		p = data.players.item(playerId);
+		cell0.innerHTML = p.name;
+		cell1.innerHTML = data.clubs.club(p.clubId).name2;
+		cell2.innerHTML = p.positionId ? data.positions.position(p.positionId).name : '';
+		cell3.innerHTML = p.squadNo;
 
 	}
 

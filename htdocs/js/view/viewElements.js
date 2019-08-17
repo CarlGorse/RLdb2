@@ -12,7 +12,7 @@ ViewElements.prototype.initialise = function () {
 	this.hasImageFilter = new ViewFilterHasImage('filterHasImage', new DocumentSelect('hasImageFilter'), 'text');
 	this.playerFilter = new ViewFilterPlayer('filterPlayer', new DocumentSelect('playerFilter'), 'name');
 
-	this.playerFilter.element.onchange = function() { view.events.selectPlayer(); }
+	this.playerFilter.element.onchange = function() { view.events.selectPlayerBySelect(); }
 
 	this.filteredPlayersCount = new DocumentSpan('filteredPlayersCount');
 
@@ -33,12 +33,14 @@ ViewElements.prototype.initialise = function () {
 	this.addPlayer = 	new DocumentButton('addPlayer');
 	this.editPlayer = 	new DocumentButton('editPlayer');
 	this.deletePlayer = new DocumentButton('deletePlayer');
+	this.savePlayer = new DocumentButton('savePlayer');
 	this.editPlayer.disable();
 	this.deletePlayer.disable();
 
 	this.addPlayer.setOnClick(view.events.addPlayer);
 	this.editPlayer.setOnClick(view.events.editPlayer);
 	this.deletePlayer.setOnClick(view.events.deletePlayer);
+	this.savePlayer.setOnClick(view.events.savePlayer);
 
 	this.moveFirst =  new DocumentButton('moveFirst');
 	this.movePrevious = new DocumentButton('movePrevious');

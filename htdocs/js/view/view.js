@@ -27,13 +27,12 @@ View.prototype.loadDisplay = function () {
 	//filter = view.getFilter(filterId);
 //}
 
-View.prototype.selectPlayer = function () {
+View.prototype.selectPlayer = function (playerId) {
 
 	this.elements.editPlayerDetails.hide();
 	this.elements.playerDetails.show();
 
-	p = view.elements.playerFilter.player();
-	controller.setCurrentPlayer(p);
+	var p = controller.setCurrentPlayer(playerId);
 
 	view.elements.editPlayer.enable();
 	view.elements.deletePlayer.enable();
