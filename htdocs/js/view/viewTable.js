@@ -19,11 +19,16 @@ ViewTable.prototype.render = function() {
 		}	
 	)
 
-	for (var x = view.pagePtr * 10; x < Math.min(((view.pagePtr + 1) * 10), filteredPlayerIds.length); x++)
+	var lastPagePtr = Math.floor((filteredPlayerIds.length + 9) / 10) - 1;
+	if (view.pagePtr == -1) view.pagePtr = lastPagePtr;
+
+	for (var x = 0; x < 10; x ++)
 	{
+		var playerPtr = x + (view.pagePtr * 10);
+		if (playerPtr >= filteredPlayerIds.length) break;
 
 		var row = this.element.insertRow();
-		var playerId = filteredPlayerIds[x]
+		var playerId = filteredPlayerIds[playerPtr]
 		row.playerId = playerId;
 		row.onclick = function() { 
 			view.events.selectPlayerByTable(this); 
@@ -51,7 +56,7 @@ ViewTable.prototype.render = function() {
 		view.elements.movePrevious.disable();
 	}
 
-	if (view.pagePtr == this.lastPagePtr())
+	if (view.pagePtr == lastPagePtr)
 	{
 		view.elements.moveNext.disable();
 		view.elements.moveLast.disable();
@@ -75,7 +80,7 @@ ViewTable.prototype.moveNext = function () {
 }
 
 ViewTable.prototype.moveLast = function () {
-	view.pagePtr = this.lastPagePtr();
+	view.pagePtr = -1;
 	view.elements.playersTable.render();
 }
 
