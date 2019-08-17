@@ -40,10 +40,6 @@ select { height:3em; }
 	padding-bottom:1em;
 }
 
-#divPlayerDetails {
-	padding-top:1em;
-}
-
 #divEditPlayerDetails {
 	padding-top:1em;
 }
@@ -57,5 +53,18 @@ select { height:3em; }
 }
 
 table {
-	vertical-align: top;
+	border: 1px solid black;
+}
+
+#carl
+{
+	position:relative;
+}
+
+#divPlayersTable {
+	position:absolute; top:0px;
+}
+
+#carl2 {
+	position:absolute; left:700px; top:0px;
 }
