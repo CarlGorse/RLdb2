@@ -16,7 +16,7 @@ ViewElements.prototype.initialise = function () {
 
 	this.filteredPlayersCount = new DocumentSpan('filteredPlayersCount');
 
-	this.playersTable = new ViewTable('playersTable');
+	this.playersTable = new ViewTable('playersTable', data.players);
 
 	this.pName = 		new DocumentElement('pName');
 	this.pClub = 		new DocumentElement('pClub');
@@ -39,5 +39,15 @@ ViewElements.prototype.initialise = function () {
 	this.addPlayer.setOnClick(view.events.addPlayer);
 	this.editPlayer.setOnClick(view.events.editPlayer);
 	this.deletePlayer.setOnClick(view.events.deletePlayer);
+
+	this.moveFirst =  new DocumentButton('moveFirst');
+	this.movePrevious = new DocumentButton('movePrevious');
+	this.moveNext = new DocumentButton('moveNext');
+	this.moveLast = new DocumentButton('moveLast');
+
+	this.moveFirst.setOnClick(view.events.moveFirst);
+	this.movePrevious.setOnClick(view.events.movePrevious);
+	this.moveNext.setOnClick(view.events.moveNext);
+	this.moveLast.setOnClick(view.events.moveLast);
 
 }

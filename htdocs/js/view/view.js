@@ -14,8 +14,10 @@ View.prototype.loadDisplay = function () {
 
 	this.elements.playerDetails.hide();
 	this.elements.editPlayerDetails.hide();
-	
+
 	controller.loadData();
+
+	view.pagePtr = 0;
 
 	this.filters.render();
 
