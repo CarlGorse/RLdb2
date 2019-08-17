@@ -55,3 +55,7 @@ select { height:3em; }
 #playersTable td {
 	border-bottom: 1px solid black;
 }
+
+table {
+	vertical-align: top;
+}
