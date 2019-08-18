@@ -66,7 +66,8 @@ ViewSelect.prototype.render = function () {
 		}, this
 	)
 
-	this.element.options[0].selected = 'selected';
+	if (this.element.options.length > 0)
+		this.element.options[0].selected = 'selected';
 
 	if (this.setInitialValueEmpty)
 		this.clearValue();

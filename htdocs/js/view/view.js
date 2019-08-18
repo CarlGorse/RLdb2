@@ -69,7 +69,7 @@ View.prototype.moveToPlayerTable = function (playerId)
 View.prototype.addPlayer = function () {
 	view.elements.playerFilter.clearValue();
 	var p = controller.addPlayer();
-	controller.setCurrentPlayer(p);
+	controller.setCurrentPlayer(p.playerId);
 	this.showEditPlayerDetails();
 }
 

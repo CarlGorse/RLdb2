@@ -68,7 +68,7 @@ DataSet.prototype.writeJSON = function ()
 	var xmlhttp = new XMLHttpRequest();
 	var filePath = 'C://Git//repos//RLdb2//htdocs//files/' + this.fileName ;
 		
-	xmlhttp.open("POST","/php/saveFile.php?filename=" + filePath,true);
+	xmlhttp.open("POST","/php/saveFile.php?filename=" + filePath,false);
 		
 	var dataSetJSON = this.getJSON();
 	var fd = new FormData();

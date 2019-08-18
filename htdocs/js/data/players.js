@@ -43,8 +43,8 @@ Players.prototype.loadFile = function (file) {
 
 Players.prototype.getJSON = function ()
 {
-	Json = new Json();
-	return Json.getPlayersJSON();
+	var json = new Json();
+	return json.getPlayersJSON();
 
 }
 
