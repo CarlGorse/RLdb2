@@ -34,6 +34,9 @@ View.prototype.selectPlayer = function (playerId) {
 
 	var p = controller.setCurrentPlayer(playerId);
 
+	view.moveToPlayerSelect(playerId);
+	view.moveToPlayerTable(playerId);
+
 	view.elements.editPlayer.enable();
 	view.elements.deletePlayer.enable();
 
@@ -48,6 +51,19 @@ View.prototype.selectPlayer = function (playerId) {
 		this.elements.pImage.hide();
 	view.elements.pImage.setValue(p.image);
 	
+}
+
+View.prototype.moveToPlayerSelect = function (playerId)
+{
+	this.elements.playerFilter.select(playerId);
+}
+
+View.prototype.moveToPlayerTable = function (playerId)
+{
+	var idIndex = functions.Array.getItemIndex(this.elements.playersTable.filteredPlayerIds, playerId, '');
+	view.pagePtr = Math.floor(idIndex / 10);
+	this.elements.playersTable.render();
+
 }
 
 View.prototype.addPlayer = function () {

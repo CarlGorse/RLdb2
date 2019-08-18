@@ -10,7 +10,10 @@ DocumentSelect.prototype.setValue = function (itemId) {
 	{
 		o = this.element.options[x];
 		o.selected = false;
-		if (o.value == itemId) o.selected = true;
+		if (o.value == itemId.toString()) 
+		{
+			o.selected = true;
+		}
 	}
 }
 DocumentSelect.prototype.value = function () { 

@@ -55,12 +55,7 @@ DataSet.prototype.count = function () {
 }
 
 DataSet.prototype.getIdIndex = function (id) {
-	for (var x = 0; x < this.items.length; x++)
-	{
-		var di = this.items[x];
-		if (di.id == id) return x;
-	}
-	return null;
+	return functions.Array.getItemIndex(this.items, id, "id");
 }
 
 DataSet.prototype.remove = function (dataItem) {

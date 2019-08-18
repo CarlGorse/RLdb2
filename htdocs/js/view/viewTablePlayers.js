@@ -1,34 +1,35 @@
 
-function ViewTable(elementId, dataSet)
+function ViewTablePlayers(elementId, dataSet)
 {
 	DocumentTable.call(this, elementId);
 	this.dataSet = dataSet;
+	this.filteredPlayerIds = new Array();
 }
-ViewTable.prototype = Object.create(DocumentTable.prototype)
+ViewTablePlayers.prototype = Object.create(DocumentTable.prototype)
 
-ViewTable.prototype.render = function() {
+ViewTablePlayers.prototype.render = function() {
 
 	view.elements.playersTable.clear();
 
-	filteredPlayerIds = new Array();
+	functions.Array.clear(this.filteredPlayerIds);
 	data.players.items.forEach (
 		function(di) {
 			var playerCount = controller.playerCountByFilter(view.elements.playerFilter, di);
 			if (playerCount > 0)
-				filteredPlayerIds.push(di.playerId);
-		}	
+				this.filteredPlayerIds.push(di.playerId);
+		}, this	
 	)
 
-	var lastPagePtr = Math.floor((filteredPlayerIds.length + 9) / 10) - 1;
+	var lastPagePtr = Math.floor((this.filteredPlayerIds.length + 9) / 10) - 1;
 	if (view.pagePtr == -1) view.pagePtr = lastPagePtr;
 
 	for (var x = 0; x < 10; x ++)
 	{
-		var playerPtr = x + (view.pagePtr * 10);
-		if (playerPtr >= filteredPlayerIds.length) break;
+		var playerPtr = x + (view.pagePtr * 10);	
+		if (playerPtr >= this.filteredPlayerIds.length) break;
 
 		var row = this.element.insertRow();
-		var playerId = filteredPlayerIds[playerPtr]
+		var playerId = this.filteredPlayerIds[playerPtr]
 		row.playerId = playerId;
 		row.onclick = function() { 
 			view.events.selectPlayerByTable(this); 
@@ -64,27 +65,27 @@ ViewTable.prototype.render = function() {
 
 }
 
-ViewTable.prototype.moveFirst = function () {
+ViewTablePlayers.prototype.moveFirst = function () {
 	view.pagePtr = 0;
 	view.elements.playersTable.render();
 }
 
-ViewTable.prototype.movePrevious = function () {
+ViewTablePlayers.prototype.movePrevious = function () {
 	view.pagePtr --;
 	view.elements.playersTable.render();
 }
 
-ViewTable.prototype.moveNext = function () {
+ViewTablePlayers.prototype.moveNext = function () {
 	view.pagePtr ++ ;
 	view.elements.playersTable.render();
 }
 
-ViewTable.prototype.moveLast = function () {
+ViewTablePlayers.prototype.moveLast = function () {
 	view.pagePtr = -1;
 	view.elements.playersTable.render();
 }
 
-ViewTable.prototype.lastPagePtr = function () {
+ViewTablePlayers.prototype.lastPagePtr = function () {
 	return Math.floor(view.elements.playersTable.dataSet.count() / 10) - 1;
 }
 

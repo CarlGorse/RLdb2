@@ -16,7 +16,7 @@ ViewElements.prototype.initialise = function () {
 
 	this.filteredPlayersCount = new DocumentSpan('filteredPlayersCount');
 
-	this.playersTable = new ViewTable('playersTable', data.players);
+	this.playersTable = new ViewTablePlayers('playersTable', data.players);
 
 	this.pName = 		new DocumentElement('pName');
 	this.pClub = 		new DocumentElement('pClub');

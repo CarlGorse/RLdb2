@@ -21,3 +21,7 @@ function ViewFilter(filterId, dataSet, viewElement, displayProperty, searchPrope
 }
 ViewFilter.prototype = Object.create(ViewSelect.prototype)
 
+ViewFilter.prototype.select = function (id)
+{
+	this.viewElement.setValue(id);
+}
