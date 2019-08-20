@@ -3,7 +3,6 @@ function ViewTablePlayers(elementId, dataSet)
 {
 	DocumentTable.call(this, elementId);
 	this.dataSet = dataSet;
-	this.filteredPlayerIds = new Array();
 }
 ViewTablePlayers.prototype = Object.create(DocumentTable.prototype)
 
@@ -11,25 +10,18 @@ ViewTablePlayers.prototype.render = function() {
 
 	view.elements.playersTable.clear();
 
-	functions.Array.clear(this.filteredPlayerIds);
-	data.players.items.forEach (
-		function(di) {
-			var playerCount = controller.playerCountByFilter(view.elements.playerFilter, di);
-			if (playerCount > 0)
-				this.filteredPlayerIds.push(di.playerId);
-		}, this	
-	)
+	controller.setFilteredPlayers();
 
-	var lastPagePtr = Math.floor((this.filteredPlayerIds.length + 9) / 10) - 1;
+	var lastPagePtr = Math.floor((controller.filteredPlayerIds.length + 9) / 10) - 1;
 	if (view.pagePtr == -1) view.pagePtr = lastPagePtr;
 
 	for (var x = 0; x < 10; x ++)
 	{
 		var playerPtr = x + (view.pagePtr * 10);	
-		if (playerPtr >= this.filteredPlayerIds.length) break;
+		if (playerPtr >= controller.filteredPlayerIds.length) break;
 
 		var row = this.element.insertRow();
-		var playerId = this.filteredPlayerIds[playerPtr]
+		var playerId = controller.filteredPlayerIds[playerPtr]
 		row.playerId = playerId;
 		row.onclick = function() { 
 			view.events.selectPlayerByTable(this); 
@@ -43,6 +35,11 @@ ViewTablePlayers.prototype.render = function() {
 		cell1.innerHTML = data.clubs.club(p.clubId).name2;
 		cell2.innerHTML = p.positionId ? data.positions.position(p.positionId).name : '';
 		cell3.innerHTML = p.squadNo;
+
+		if (row.playerId == controller.currentPlayer.playerId)
+		{
+			row.style.backgroundColor = "yellow";
+		}
 
 	}
 

@@ -60,10 +60,9 @@ View.prototype.moveToPlayerSelect = function (playerId)
 
 View.prototype.moveToPlayerTable = function (playerId)
 {
-	var idIndex = functions.Array.getItemIndex(this.elements.playersTable.filteredPlayerIds, playerId, '');
+	var idIndex = functions.Array.getItemIndex(controller.filteredPlayerIds, playerId, '');
 	view.pagePtr = Math.floor(idIndex / 10);
 	this.elements.playersTable.render();
-
 }
 
 View.prototype.addPlayer = function () {

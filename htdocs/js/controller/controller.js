@@ -9,6 +9,9 @@ function Controller()
 	data = new Data();
 	view = new View();
 	functions = new Functions();
+	
+	this.filteredPlayerIds = new Array();
+
 }
 Controller.prototype.initialise =  function () {
 	this.currentPlayer = null;
@@ -70,3 +73,15 @@ Controller.prototype.playerCountByFilter =  function (f, di) {
 
 	return count;
 }	
+
+Controller.prototype.setFilteredPlayers = function ()
+{
+	functions.Array.clear(this.filteredPlayerIds);
+	data.players.items.forEach (
+		function(di) {
+			var playerCount = controller.playerCountByFilter(view.elements.playerFilter, di);
+			if (playerCount > 0)
+				this.filteredPlayerIds.push(di.playerId);
+		}, this	
+	)
+}
