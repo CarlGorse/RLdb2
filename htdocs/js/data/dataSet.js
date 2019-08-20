@@ -9,7 +9,7 @@ function DataSet(typeName)
 
 DataSet.prototype.load = function () {
 	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("GET", "files\\" + this.fileName, false);
+	xmlhttp.open("GET", "data\\" + this.fileName, false);
 	xmlhttp.send();
 
 	var file = JSON.parse(xmlhttp.responseText); 
@@ -66,7 +66,7 @@ DataSet.prototype.remove = function (dataItem) {
 DataSet.prototype.writeJSON = function ()
 {
 	var xmlhttp = new XMLHttpRequest();
-	var filePath = 'C://Git//repos//RLdb2//htdocs//files/' + this.fileName ;
+	var filePath = 'C://Git//repos//RLdb2//htdocs//data/' + this.fileName ;
 		
 	xmlhttp.open("POST","/php/saveFile.php?filename=" + filePath,false);
 		
