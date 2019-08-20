@@ -8,16 +8,15 @@ function View() {
 
 View.prototype.loadDisplay = function () {
 
+	controller.loadData();
+
 	this.events.initialise();
 	this.elements.initialise();
 	this.filters.initialise();
 
+	view.pagePtr = 0;
 	this.elements.playerDetails.hide();
 	this.elements.editPlayerDetails.hide();
-
-	controller.loadData();
-
-	view.pagePtr = 0;
 
 	this.filters.render();
 
