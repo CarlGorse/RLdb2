@@ -55,12 +55,46 @@ select { height:3em; }
 
 #playersTable {
 	border-collapse: collapse;
+	border: 1px solid black;
+	table-layout: fixed;
 }
 
 #playersTable td {
 	border-bottom: 1px solid black;
 }
 
-#playersTable {
-	border: 1px solid black;
+#secondColumn {
+	width:100px;
+}
+
+#nameColumn {
+	width:200px;
+}
+
+#clubColumn {
+	width:200px;
+}
+
+#positionColumn {
+	width:140px;
+}
+
+#squadNoColumn {
+	width:80px;
+}
+
+#detailLabelColumn {
+	width:140px;
+}
+
+#detailValueColumn {
+	width:200px;
+}
+
+#detailLabelColumn2 {
+	width:140px;
+}
+
+#detailValueColumn2 {
+	width:200px;
 }
