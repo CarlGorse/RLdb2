@@ -10,6 +10,7 @@ function Controller()
 	view = new View();
 	functions = new Functions();
 	
+	this.currentPlayer = null;
 	this.filteredPlayerIds = new Array();
 
 }

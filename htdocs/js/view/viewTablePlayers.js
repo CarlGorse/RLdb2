@@ -36,7 +36,7 @@ ViewTablePlayers.prototype.render = function() {
 		cell2.innerHTML = p.positionId ? data.positions.position(p.positionId).name : '';
 		cell3.innerHTML = p.squadNo;
 
-		if (row.playerId == controller.currentPlayer.playerId)
+		if ((controller.currentPlayer != null) && (row.playerId == controller.currentPlayer.playerId))
 		{
 			row.style.backgroundColor = "yellow";
 		}
