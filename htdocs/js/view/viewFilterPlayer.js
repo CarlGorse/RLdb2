@@ -6,6 +6,7 @@ function ViewFilterPlayer(filterId, viewElement, displayProperty)
 	this.showDataItemCount = false;
 	this.showOptionAll = false;
 	this.setInitialValueEmpty = true;
+	this.includeInPlayerCount = false;
 }
 ViewFilterPlayer.prototype = Object.create(ViewFilterSelect.prototype)
 

@@ -17,6 +17,7 @@ function ViewFilter(filterId, dataSet, viewElement, displayProperty, searchPrope
 	this.setInitalValueEmpty = false;
 	this.showNonMatchingDataItems = true;
 	this.showDataItemCount = true;
+	this.includeInPlayerCount = true;
 
 }
 ViewFilter.prototype = Object.create(ViewSelect.prototype)

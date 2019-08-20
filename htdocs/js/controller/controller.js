@@ -55,6 +55,7 @@ Controller.prototype.playerCountByFilter =  function (f, di) {
 
 			view.filters.items.forEach(
 				function (f2) { 
+					if (f2.includeInPlayerCount == false) return;
 					if (f2.filterId == f.filterId) return;
 					if ((f2.value() != "") && (f2.value() != "all"))
 					{
