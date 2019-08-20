@@ -88,60 +88,49 @@
 		
 		</table>
 
-		<div>
+		
 
-			<div id="divFilteredPlayersCount">
-				<span id="filteredPlayersCount"></span>
-			</div>
+		<div id="divFilteredPlayersCount">
+			<span id="filteredPlayersCount"></span>
+		</div>
 
-			<div id="divPlayerFilter">
-				<select id="playerFilter"></select>
-			</div>	
+		<div id="divPlayerFilter">
+			<select id="playerFilter"></select>
+		</div>	
 
-			<div id="divButtons1"> 
-				<button id="addPlayer">Add new Player</button>
-				<button id="deletePlayer">Delete Player</button>
-				<button id="editPlayer">Edit Player</button>
-			</div>
+		<div id="divButtons1"> 
+			<button id="moveFirst">&lt&lt</button>
+			<button id="movePrevious">&lt</button>
+			<button id="moveNext">&gt</button>
+			<button id="moveLast">&gt&gt</button>
+		</div>
 
-			<div id="divButtons1"> 
-				<button id="moveFirst">&lt&lt</button>
-				<button id="movePrevious">&lt</button>
-				<button id="moveNext">&gt</button>
-				<button id="moveLast">&gt&gt</button>
-			</div>
-
-			<div id="carl">
-
-				<div id="divPlayersTable">
-					<table id="playersTable" width="600">
-						<tr>
-							<th>Name</th>
-							<th>Club</th>
-							<th>Position</th>
-							<th>Squad Number</th>
-						</tr>
-					</table>
-				</div>
-
-				<div id="carl2">
-
+			
+		<table>
+			<tr>
+				<td>
+					<div id="divPlayersTable">
+						<table id="playersTable" width="600">
+							<tr>
+								<th>Name</th>
+								<th>Club</th>
+								<th>Position</th>
+								<th>Squad Number</th>
+							</tr>
+						</table>
+					</div>
+				</td>
+				<td>
 					<div id="divPlayerDetails"> 
-						
 						<table id="playerDetails" width="1000">
 							<tr><td width="30%"><label class="detailLabel">Name</label></td><td><span id="pName"/></td></tr>
 							<tr><td width="30%"><label class="detailLabel">Club</label></td><td><span id="pClub"/></td></tr>
 							<tr><td width="30%"><label class="detailLabel">Position</label></td><td><span id="pPosition"/></td></tr>
 							<tr><td width="30%"><label class="detailLabel">Squad Number</label></td><td><span id="pSquadNo"/></td></tr>
-				
-							<tr><td width="30%"></td><td><img id="pImage"/></td></tr>
-
 						</table>
-						
 					</div>
-
+		
 					<div id="editPlayerDetails">
-						
 						<table width="1000">
 							<tr><td width="30%"><label class="detailLabel">Name</label></td><td><input id="pName2"/></td></tr>
 							<tr><td width="30%"><label class="detailLabel">Club</label></td><td><select id="pClub2"></select></td></tr>
@@ -149,15 +138,31 @@
 							<tr><td width="30%"><label class="detailLabel">Squad Number</label></td><td><select id="pSquadNo2"></select></td></tr>
 							<tr><td width="30%"><label class="detailLabel">Image</label></td><td><input id="pImage2"/></td></tr>
 						</table>
-							
-						<div id="divButtons1"> 
-							<button id="savePlayer">Save Player</button>
-						</div>
-
 					</div>
-			</div>
 
-		</div>
+				</td>
+				<td>
+					<img id="pImage"/></td>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<div id="divButtons1"> 
+						<button id="addPlayer">Add new Player</button>
+						<button id="deletePlayer">Delete Player</button>
+						<button id="editPlayer">Edit Player</button>
+					</div>
+				</td>
+				<td>
+					<div id="divButtons2"> 
+						<button id="savePlayer">Save Player</button>
+					</div>
+				</td>
+				<td></td>
+			</tr>
+
+		</table>
 
 	</body>
 

@@ -22,22 +22,15 @@ View.prototype.loadDisplay = function () {
 
 }
 
-//View.prototype.selectFilter = function (filterId) {
-	//filter = view.getFilter(filterId);
-//}
 
 View.prototype.selectPlayer = function (playerId) {
 
 	this.elements.editPlayerDetails.hide();
-	this.elements.playerDetails.show();
 
 	var p = controller.setCurrentPlayer(playerId);
 
 	view.moveToPlayerSelect(playerId);
 	view.moveToPlayerTable(playerId);
-
-	view.elements.editPlayer.enable();
-	view.elements.deletePlayer.enable();
 
 	view.elements.pName.setValue(p.name);
 	view.elements.pClub.setValue(data.clubs.club(p.clubId).name2);
@@ -49,7 +42,14 @@ View.prototype.selectPlayer = function (playerId) {
 	else
 		this.elements.pImage.hide();
 	view.elements.pImage.setValue(p.image);
-	
+
+	this.elements.playerDetails.show();
+
+	view.elements.editPlayer.enable();
+	view.elements.deletePlayer.enable();
+
+	this.elements.savePlayer.hide();
+
 }
 
 View.prototype.moveToPlayerSelect = function (playerId)
@@ -79,24 +79,26 @@ View.prototype.showEditPlayerDetails = function () {
 	
 	this.elements.playerDetails.hide();
 
-	this.elements.pClub2.render();
-	this.elements.pPosition2.render();
-	this.elements.pSquadNo2.render();
-
-	p = controller.currentPlayer;
-
+	var p = controller.currentPlayer;
 	view.elements.pName2.setValue(p.name);
 	view.elements.pClub2.setValue(p.clubId);
 	view.elements.pPosition2.setValue(p.positionId);
 	view.elements.pSquadNo2.setValue(p.squadNo);
 	view.elements.pImage2.setValue(p.image);
 
+	this.elements.pClub2.render();
+	this.elements.pPosition2.render();
+	this.elements.pSquadNo2.render();
+
 	this.elements.editPlayerDetails.show();
+	this.elements.savePlayer.show();
 }
 
 View.prototype.deletePlayer = function () {	
+	
 	if (confirm('Do you wish to delete player \'' + controller.currentPlayer.name + '\'?') == false)
 		return;
+	
 	var p = controller.currentPlayer;	// save current player before deleted from data/controller
 	controller.deletePlayer(p);
 	controller.savePlayers();
@@ -107,6 +109,7 @@ View.prototype.deletePlayer = function () {
 }
 
 View.prototype.savePlayer = function () {
+	
 	var p = controller.currentPlayer;
 	p.name = view.elements.pName2.value();
 	p.clubId = view.elements.pClub2.value();

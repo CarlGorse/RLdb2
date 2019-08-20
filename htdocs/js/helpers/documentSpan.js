@@ -1,5 +1,4 @@
 
-
 function DocumentSpan(name)
 {
 	DocumentElement.call(this, name);

@@ -21,8 +21,8 @@ select { height:3em; }
 #pImage {
 	padding-top:1em;
 	display:block;
-	max-width:14em;
-	min-width:14em;
+	max-width:8em;
+	min-width:8em;
 	height:auto;
 }
 
@@ -40,6 +40,15 @@ select { height:3em; }
 	padding-bottom:1em;
 }
 
+#divButtons2 {
+	padding-top:1em;
+	padding-bottom:1em;
+}
+
+#savePlayer {
+	display:none;
+}
+
 #divEditPlayerDetails {
 	padding-top:1em;
 }
@@ -52,19 +61,6 @@ select { height:3em; }
 	border-bottom: 1px solid black;
 }
 
-table {
+#playersTable {
 	border: 1px solid black;
-}
-
-#carl
-{
-	position:relative;
-}
-
-#divPlayersTable {
-	position:absolute; top:0px;
-}
-
-#carl2 {
-	position:absolute; left:700px; top:0px;
 }

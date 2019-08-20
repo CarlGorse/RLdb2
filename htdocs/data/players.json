@@ -38,43 +38,6 @@
                         ]
                 },
 
-                {"clubId":"lbr","players":
-                        [						
-								{"name":"Alex Walker",		"positionId":"fb",	"squadNo":"1"},
-								{"name":"Ben Hellewell",	"positionId":"c",	"squadNo":"3"},
-								{"name":"Brock Lamb",		"positionId":"h",	"squadNo":"0"},
-								{"name":"Daniel Hindmarsh",	"positionId":"sr",	"squadNo":"21"},
-								{"name":"Eddie Battye",		"positionId":"pf",	"squadNo":"8",			"image":"eddie-battye.jpg"},
-								{"name":"Elliot Kear",		"positionId":"c",	"squadNo":"4",			"image":"elliot-kear.jpg"},
-								{"name":"Eloi Pelissier",	"positionId":"h",	"squadNo":"9",			"image":"eloi-pelissier.jpg"},
-								{"name":"Gideon Boafo",		"positionId":"w",	"squadNo":"27"},
-								{"name":"Greg Richards",	"positionId":"pf",	"squadNo":"15"},
-								{"name":"Guy Armitage",		"positionId":"",	"squadNo":"0"},
-								{"name":"Jacob Ogden",		"positionId":"c",	"squadNo":"24"},
-								{"name":"James Meadows",	"positionId":"so",	"squadNo":"22"},
-								{"name":"James Cunningham",	"positionId":"h",	"squadNo":"7",			"image":"james-cunningham.jpg"},
-								{"name":"Jay Pitts",		"positionId":"lf",	"squadNo":"12",			"image":"jay-pitts.jpg"},
-								{"name":"Jordan Abdul",		"positionId":"so",	"squadNo":"6"},
-								{"name":"Kieran Dixon",		"positionId":"w",	"squadNo":"5",			"image":"kieran-dixon.jpg"},
-								{"name":"Luke Yates",		"positionId":"pf",	"squadNo":"20"},
-								{"name":"Mark Ioane",		"positionId":"pf",	"squadNo":"10"},
-								{"name":"Matt Gee",			"positionId":"sr",	"squadNo":"16"},
-								{"name":"Matt Davies",		"positionId":"sh",	"squadNo":"25"},
-								{"name":"Matty Fozard",		"positionId":"h",	"squadNo":"14"},
-								{"name":"Matty Fleming",	"positionId":"c",	"squadNo":"17"},
-								{"name":"Morgan Smith",		"positionId":"h",	"squadNo":"28"},
-								{"name":"Nathan Mason",		"positionId":"pf",	"squadNo":"18"},
-								{"name":"Olsi Krasniqi",	"positionId":"pf",	"squadNo":"33",			"image":"olsi-krasniqi.jpg"},
-								{"name":"Rhys Williams",	"positionId":"w",	"squadNo":"2",			"image":"rhys-williams.jpg"},
-								{"name":"Rob Butler",		"positionId":"pf",	"squadNo":"23"},
-								{"name":"Ryan Morgan",		"positionId":"c",	"squadNo":"19"},
-								{"name":"Sadiq Adebiyi",	"positionId":"pf",	"squadNo":"13"},
-								{"name":"Sam Davis",		"positionId":"h",	"squadNo":"26"},
-								{"name":"Will Lovell",		"positionId":"sr",	"squadNo":"11",			"image":"will-lovell.jpg"}
-								
-                        ]
-                },
-				
                 {"clubId":"cat","players":
                         [
                                 {"name":"Alrix Da Costa",               "positionId":"h",               "squadNo":"18"},
@@ -255,6 +218,42 @@
                                 {"name":"Trent Merrin",                 "positionId":"pf",              "squadNo":"11"},
                                 {"name":"Tyler Dupree",                                                 "squadNo":"35"},
                                 {"name":"Wellington Albert",            "positionId":"pf",              "squadNo":"14"}
+                        ]
+                },
+
+                {"clubId":"lbr","players":
+                        [
+                                {"name":"Alex Walker",                  "positionId":"fb",              "squadNo":"1"},
+                                {"name":"Ben Hellewell",                "positionId":"c",               "squadNo":"3"},
+                                {"name":"Brock Lamb",                   "positionId":"h",               "squadNo":"0"},
+                                {"name":"Daniel Hindmarsh",             "positionId":"sr",              "squadNo":"21"},
+                                {"name":"Eddie Battye",                 "positionId":"pf",              "squadNo":"8",          "image":"eddie-battye.jpg"},
+                                {"name":"Elliot Kear",                  "positionId":"c",               "squadNo":"4",          "image":"elliot-kear.jpg"},
+                                {"name":"Eloi Pelissier",               "positionId":"h",               "squadNo":"9",          "image":"eloi-pelissier.jpg"},
+                                {"name":"Gideon Boafo",                 "positionId":"w",               "squadNo":"27"},
+                                {"name":"Greg Richards",                "positionId":"pf",              "squadNo":"15"},
+                                {"name":"Guy Armitage",                                                 "squadNo":"0"},
+                                {"name":"Jacob Ogden",                  "positionId":"c",               "squadNo":"24"},
+                                {"name":"James Cunningham",             "positionId":"h",               "squadNo":"7",          "image":"james-cunningham.jpg"},
+                                {"name":"James Meadows",                "positionId":"so",              "squadNo":"22"},
+                                {"name":"Jay Pitts",                    "positionId":"lf",              "squadNo":"12",         "image":"jay-pitts.jpg"},
+                                {"name":"Jordan Abdul",                 "positionId":"so",              "squadNo":"6"},
+                                {"name":"Kieran Dixon",                 "positionId":"w",               "squadNo":"5",          "image":"kieran-dixon.jpg"},
+                                {"name":"Luke Yates",                   "positionId":"pf",              "squadNo":"20"},
+                                {"name":"Mark Ioane",                   "positionId":"pf",              "squadNo":"10"},
+                                {"name":"Matt Davies",                  "positionId":"sh",              "squadNo":"25"},
+                                {"name":"Matt Gee",                     "positionId":"sr",              "squadNo":"16"},
+                                {"name":"Matty Fleming",                "positionId":"c",               "squadNo":"17"},
+                                {"name":"Matty Fozard",                 "positionId":"h",               "squadNo":"14"},
+                                {"name":"Morgan Smith",                 "positionId":"h",               "squadNo":"28"},
+                                {"name":"Nathan Mason",                 "positionId":"pf",              "squadNo":"18"},
+                                {"name":"Olsi Krasniqi",                "positionId":"pf",              "squadNo":"33",         "image":"olsi-krasniqi.jpg"},
+                                {"name":"Rhys Williams",                "positionId":"w",               "squadNo":"2",          "image":"rhys-williams.jpg"},
+                                {"name":"Rob Butler",                   "positionId":"pf",              "squadNo":"23"},
+                                {"name":"Ryan Morgan",                  "positionId":"c",               "squadNo":"19"},
+                                {"name":"Sadiq Adebiyi",                "positionId":"pf",              "squadNo":"13"},
+                                {"name":"Sam Davis",                    "positionId":"h",               "squadNo":"26"},
+                                {"name":"Will Lovell",                  "positionId":"sr",              "squadNo":"11",         "image":"will-lovell.jpg"}
                         ]
                 },
 
