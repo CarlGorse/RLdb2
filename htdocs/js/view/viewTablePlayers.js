@@ -4,6 +4,7 @@ function ViewTablePlayers(elementId, dataSet)
 	DocumentTable.call(this, elementId);
 	this.dataSet = dataSet;
 	this.pagePtr = 0;
+	this.memberPageCount = 15;
 }
 ViewTablePlayers.prototype = Object.create(DocumentTable.prototype)
 
@@ -15,13 +16,13 @@ ViewTablePlayers.prototype.render = function() {
 	if (controller.currentPlayer != null)
 	{
 		playerIndex = controller.filteredPlayers.index(controller.currentPlayer.playerId);
-		this.pagePtr = Math.floor(playerIndex / 10);
+		this.pagePtr = Math.floor(playerIndex / this.memberPageCount);
 	}
 
 	view.elements.playersTable.clear();
-	for (var x = 0; x < 10; x ++)
+	for (var x = 0; x < this.memberPageCount; x ++)
 	{
-		var playerPtr = x + (this.pagePtr * 10);	
+		var playerPtr = x + (this.pagePtr * this.memberPageCount);	
 		if (playerPtr >= controller.filteredPlayers.count()) break;
 
 		var row = this.element.insertRow();
@@ -75,13 +76,18 @@ ViewTablePlayers.prototype.setButtons = function (playerIndex) {
 		view.elements.movePlayerLast.disable();
 	}
 
+	if (controller.filtredOkayers,count < this.memberPageCount)
+	{
+		view.elements.movePageLast.disable();
+	}
+
 	if (this.pagePtr == 0)
 	{
 		view.elements.movePageFirst.disable();
 		view.elements.movePagePrevious.disable();
 	}
 
-	var lastPagePtr = Math.floor(controller.filteredPlayers.count() / 10);
+	var lastPagePtr = Math.floor(controller.filteredPlayers.count() / this.memberPageCount);
 	if (this.pagePtr == lastPagePtr)
 	{
 		view.elements.movePageNext.disable();
@@ -103,7 +109,7 @@ ViewTablePlayers.prototype.movePageNext = function () {
 }
 
 ViewTablePlayers.prototype.movePageLast = function () {
-	var pagePtr = Math.floor(data.players.count() / 10);
+	var pagePtr = Math.floor(controller.filteredPlayers.count() / this.memberPageCount);
 	this.movePage(pagePtr);
 }
 
