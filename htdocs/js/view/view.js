@@ -14,53 +14,56 @@ View.prototype.loadDisplay = function () {
 	this.elements.initialise();
 	this.filters.initialise();
 
-	this.elements.playerDetails.hide();
+	this.hidePlayerDetails();
 	this.elements.editPlayerDetails.hide();
 
 	this.filters.render();
 
 }
 
+View.prototype.deselectPlayer = function () {
+	this.hidePlayerDetails();
+	controller.currentPlayer = null;
+	this.elements.playerFilter.clearValue();
+	view.setButtons();
+}
 
 View.prototype.selectPlayer = function (playerId) {
 
 	this.elements.editPlayerDetails.hide();
 
-	var p = controller.setCurrentPlayer(playerId);
+	this.elements.playerFilter.select(playerId);
 
-	view.moveToPlayerSelect(playerId);
-	view.moveToPlayerTable(playerId);
-
+	var p = controller.currentPlayer;
 	view.elements.pName.setValue(p.name);
 	view.elements.pClub.setValue(data.clubs.club(p.clubId).name2);
 	view.elements.pPosition.setValue( p.positionId ? data.positions.position(p.positionId).name : '');
 	view.elements.pSquadNo.setValue(p.squadNo);
-	
 	if (p.image)
 		this.elements.pImage.show();
 	else
 		this.elements.pImage.hide();
 	view.elements.pImage.setValue(p.image);
-
 	this.elements.playerDetails.show();
 
-	view.elements.editPlayer.enable();
-	view.elements.deletePlayer.enable();
+	view.setButtons();
 
 	this.elements.savePlayer.hide();
 
 }
 
-View.prototype.moveToPlayerSelect = function (playerId)
+View.prototype.setButtons = function ()
 {
-	this.elements.playerFilter.select(playerId);
-}
-
-View.prototype.moveToPlayerTable = function (playerId)
-{
-	//var idIndex = controller.filteredPlayers.index(controller.currentPlayerId);
-	//view.pagePtr = Math.floor(idIndex / 10);
-	this.elements.playersTable.render();
+	if (controller.currentPlayer == null)
+	{
+		view.elements.editPlayer.disable();
+		view.elements.deletePlayer.disable();
+	}
+	else
+	{
+		view.elements.editPlayer.enable();
+		view.elements.deletePlayer.enable();
+	}
 }
 
 View.prototype.addPlayer = function () {
@@ -76,7 +79,7 @@ View.prototype.editPlayer = function () {
 
 View.prototype.showEditPlayerDetails = function () {
 	
-	this.elements.playerDetails.hide();
+	this.hidePlayerDetails();
 
 	var p = controller.currentPlayer;
 	view.elements.pName2.setValue(p.name);
@@ -91,6 +94,12 @@ View.prototype.showEditPlayerDetails = function () {
 
 	this.elements.editPlayerDetails.show();
 	this.elements.savePlayer.show();
+}
+
+View.prototype.hidePlayerDetails = function ()
+{
+	this.elements.playerDetails.hide();
+	this.elements.pImage.hide();
 }
 
 View.prototype.deletePlayer = function () {	

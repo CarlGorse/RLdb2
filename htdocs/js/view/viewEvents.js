@@ -2,7 +2,7 @@
 function ViewEvents() {}
 
 ViewEvents.prototype.changeFilter = function (filter) {	
-    view.pagePtr = 0;
+    //pagePtr = 0;
     view.filters.render(); 
 }
 

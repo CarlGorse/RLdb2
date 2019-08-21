@@ -26,3 +26,10 @@ ViewFilterPlayer.prototype.render = function ()
 	view.elements.filteredPlayersCount.setValue(countDescription);
 
 }
+
+ViewFilterPlayer.prototype.select = function (playerId)
+{
+	controller.setCurrentPlayer(playerId);
+	ViewFilterSelect.prototype.select.call(this, playerId);
+	view.elements.playersTable.render();
+}

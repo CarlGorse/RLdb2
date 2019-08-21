@@ -3,25 +3,25 @@ function ViewTablePlayers(elementId, dataSet)
 {
 	DocumentTable.call(this, elementId);
 	this.dataSet = dataSet;
+	this.pagePtr = 0;
 }
 ViewTablePlayers.prototype = Object.create(DocumentTable.prototype)
 
 ViewTablePlayers.prototype.render = function() {
 
-	view.elements.playersTable.clear();
-
 	controller.setFilteredPlayers();
 
-	var pagePtr = 0;
+	var playerIndex = -1;
 	if (controller.currentPlayer != null)
 	{
-		var playerIndex = controller.filteredPlayers.index(controller.currentPlayer.playerId);
-		pagePtr = Math.floor(playerIndex / 10);
+		playerIndex = controller.filteredPlayers.index(controller.currentPlayer.playerId);
+		this.pagePtr = Math.floor(playerIndex / 10);
 	}
-	
+
+	view.elements.playersTable.clear();
 	for (var x = 0; x < 10; x ++)
 	{
-		var playerPtr = x + (pagePtr * 10);	
+		var playerPtr = x + (this.pagePtr * 10);	
 		if (playerPtr >= controller.filteredPlayers.count()) break;
 
 		var row = this.element.insertRow();
@@ -47,6 +47,12 @@ ViewTablePlayers.prototype.render = function() {
 
 	}
 
+	this.setButtons(playerIndex);
+
+}
+
+ViewTablePlayers.prototype.setButtons = function (playerIndex) {
+	
 	view.elements.movePlayerFirst.enable();
 	view.elements.movePlayerPrevious.enable();
 	view.elements.movePlayerNext.enable();
@@ -57,26 +63,26 @@ ViewTablePlayers.prototype.render = function() {
 	view.elements.movePageNext.enable();
 	view.elements.movePageLast.enable();
 
-	if (playerIndex == 0)
+	if ((playerIndex == 0) || (playerIndex == -1))
 	{
 		view.elements.movePlayerFirst.disable();
 		view.elements.movePlayerPrevious.disable();
 	}
 
-	if (playerIndex == controller.filteredPlayers.count()-1)
+	if ((playerIndex == controller.filteredPlayers.count()-1) || (playerIndex == -1))
 	{
 		view.elements.movePlayerNext.disable();
 		view.elements.movePlayerLast.disable();
 	}
 
-	if (pagePtr == 0)
+	if (this.pagePtr == 0)
 	{
 		view.elements.movePageFirst.disable();
 		view.elements.movePagePrevious.disable();
 	}
 
 	var lastPagePtr = Math.floor(controller.filteredPlayers.count() / 10);
-	if (pagePtr == lastPagePtr)
+	if (this.pagePtr == lastPagePtr)
 	{
 		view.elements.movePageNext.disable();
 		view.elements.movePageLast.disable();
@@ -85,28 +91,27 @@ ViewTablePlayers.prototype.render = function() {
 }
 
 ViewTablePlayers.prototype.movePageFirst = function () {
-	var playerId = controller.filteredPlayers.first().playerId;
-	view.selectPlayer(playerId);
+	this.movePage(0);
 }
 
 ViewTablePlayers.prototype.movePagePrevious = function () {
-	var pagePtr = Math.floor(data.players.index(controller.currentPlayerId) / 10);
-	pagePtr --;
-	var playerId = controller.filteredPlayers.items[pagePtr * 10].playerId;
-	view.selectPlayer(playerId);
+	this.movePage(this.pagePtr - 1);
 }
 
 ViewTablePlayers.prototype.movePageNext = function () {
-	var pagePtr = Math.floor(data.players.index(controller.currentPlayerId) / 10);
-	pagePtr ++;
-	var playerId = controller.filteredPlayers.items[pagePtr * 10].playerId;
-	view.selectPlayer(playerId);
+	this.movePage(this.pagePtr + 1);
 }
 
 ViewTablePlayers.prototype.movePageLast = function () {
 	var pagePtr = Math.floor(data.players.count() / 10);
-	var playerId = controller.filteredPlayers.items[pagePtr * 10].playerId;
-	view.selectPlayer(playerId);
+	this.movePage(pagePtr);
+}
+
+ViewTablePlayers.prototype.movePage = function (pagePtr)
+{
+	view.deselectPlayer();
+	this.pagePtr = pagePtr;
+	this.render();
 }
 
 ViewTablePlayers.prototype.movePlayerFirst = function () {
