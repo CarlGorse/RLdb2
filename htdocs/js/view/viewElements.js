@@ -16,6 +16,11 @@ ViewElements.prototype.initialise = function () {
 
 	this.filteredPlayersCount = new DocumentSpan('filteredPlayersCount');
 
+	this.movePlayerFirst =  	new DocumentButton('movePlayerFirst', view.events.movePlayerFirst);
+	this.movePlayerPrevious = 	new DocumentButton('movePlayerPrevious', view.events.movePlayerPrevious);
+	this.movePlayerNext = 		new DocumentButton('movePlayerNext', view.events.movePlayerNext);
+	this.movePlayerLast = 		new DocumentButton('movePlayerLast', view.events.movePlayerLast);
+
 	this.playersTable = new ViewTablePlayers('playersTable', data.players);
 
 	this.pName = 		new DocumentElement('pName');
@@ -30,26 +35,16 @@ ViewElements.prototype.initialise = function () {
 	this.pSquadNo2 = 	new ViewSelect('pSquadNo2', data.squadNos, new DocumentSelect('pSquadNo2'), 'number');
 	this.pImage2 = 		new DocumentInput('pImage2');
 
-	this.addPlayer = 	new DocumentButton('addPlayer');
-	this.editPlayer = 	new DocumentButton('editPlayer');
-	this.deletePlayer = new DocumentButton('deletePlayer');
-	this.savePlayer = 	new DocumentButton('savePlayer');
+	this.movePageFirst =  	new DocumentButton('movePageFirst', view.events.movePageFirst);
+	this.movePagePrevious = new DocumentButton('movePagePrevious', view.events.movePagePrevious);
+	this.movePageNext = 	new DocumentButton('movePageNext', view.events.movePageNext);
+	this.movePageLast = 	new DocumentButton('movePageLast', view.events.movePageLast);
+
+	this.addPlayer = 	new DocumentButton('addPlayer', view.events.addPlayer);
+	this.editPlayer = 	new DocumentButton('editPlayer', view.events.editPlayer);
+	this.deletePlayer = new DocumentButton('deletePlayer', view.events.deletePlayer);
+	this.savePlayer = 	new DocumentButton('savePlayer', view.events.savePlayer);
 	this.editPlayer.disable();
 	this.deletePlayer.disable();
-
-	this.addPlayer.setOnClick(view.events.addPlayer);
-	this.editPlayer.setOnClick(view.events.editPlayer);
-	this.deletePlayer.setOnClick(view.events.deletePlayer);
-	this.savePlayer.setOnClick(view.events.savePlayer);
-
-	this.moveFirst =  	new DocumentButton('moveFirst');
-	this.movePrevious = new DocumentButton('movePrevious');
-	this.moveNext = 	new DocumentButton('moveNext');
-	this.moveLast = 	new DocumentButton('moveLast');
-
-	this.moveFirst.setOnClick(view.events.moveFirst);
-	this.movePrevious.setOnClick(view.events.movePrevious);
-	this.moveNext.setOnClick(view.events.moveNext);
-	this.moveLast.setOnClick(view.events.moveLast);
 
 }

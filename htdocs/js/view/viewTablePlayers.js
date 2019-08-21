@@ -12,16 +12,20 @@ ViewTablePlayers.prototype.render = function() {
 
 	controller.setFilteredPlayers();
 
-	var lastPagePtr = Math.floor((controller.filteredPlayerIds.length + 9) / 10) - 1;
-	if (view.pagePtr == -1) view.pagePtr = lastPagePtr;
-
+	var pagePtr = 0;
+	if (controller.currentPlayer != null)
+	{
+		var playerIndex = controller.filteredPlayers.index(controller.currentPlayer.playerId);
+		pagePtr = Math.floor(playerIndex / 10);
+	}
+	
 	for (var x = 0; x < 10; x ++)
 	{
-		var playerPtr = x + (view.pagePtr * 10);	
-		if (playerPtr >= controller.filteredPlayerIds.length) break;
+		var playerPtr = x + (pagePtr * 10);	
+		if (playerPtr >= controller.filteredPlayers.count()) break;
 
 		var row = this.element.insertRow();
-		var playerId = controller.filteredPlayerIds[playerPtr]
+		var playerId = controller.filteredPlayers.items[playerPtr].playerId;
 		row.playerId = playerId;
 		row.onclick = function() { 
 			view.events.selectPlayerByTable(this); 
@@ -43,46 +47,84 @@ ViewTablePlayers.prototype.render = function() {
 
 	}
 
-	view.elements.moveFirst.enable();
-	view.elements.movePrevious.enable();
-	view.elements.moveNext.enable();
-	view.elements.moveLast.enable();
+	view.elements.movePlayerFirst.enable();
+	view.elements.movePlayerPrevious.enable();
+	view.elements.movePlayerNext.enable();
+	view.elements.movePlayerLast.enable();
 
-	if (view.pagePtr == 0)
+	view.elements.movePageFirst.enable();
+	view.elements.movePagePrevious.enable();
+	view.elements.movePageNext.enable();
+	view.elements.movePageLast.enable();
+
+	if (playerIndex == 0)
 	{
-		view.elements.moveFirst.disable();
-		view.elements.movePrevious.disable();
+		view.elements.movePlayerFirst.disable();
+		view.elements.movePlayerPrevious.disable();
 	}
 
-	if (view.pagePtr == lastPagePtr)
+	if (playerIndex == controller.filteredPlayers.count()-1)
 	{
-		view.elements.moveNext.disable();
-		view.elements.moveLast.disable();
+		view.elements.movePlayerNext.disable();
+		view.elements.movePlayerLast.disable();
+	}
+
+	if (pagePtr == 0)
+	{
+		view.elements.movePageFirst.disable();
+		view.elements.movePagePrevious.disable();
+	}
+
+	var lastPagePtr = Math.floor(controller.filteredPlayers.count() / 10);
+	if (pagePtr == lastPagePtr)
+	{
+		view.elements.movePageNext.disable();
+		view.elements.movePageLast.disable();
 	}
 
 }
 
-ViewTablePlayers.prototype.moveFirst = function () {
-	view.pagePtr = 0;
-	view.elements.playersTable.render();
+ViewTablePlayers.prototype.movePageFirst = function () {
+	var playerId = controller.filteredPlayers.first().playerId;
+	view.selectPlayer(playerId);
 }
 
-ViewTablePlayers.prototype.movePrevious = function () {
-	view.pagePtr --;
-	view.elements.playersTable.render();
+ViewTablePlayers.prototype.movePagePrevious = function () {
+	var pagePtr = Math.floor(data.players.index(controller.currentPlayerId) / 10);
+	pagePtr --;
+	var playerId = controller.filteredPlayers.items[pagePtr * 10].playerId;
+	view.selectPlayer(playerId);
 }
 
-ViewTablePlayers.prototype.moveNext = function () {
-	view.pagePtr ++ ;
-	view.elements.playersTable.render();
+ViewTablePlayers.prototype.movePageNext = function () {
+	var pagePtr = Math.floor(data.players.index(controller.currentPlayerId) / 10);
+	pagePtr ++;
+	var playerId = controller.filteredPlayers.items[pagePtr * 10].playerId;
+	view.selectPlayer(playerId);
 }
 
-ViewTablePlayers.prototype.moveLast = function () {
-	view.pagePtr = -1;
-	view.elements.playersTable.render();
+ViewTablePlayers.prototype.movePageLast = function () {
+	var pagePtr = Math.floor(data.players.count() / 10);
+	var playerId = controller.filteredPlayers.items[pagePtr * 10].playerId;
+	view.selectPlayer(playerId);
 }
 
-ViewTablePlayers.prototype.lastPagePtr = function () {
-	return Math.floor(view.elements.playersTable.dataSet.count() / 10) - 1;
+ViewTablePlayers.prototype.movePlayerFirst = function () {
+	var playerId = controller.filteredPlayers.first().playerId;
+	view.selectPlayer(playerId);
 }
 
+ViewTablePlayers.prototype.movePlayerPrevious = function () {
+	var playerId = controller.filteredPlayers.previous(controller.currentPlayer).playerId;
+	view.selectPlayer(playerId);
+}
+
+ViewTablePlayers.prototype.movePlayerNext = function () {
+	var playerId = controller.filteredPlayers.next(controller.currentPlayer).playerId;
+	view.selectPlayer(playerId);
+}
+
+ViewTablePlayers.prototype.movePlayerLast = function () {
+	var playerId = controller.filteredPlayers.last().playerId;
+	view.selectPlayer(playerId);
+}

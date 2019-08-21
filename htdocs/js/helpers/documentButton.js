@@ -1,7 +1,8 @@
 
-function DocumentButton(name)
+function DocumentButton(name, setOnClick)
 {
-	DocumentElement.call(this, name);
+    DocumentElement.call(this, name);
+    this.element.onclick = setOnClick;
 }
 DocumentButton.prototype = Object.create(DocumentElement.prototype)
 

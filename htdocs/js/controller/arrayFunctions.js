@@ -9,7 +9,7 @@ ArrayFunctions.prototype.clear = function (thisArray) {
 	thisArray.length = 0;
 }
 
-ArrayFunctions.prototype.getItemIndex = function (thisArray, itemValue, itemProperty) {
+ArrayFunctions.prototype.index = function (thisArray, itemValue, itemProperty) {
 	for (var x = 0; x < thisArray.length; x++)
 	{
 		if (itemProperty.length > 0)

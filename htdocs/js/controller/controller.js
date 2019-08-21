@@ -11,7 +11,8 @@ function Controller()
 	functions = new Functions();
 	
 	this.currentPlayer = null;
-	this.filteredPlayerIds = new Array();
+	this.currentPlayerId = 0;
+	this.filteredPlayers = new Players();
 
 }
 Controller.prototype.initialise =  function () {
@@ -26,6 +27,7 @@ Controller.prototype.loadData =  function () {
 Controller.prototype.setCurrentPlayer =  function (playerId) {
 	p = data.players.item(playerId);
 	this.currentPlayer = p;
+	this.currentPlayerId = this.currentPlayer.playerId;
 	return p;
 }		
 
@@ -78,12 +80,12 @@ Controller.prototype.playerCountByFilter =  function (f, di) {
 
 Controller.prototype.setFilteredPlayers = function ()
 {
-	functions.Array.clear(this.filteredPlayerIds);
+	functions.Array.clear(this.filteredPlayers.items);
 	data.players.items.forEach (
 		function(di) {
 			var playerCount = controller.playerCountByFilter(view.elements.playerFilter, di);
 			if (playerCount > 0)
-				this.filteredPlayerIds.push(di.playerId);
+				this.filteredPlayers.addPlayer(di);
 		}, this	
 	)
 }

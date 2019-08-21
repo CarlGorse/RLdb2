@@ -45,6 +45,16 @@ select { height:3em; }
 	padding-bottom:1em;
 }
 
+#divButtons3 {
+	padding-top:1em;
+	padding-bottom:1em;
+}
+
+#divButtons4 {
+	padding-top:1em;
+	padding-bottom:1em;
+}
+
 #savePlayer {
 	display:none;
 }

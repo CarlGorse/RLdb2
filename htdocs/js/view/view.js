@@ -14,7 +14,6 @@ View.prototype.loadDisplay = function () {
 	this.elements.initialise();
 	this.filters.initialise();
 
-	view.pagePtr = 0;
 	this.elements.playerDetails.hide();
 	this.elements.editPlayerDetails.hide();
 
@@ -59,8 +58,8 @@ View.prototype.moveToPlayerSelect = function (playerId)
 
 View.prototype.moveToPlayerTable = function (playerId)
 {
-	var idIndex = functions.Array.getItemIndex(controller.filteredPlayerIds, playerId, '');
-	view.pagePtr = Math.floor(idIndex / 10);
+	//var idIndex = controller.filteredPlayers.index(controller.currentPlayerId);
+	//view.pagePtr = Math.floor(idIndex / 10);
 	this.elements.playersTable.render();
 }
 

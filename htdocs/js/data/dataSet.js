@@ -54,10 +54,6 @@ DataSet.prototype.count = function () {
 	return this.items.length;
 }
 
-DataSet.prototype.getIdIndex = function (id) {
-	return functions.Array.getItemIndex(this.items, id, "id");
-}
-
 DataSet.prototype.remove = function (dataItem) {
 	var index = this.getIdIndex(dataItem.id);
 	this.items.splice(index, 1);
@@ -74,4 +70,29 @@ DataSet.prototype.writeJSON = function ()
 	var fd = new FormData();
 	fd.append("playersJSON", dataSetJSON);
 	xmlhttp.send(fd);
+}
+
+DataSet.prototype.index = function(id)
+{
+	return functions.Array.index(this.items, id, 'id');
+}
+
+DataSet.prototype.previous = function(dataItem)
+{
+	return this.items[this.index(dataItem.id)-1];
+}
+
+DataSet.prototype.next = function(dataItem)
+{
+	return this.items[this.index(dataItem.id)+1];
+}
+
+DataSet.prototype.last = function()
+{
+	return this.items[this.count()-1];
+}
+
+DataSet.prototype.first = function()
+{
+	return this.items[0];
 }
