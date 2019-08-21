@@ -39,7 +39,7 @@ Controller.prototype.deletePlayer =  function (p) { data.players.remove(p); }
 
 Controller.prototype.savePlayers =  function (p) { data.players.save(p); }	
 
-Controller.prototype.playerCountByFilter =  function (f, di) {
+Controller.prototype.playerCountByFilter =  function (f, filterItemValue) {
 
 	var count = 0;
 
@@ -51,16 +51,33 @@ Controller.prototype.playerCountByFilter =  function (f, di) {
 
 			var isMatch = true;
 
-			if (p[f.searchProperty] != di[f.searchProperty]) {
+			if (filterItemValue == "none")
+			{
+				if (p[f.searchProperty].length > 0)
+				{
+					isMatch = false;
+					return;
+				}
+			}
+
+			if ((p[f.searchProperty] != filterItemValue) && (filterItemValue != "none")) {
 				isMatch = false;
 				return;
 			}
 
 			view.filters.items.forEach(
 				function (f2) { 
-					if (f2.includeInPlayerCount == false) return;
 					if (f2.filterId == f.filterId) return;
-					if ((f2.value() != "") && (f2.value() != "all"))
+					if (f2.includeInPlayerCount == false) return;
+					if (f2.value() == "none")
+					{
+						if (p[f2.searchProperty].length > 0)
+						{
+							isMatch = false;
+							return;
+						}
+					}
+					if ((f2.value() != "") && (f2.value() != "all") && (f2.value() != "none"))
 					{
 						if (p[f2.searchProperty] != f2.value())
 						{
@@ -83,7 +100,8 @@ Controller.prototype.setFilteredPlayers = function ()
 	functions.Array.clear(this.filteredPlayers.items);
 	data.players.items.forEach (
 		function(di) {
-			var playerCount = controller.playerCountByFilter(view.elements.playerFilter, di);
+			var f = view.elements.playerFilter;
+			var playerCount = controller.playerCountByFilter(f, di[f.searchProperty]);
 			if (playerCount > 0)
 				this.filteredPlayers.addPlayer(di);
 		}, this	

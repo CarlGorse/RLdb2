@@ -43,10 +43,21 @@ ViewSelect.prototype.render = function () {
 		this.element.add(option);
 	}
 
+	if (this.showOptionNone)
+	{
+		var option = document.createElement("option");
+		option.text = '[none]';
+		option.value = 'none';
+		var count = controller.playerCountByFilter(this, "none");
+		if (count > 0)
+			option.text += " (" + count + ")";
+		this.element.add(option);
+	}
+
 	this.dataSet.items.forEach(
 		function (di) {
 
-			var playerCount = controller.playerCountByFilter(this, di);
+			var playerCount = controller.playerCountByFilter(this, di[this.searchProperty]);
 			if ((this.showNonMatchingDataItems) || (playerCount > 0))
 			{
 				var option = document.createElement("option");

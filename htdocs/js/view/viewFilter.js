@@ -5,6 +5,7 @@ function ViewFilter(filterId, dataSet, viewElement, displayProperty, searchPrope
 	ViewSelect.call(this, filterId, dataSet, viewElement, displayProperty);
 
 	this.showOptionAll = true;
+	this.showOptionNone = true;
 	
 	view.filters.items.push(this); 
 	

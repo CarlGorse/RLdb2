@@ -5,6 +5,7 @@ function ViewFilterPlayer(filterId, viewElement, displayProperty)
 	this.showNonMatchingDataItems = false;
 	this.showDataItemCount = false;
 	this.showOptionAll = false;
+	this.showOptionNone = false;
 	this.setInitialValueEmpty = true;
 	this.includeInPlayerCount = false;
 }
