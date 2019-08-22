@@ -82,6 +82,10 @@ View.prototype.showEditPlayerDetails = function () {
 	
 	this.hidePlayerDetails();
 
+	this.elements.pClub2.render();
+	this.elements.pPosition2.render();
+	this.elements.pSquadNo2.render();
+	
 	var p = controller.currentPlayer;
 	view.elements.pForename2.setValue(p.forename);
 	view.elements.pSurname2.setValue(p.surname);
@@ -89,10 +93,6 @@ View.prototype.showEditPlayerDetails = function () {
 	view.elements.pPosition2.setValue(p.positionId);
 	view.elements.pSquadNo2.setValue(p.squadNo);
 	view.elements.pImage2.setValue(p.image);
-
-	this.elements.pClub2.render();
-	this.elements.pPosition2.render();
-	this.elements.pSquadNo2.render();
 
 	this.elements.editPlayerDetails.show();
 	this.elements.savePlayer.show();
