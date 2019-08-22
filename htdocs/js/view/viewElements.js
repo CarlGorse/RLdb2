@@ -23,7 +23,8 @@ ViewElements.prototype.initialise = function () {
 
 	this.playersTable = new ViewTablePlayers('playersTable', data.players);
 
-	this.pName = 		new DocumentElement('pName');
+	this.pForename = 		new DocumentElement('pForename');
+	this.pSurname = 		new DocumentElement('pSurname');
 	this.pClub = 		new DocumentElement('pClub');
 	this.pPosition = 	new DocumentElement('pPosition');
 	this.pSquadNo = 	new DocumentElement('pSquadNo');

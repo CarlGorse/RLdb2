@@ -35,7 +35,8 @@ View.prototype.selectPlayer = function (playerId) {
 	this.elements.playerFilter.select(playerId);
 
 	var p = controller.currentPlayer;
-	view.elements.pName.setValue(p.name);
+	view.elements.pForename.setValue(p.forename);
+	view.elements.pSurname.setValue(p.surname);
 	view.elements.pClub.setValue(data.clubs.club(p.clubId).name2);
 	view.elements.pPosition.setValue( p.positionId ? data.positions.position(p.positionId).name : '');
 	view.elements.pSquadNo.setValue(p.squadNo);

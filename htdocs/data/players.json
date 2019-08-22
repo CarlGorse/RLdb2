@@ -75,9 +75,9 @@
 
                 {"clubId":"hud","players":
                         [
-                                {"forename":"Aaron Murphy", "surname":"", "positionId":"sr",            "squadNo":"11",         "image":"aaron-murphy.jpg"},
-                                {"forename":"Adam O'Brien", "surname":"", "positionId":"h",             "squadNo":"14"},
-                                {"forename":"Adam Walne", "surname":"", "positionId":"pf",              "squadNo":"27",         "image":"adam-walne.jpg"},
+                                {"forename":"Aaron", "surname":"Murphy", "positionId":"sr",             "squadNo":"11",         "image":"aaron-murphy.jpg"},
+                                {"forename":"Adam", "surname":"O'Brien", "positionId":"h",              "squadNo":"14"},
+                                {"forename":"Adam", "surname":"Walne",  "positionId":"pf",              "squadNo":"27",         "image":"adam-walne.jpg"},
                                 {"forename":"Akuila Uate", "surname":"", "positionId":"w",              "squadNo":"5",          "image":"akuila-uate.jpg"},
                                 {"forename":"Alex Mellor", "surname":"", "positionId":"sr",             "squadNo":"12"},
                                 {"forename":"Alrix Da Costa", "surname":"", "positionId":"h",           "squadNo":"18"},
@@ -149,7 +149,7 @@
 
                 {"clubId":"hkr","players":
                         [
-                                {"forename":"Adam Quinlan", "surname":"", "positionId":"fb",            "squadNo":"1"},
+                                {"forename":"Adam", "surname":"Quinlan", "positionId":"fb",             "squadNo":"1"},
                                 {"forename":"Ben Crooks", "surname":"", "positionId":"c",               "squadNo":"3",          "image":"ben-crooks.jpg"},
                                 {"forename":"Chris Atkin", "surname":"", "positionId":"sh",             "squadNo":"17"},
                                 {"forename":"Craig Hall", "surname":"", "positionId":"w",               "squadNo":"2"},
@@ -182,10 +182,10 @@
 
                 {"clubId":"lee","players":
                         [
-                                {"forename":"Adam Cuthbertson", "surname":"", "positionId":"pf",        "squadNo":"8",          "image":"adam-cuthbertson.jpg"},
+                                {"forename":"Adam", "surname":"Cuthbertson", "positionId":"pf",         "squadNo":"8",          "image":"adam-cuthbertson.jpg"},
                                 {"forename":"Alex Sutcliffe", "surname":"", "positionId":"c",           "squadNo":"30"},
                                 {"forename":"Ash Handley", "surname":"", "positionId":"w",              "squadNo":"5"},
-                                {"forename":"Ashton Golding", "surname":"", "positionId":"fb",          "squadNo":"21"},
+                                {"forename":"Ashton", "surname":"Golding", "positionId":"fb",           "squadNo":"21"},
                                 {"forename":"Ava Seumanufagai", "surname":"", "positionId":"fb",        "squadNo":"0"},
                                 {"forename":"Brad Dwyer", "surname":"", "positionId":"h",               "squadNo":"14",         "image":"brad-dwyer.jpg"},
                                 {"forename":"Brad Singleton", "surname":"", "positionId":"pf",          "squadNo":"10",         "image":"brad-singleton.jpg"},
@@ -259,7 +259,7 @@
 
                 {"clubId":"sal","players":
                         [
-                                {"forename":"Adam Lawton", "surname":"", "positionId":"sr",             "squadNo":"25",         "image":"adam-lawton.jpg"},
+                                {"forename":"Adam", "surname":"Lawton", "positionId":"sr",              "squadNo":"25",         "image":"adam-lawton.jpg"},
                                 {"forename":"Adam Walker", "surname":"", "positionId":"pf",             "squadNo":"15",         "image":"adam-walker.jpg"},
                                 {"forename":"Ben Nakubuwai", "surname":"", "positionId":"pf",           "squadNo":"18"},
                                 {"forename":"Daniel Murray", "surname":"", "positionId":"pf",           "squadNo":"20"},
@@ -290,7 +290,7 @@
 
                 {"clubId":"sth","players":
                         [
-                                {"forename":"Aaron Smith", "surname":"", "positionId":"h",              "squadNo":"21"},
+                                {"forename":"Aaron", "surname":"Smith", "positionId":"h",               "squadNo":"21"},
                                 {"forename":"Adam Swift", "surname":"", "positionId":"w",               "squadNo":"18",         "image":"adam-swift.jpg"},
                                 {"forename":"Alex Walmsley", "surname":"", "positionId":"pf",           "squadNo":"8",          "image":"alex-walmsley.jpg"},
                                 {"forename":"Callum Hazzard", "surname":"", "positionId":"lf",          "squadNo":"28"},
