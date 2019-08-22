@@ -84,7 +84,7 @@ ViewTablePlayers.prototype.setButtons = function (playerIndex) {
 		view.elements.movePlayerNext.disable();
 	}
 
-	if (controller.filtredOkayers,count < this.memberPageCount)
+	if (controller.filteredPlayers.count() < this.memberPageCount)
 	{
 		view.elements.movePageLast.disable();
 	}

@@ -87,6 +87,8 @@ ViewSelect.prototype.render = function () {
 			functions.Select.selectOptionByValue(this.element, currentValue);
 	}
 
+	view.elements.playersTable.movePageFirst();
+
 }
 
 ViewSelect.prototype.clearValue = function () {
