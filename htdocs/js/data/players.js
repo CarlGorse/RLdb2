@@ -5,9 +5,9 @@ function Players()
 }
 Players.prototype = Object.create(DataSet.prototype)
 
-Players.prototype.add =  function (name, clubId, positionId, squadNo, image) {
+Players.prototype.add =  function (forename, surname, clubId, positionId, squadNo, image) {
 	playerId = this.nextId();
-	p = new Player(playerId, name, clubId, positionId, squadNo, image);
+	p = new Player(playerId, forename, surname, clubId, positionId, squadNo, image);
 	this.addPlayer(p);
 	return p;
 }
@@ -34,7 +34,7 @@ Players.prototype.loadFile = function (file) {
 		function (c) { 
 			c.players.forEach( 
 				function(p) { 
-					data.players.add(p.name, c.clubId, p.positionId, p.squadNo, p.image);
+					data.players.add(p.forename, p.surname, c.clubId, p.positionId, p.squadNo, p.image);
 				} 
 			) 
 		} 

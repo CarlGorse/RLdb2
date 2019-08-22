@@ -29,7 +29,8 @@ ViewElements.prototype.initialise = function () {
 	this.pSquadNo = 	new DocumentElement('pSquadNo');
 	this.pImage = 		new DocumentImage('pImage');
 		
-	this.pName2 = 		new DocumentInput('pName2');
+	this.pForename2 = 		new DocumentInput('pForename2');
+	this.pSurname2 = 		new DocumentInput('pSurname2');
 	this.pClub2 = 		new ViewSelect('pClub2', data.clubs, new DocumentSelect('pClub2'), 'name2');
 	this.pPosition2 = 	new ViewSelect('pPositions2', data.positions, new DocumentSelect('pPosition2'), 'name');
 	this.pSquadNo2 = 	new ViewSelect('pSquadNo2', data.squadNos, new DocumentSelect('pSquadNo2'), 'number');

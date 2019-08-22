@@ -1,10 +1,12 @@
 
-function Player(playerId, name, clubId, positionId, squadNo, image)
+function Player(playerId, forename, surname, clubId, positionId, squadNo, image)
 {
 	DataItem.call(this, playerId, 'Player', 'name')
 	
 	this.playerId = playerId;
-	this.name = name ? name : "";
+	this.forename = forename ? forename : "";
+	this.surname = surname ? surname : "";
+	this.name = this.forename + ' ' + this.surname;
 	this.clubId = clubId ? clubId : "";
 	this.positionId = positionId ? positionId : "";
 	this.squadNo = squadNo ? squadNo : "";

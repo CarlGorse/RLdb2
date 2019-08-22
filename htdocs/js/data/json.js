@@ -59,7 +59,9 @@ Json.prototype.getPlayersJSON = function () {
 							
 						playerJSON += tab(4);
 						playerJSON += '{';
-						playerJSON += '\"' + 'name' + '\"' + ':' + '\"' + p.name + '\"';
+						playerJSON += '\"' + 'forename' + '\"' + ':' + '\"' + p.forename + '\"';
+						playerJSON += ', '
+						playerJSON += '\"' + 'surname' + '\"' + ':' + '\"' + p.surname + '\"';
 							
 						if (p.positionId)
 						{

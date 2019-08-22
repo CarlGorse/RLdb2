@@ -82,7 +82,8 @@ View.prototype.showEditPlayerDetails = function () {
 	this.hidePlayerDetails();
 
 	var p = controller.currentPlayer;
-	view.elements.pName2.setValue(p.name);
+	view.elements.pForename2.setValue(p.forename);
+	view.elements.pSurname2.setValue(p.surname);
 	view.elements.pClub2.setValue(p.clubId);
 	view.elements.pPosition2.setValue(p.positionId);
 	view.elements.pSquadNo2.setValue(p.squadNo);
