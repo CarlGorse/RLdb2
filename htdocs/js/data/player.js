@@ -6,7 +6,7 @@ function Player(playerId, forename, surname, clubId, positionId, squadNo, image)
 	this.playerId = playerId;
 	this.forename = forename ? forename.trim() : "";
 	this.surname = surname ? surname.trim() : "";
-	this.name = this.forename + ' ' + this.surname;
+	this.name = this.surname + ', ' + this.forename;
 	this.clubId = clubId ? clubId : "";
 	this.positionId = positionId ? positionId : "";
 	this.squadNo = squadNo ? squadNo : "";
