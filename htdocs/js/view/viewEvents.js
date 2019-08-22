@@ -4,6 +4,7 @@ function ViewEvents() {}
 ViewEvents.prototype.changeFilter = function (filter) {	
     //pagePtr = 0;
     view.filters.render(); 
+    view.elements.playersTable.movePageFirst();
 }
 
 ViewEvents.prototype.initialise = function () {	

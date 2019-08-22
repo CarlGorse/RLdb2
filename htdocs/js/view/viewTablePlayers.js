@@ -52,7 +52,7 @@ ViewTablePlayers.prototype.render = function() {
 
 	}
 
-	this.setButtons(playerIndex);
+	this.setButtons(playerIndex);	
 
 }
 

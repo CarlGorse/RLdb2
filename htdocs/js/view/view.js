@@ -120,7 +120,8 @@ View.prototype.deletePlayer = function () {
 View.prototype.savePlayer = function () {
 	
 	var p = controller.currentPlayer;
-	p.name = view.elements.pName2.value();
+	p.forename = view.elements.pForename2.value();
+	p.surname = view.elements.pSurname2.value();
 	p.clubId = view.elements.pClub2.value();
 	p.positionId = view.elements.pPosition2.value();
 	p.squadNo = view.elements.pSquadNo2.value();
