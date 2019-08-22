@@ -47,4 +47,6 @@ ViewElements.prototype.initialise = function () {
 	this.editPlayer.disable();
 	this.deletePlayer.disable();
 
+	this.pageCount = 	new DocumentSpan('pageCount');
+
 }

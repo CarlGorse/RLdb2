@@ -87,27 +87,24 @@
 			</tr>	  
 		
 		</table>
-
-		
-
-		<div id="divFilteredPlayersCount">
-			<span id="filteredPlayersCount"></span>
-		</div>
-
-		<div id="divPlayerFilter">
-			<select id="playerFilter"></select>
-		</div>	
 			
 		<table>
 			
 			<tr>
 				<td>
-					<div id="divButtons4">
-						<span>Player:</span>
-						<button id="movePlayerFirst">&lt&lt</button>
-						<button id="movePlayerPrevious">&lt</button>
-						<button id="movePlayerNext">&gt</button>
-						<button id="movePlayerLast">&gt&gt</button>
+					<div id="playerSelect">
+						<span>
+							<span id="filteredPlayersCount"></span>
+						</span>
+						<span id="playerButtons">
+							<button id="movePlayerFirst">&lt&lt</button>
+							<button id="movePlayerPrevious">&lt</button>
+							<button id="movePlayerNext">&gt</button>
+							<button id="movePlayerLast">&gt&gt</button>
+						</span>
+						<span>
+							<select id="playerFilter"></select>
+						</span>
 					</div>
 				</td>
 			</tr>
@@ -158,26 +155,26 @@
 
 			<tr>
 				<td>
-					<div id="divButtons1">
-						<span>Page:</span>
-						<button id="movePageFirst">&lt&lt</button>
-						<button id="movePagePrevious">&lt</button>
-						<button id="movePageNext">&gt</button>
-						<button id="movePageLast">&gt&gt</button>
+					<div id="pageSelect">
+						<span id="pageCount"></span>
+						<span id="pageButtons">
+							<button id="movePageFirst">&lt&lt</button>
+							<button id="movePagePrevious">&lt</button>
+							<button id="movePageNext">&gt</button>
+							<button id="movePageLast">&gt&gt</button>
+						</span>
+						<span id="editButtons"> 
+							<button id="addPlayer">Add new Player</button>
+							<button id="deletePlayer">Delete Player</button>
+							<button id="editPlayer">Edit Player</button>
+						</span>
 					</div>
 				</td>
 			</tr>
 			
 			<tr>
-				<td>
-					<div id="divButtons2"> 
-						<button id="addPlayer">Add new Player</button>
-						<button id="deletePlayer">Delete Player</button>
-						<button id="editPlayer">Edit Player</button>
-					</div>
-				</td>
-				<td>
-				</td>
+				<td></td>
+				<td></td>
 				<td>
 					<div id="divButtons3"> 
 						<button id="savePlayer">Save Player</button>

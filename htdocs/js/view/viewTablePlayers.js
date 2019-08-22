@@ -4,6 +4,7 @@ function ViewTablePlayers(elementId, dataSet)
 	DocumentTable.call(this, elementId);
 	this.dataSet = dataSet;
 	this.pagePtr = 0;
+	this.pageCount = 0;
 	this.memberPageCount = 15;
 }
 ViewTablePlayers.prototype = Object.create(DocumentTable.prototype)
@@ -11,6 +12,7 @@ ViewTablePlayers.prototype = Object.create(DocumentTable.prototype)
 ViewTablePlayers.prototype.render = function() {
 
 	controller.setFilteredPlayers();
+	this.pageCount = Math.floor(controller.filteredPlayers.count() / this.memberPageCount) + 1;
 
 	var playerIndex = -1;
 	if (controller.currentPlayer != null)
@@ -18,6 +20,8 @@ ViewTablePlayers.prototype.render = function() {
 		playerIndex = controller.filteredPlayers.index(controller.currentPlayer.playerId);
 		this.pagePtr = Math.floor(playerIndex / this.memberPageCount);
 	}
+
+	view.elements.pageCount.setValue('Page' + ' ' + (this.pagePtr + 1) + ' of ' + this.pageCount);
 
 	view.elements.playersTable.clear();
 	for (var x = 0; x < this.memberPageCount; x ++)
@@ -70,10 +74,14 @@ ViewTablePlayers.prototype.setButtons = function (playerIndex) {
 		view.elements.movePlayerPrevious.disable();
 	}
 
-	if ((playerIndex == controller.filteredPlayers.count()-1) || (playerIndex == -1))
+	if ((playerIndex == controller.filteredPlayers.count()-1))
+	{
+		view.elements.movePlayerLast.disable();
+	}
+
+	if ((playerIndex == controller.filteredPlayers.count()-1))
 	{
 		view.elements.movePlayerNext.disable();
-		view.elements.movePlayerLast.disable();
 	}
 
 	if (controller.filtredOkayers,count < this.memberPageCount)
@@ -121,7 +129,11 @@ ViewTablePlayers.prototype.movePage = function (pagePtr)
 }
 
 ViewTablePlayers.prototype.movePlayerFirst = function () {
-	var playerId = controller.filteredPlayers.first().playerId;
+	var playerId = 0
+	if (controller.currentPlayer == null)
+		playerId = controller.filteredOlayers.last().playerId;
+	else
+	playerId = controller.filteredPlayers.first().playerId;
 	view.selectPlayer(playerId);
 }
 
@@ -131,7 +143,11 @@ ViewTablePlayers.prototype.movePlayerPrevious = function () {
 }
 
 ViewTablePlayers.prototype.movePlayerNext = function () {
-	var playerId = controller.filteredPlayers.next(controller.currentPlayer).playerId;
+	var playerId = 0
+	if (controller.currentPlayer == null)
+		playerId = controller.filteredPlayers.first().playerId;
+	else
+		playerId = controller.filteredPlayers.next(controller.currentPlayer).playerId;
 	view.selectPlayer(playerId);
 }
 

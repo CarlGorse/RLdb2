@@ -13,6 +13,21 @@ select { height:3em; }
 .filterLabel::after { content: ":"; }
 .detailLabel::after { content: ":"; }
 
+#filteredPlayersCount::after { content: ":"; }
+#filteredPlayersCount {
+	padding-right: 1em; 
+}
+#playerButtons {
+	padding-right: 1em; 
+}
+#pageButtons {
+	padding-right: 1em; 
+}
+#pageCount::after { content: ":"; }
+#pageCount {
+	padding-right: 1em; 
+}
+
 #playerDetail {
 	padding-top:2em;
 	width: 26em;
@@ -30,29 +45,18 @@ select { height:3em; }
 	padding-top:1em;
 }
 
+#playerSelect {
+	padding-top:3em;
+	padding-bottom:1em;
+}
+
 #divPlayerFilter {
 	padding-top:1em;
 	padding-bottom:1em;
 }
 
-#divButtons1 {
-	padding-top:1em;
-	padding-bottom:1em;
-}
-
-#divButtons2 {
-	padding-top:1em;
-	padding-bottom:1em;
-}
-
-#divButtons3 {
-	padding-top:1em;
-	padding-bottom:1em;
-}
-
-#divButtons4 {
-	padding-top:1em;
-	padding-bottom:1em;
+#pageSelect {
+	padding-top:2em;
 }
 
 #savePlayer {
