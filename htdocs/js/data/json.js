@@ -61,26 +61,27 @@ Json.prototype.getPlayersJSON = function () {
 						playerJSON += '{';
 						playerJSON += '\"' + 'forename' + '\"' + ':' + '\"' + p.forename + '\"';
 						playerJSON += ', '
+						playerJSON = padLine(playerJSON, 72);
 						playerJSON += '\"' + 'surname' + '\"' + ':' + '\"' + p.surname + '\"';
 							
 						if (p.positionId)
 						{
 							playerJSON += ', '
-							playerJSON = padLine(playerJSON, 72);
+							playerJSON = padLine(playerJSON, 110);
 							playerJSON += '\"' + 'positionId' + '\"' + ':' + '\"' + p.positionId + '\"';
 						}
 							
 						if (p.squadNo)
 						{
 							playerJSON += ', '					
-							playerJSON = padLine(playerJSON, 104);
+							playerJSON = padLine(playerJSON, 148);
 							playerJSON += '\"' + 'squadNo' + '\"' + ':' + '\"' + p.squadNo + '\"';
 						}
 							
 						if (p.image)
 						{
 							playerJSON += ', '
-							playerJSON = padLine(playerJSON, 128);
+							playerJSON = padLine(playerJSON, 186);
 							playerJSON += '\"' + 'image' + '\"' + ':' + '\"' + p.image + '\"';
 						}
 							
