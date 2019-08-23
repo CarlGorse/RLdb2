@@ -20,7 +20,6 @@ ViewFilterPlayer.prototype.render = function ()
 	ViewFilterSelect.prototype.render.call(this);
 
 	count = this.element.options.length;
-	//count -= 1; // exclude 'all'
 
 	var countDescription = functions.getCountDescription(count, 'player');
 	
@@ -33,4 +32,10 @@ ViewFilterPlayer.prototype.select = function (playerId)
 	controller.setCurrentPlayer(playerId);
 	ViewFilterSelect.prototype.select.call(this, playerId);
 	view.elements.playersTable.render();
+}
+
+ViewFilterPlayer.prototype.deselect = function ()
+{
+	controller.unsetCurrentPlayer();
+	this.clearValue();
 }

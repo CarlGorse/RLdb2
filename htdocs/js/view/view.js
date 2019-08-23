@@ -15,22 +15,30 @@ View.prototype.loadDisplay = function () {
 	this.filters.initialise();
 
 	this.hidePlayerDetails();
-	this.elements.editPlayerDetails.hide();
+	this.hideEditPlayerDetails();
 
 	this.filters.render();
 
 }
 
+View.prototype.hideEditPlayerDetails = function ()
+{
+	this.elements.editPlayerDetails.hide();
+}
+
 View.prototype.deselectPlayer = function () {
+	
 	this.hidePlayerDetails();
-	controller.currentPlayer = null;
-	this.elements.playerFilter.clearValue();
+	
+	this.elements.playerFilter.deselect();
+
 	view.setButtons();
+
 }
 
 View.prototype.selectPlayer = function (playerId) {
 
-	this.elements.editPlayerDetails.hide();
+	this.hideEditPlayerDetails();
 
 	this.elements.playerFilter.select(playerId);
 
@@ -45,6 +53,7 @@ View.prototype.selectPlayer = function (playerId) {
 	else
 		this.elements.pImage.hide();
 	view.elements.pImage.setImage("images\\players\\" + p.image);
+	
 	this.elements.playerDetails.show();
 
 	view.setButtons();
@@ -110,6 +119,7 @@ View.prototype.deletePlayer = function () {
 		return;
 	
 	var p = controller.currentPlayer;	// save current player before deleted from data/controller
+	
 	controller.deletePlayer(p);
 	controller.savePlayers();
 	
@@ -138,8 +148,4 @@ View.prototype.savePlayer = function () {
 
 View.prototype.showMessage = function (text) {
 	alert(text);
-}
-
-View.prototype.getFilter = function (filterId) {
-	return view.filters.item(filterId);
 }

@@ -38,3 +38,15 @@ DocumentSelect.prototype.selectedIndex = function () {
 			return x;
 	}
 }
+
+DocumentSelect.prototype.selectOptionByValue = function(value) {
+	for (var i = 0; i < this.element.options.length; i ++)
+	{
+		o = this.element.options[i];
+		if (o.value == value)
+		{
+			this.element.options[o.index].selected = 'selected';
+			break;
+		}
+	}
+}

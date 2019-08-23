@@ -31,6 +31,10 @@ Controller.prototype.setCurrentPlayer =  function (playerId) {
 	return p;
 }		
 
+Controller.prototype.unsetCurrentPlayer =  function () {
+	this.currentPlayer = null;
+}	
+
 Controller.prototype.addPlayer =  function (forename, surname, clubId, positionId, squadNo, image) {
 	return data.players.add(forename, surname, clubId, positionId, squadNo, image);
 }	
@@ -97,7 +101,7 @@ Controller.prototype.playerCountByFilter =  function (f, filterItemValue) {
 
 Controller.prototype.setFilteredPlayers = function ()
 {
-	functions.Array.clear(this.filteredPlayers.items);
+	this.filteredPlayers.clear();
 	data.players.items.forEach (
 		function(di) {
 			var f = view.elements.playerFilter;

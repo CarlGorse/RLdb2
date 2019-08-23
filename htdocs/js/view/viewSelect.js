@@ -9,7 +9,7 @@ function ViewSelect(filterId, dataSet, viewElement, displayProperty)
 	this.showOptionAll = true;
 	this.showOptionNone = true;
 
-	this.items = new Array();
+	this.items = new ArrayHelper();
 	
 	this.setInitialValueEmpty = false;
 	this.showDataItemCount = false;
@@ -87,7 +87,7 @@ ViewSelect.prototype.render = function () {
 		this.clearValue();
 	else {
 		if (currentValue)
-			functions.Select.selectOptionByValue(this.element, currentValue);
+			this.viewElement.selectOptionByValue(currentValue);
 	}
 
 }

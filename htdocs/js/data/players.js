@@ -52,3 +52,8 @@ Players.prototype.addPlayer = function (p)
 {
 	this.addItem(p);
 }
+
+Players.prototype.clear = function (p)
+{
+	this.items.clear();
+}

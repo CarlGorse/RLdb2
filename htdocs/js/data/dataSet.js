@@ -2,7 +2,7 @@
 function DataSet(typeName)
 {
 	this.typeName = typeName;
-	this.items = new Array();
+	this.items = new ArrayHelper();
 	
 	this.fileName = "";
 }
@@ -31,7 +31,7 @@ DataSet.prototype.sort =  function () {
 }
 
 DataSet.prototype.count = function () { 
-	return Functions.Array.count(this.items);
+	return this.items.count(this.items);
 }
 
 DataSet.prototype.item = function (id) { 
@@ -47,11 +47,11 @@ DataSet.prototype.item = function (id) {
 
 DataSet.prototype.clear = function ()
 {
-	functions.Array.clear(this.items);
+	this.items.clear(this.items);
 }
 
 DataSet.prototype.count = function () { 
-	return this.items.length;
+	return this.items.count();
 }
 
 DataSet.prototype.remove = function (dataItem) {
@@ -74,7 +74,7 @@ DataSet.prototype.writeJSON = function ()
 
 DataSet.prototype.index = function(id)
 {
-	return functions.Array.index(this.items, id, 'id');
+	return this.items.index(this.items, id, 'id');
 }
 
 DataSet.prototype.previous = function(dataItem)

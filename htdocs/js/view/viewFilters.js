@@ -1,7 +1,7 @@
 
 function ViewFilters()
 {
-	this.items = new Array();
+	this.items = new ArrayHelper();
 }
 
 ViewFilters.prototype.initialise = function () {

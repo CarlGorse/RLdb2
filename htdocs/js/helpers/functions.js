@@ -1,6 +1,7 @@
 
 function Functions()
-{   
+{
+    
 }
 
 Functions.prototype.getCountDescription = function(count, description) {

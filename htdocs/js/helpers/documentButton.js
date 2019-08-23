@@ -7,6 +7,7 @@ function DocumentButton(name, setOnClick)
 DocumentButton.prototype = Object.create(DocumentElement.prototype)
 
 DocumentButton.prototype.disable = function () { this.element.disabled = true; }
+
 DocumentButton.prototype.enable = function () { this.element.disabled = false; }
 
 DocumentButton.prototype.setOnClick = function(func) {
