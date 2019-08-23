@@ -112,3 +112,11 @@ select { height:3em; }
 #detailValueColumn2 {
 	width:200px;
 }
+
+#cImage {
+	padding-left: 2em;
+	display:block;
+	max-width:8em;
+	min-width:8em;
+	height:auto;
+}

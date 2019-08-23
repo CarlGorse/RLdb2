@@ -1,16 +1,16 @@
 {"clubs":
 	[
-		{"clubId":"cas","name":"Castleford", "name2":"Castleford Tigers"},
-		{"clubId":"sal","name":"Salford", "name2":"Salfod Red Devils"},
-		{"clubId":"sth","name":"St. Helens", "name2":"St. Helens"},
-		{"clubId":"war","name":"Warrington", "name2":"Warrington Wolves"},
-		{"clubId":"lbr","name":"London Broncos", "name2":"London Broncos"},
-		{"clubId":"hkr","name":"Hull KR", "name2":"Hull Kingston-Rovers"},
-		{"clubId":"hfc","name":"Hull FC", "name2":"Hull FC"},
-		{"clubId":"cat","name":"Catalan", "name2":"Catalan Dragons"},
-		{"clubId":"lee","name":"Leeds", "name2":"Leeds Rhinos"},
-		{"clubId":"hud","name":"Huddersfield", "name2":"Huddersfield Giants"},
-		{"clubId":"wak","name":"Wakefield", "name2":"Wakefield Trinity"},
-		{"clubId":"wig","name":"Wigan", "name2":"Wigan Warriors"}
+		{"clubId":"cas","name":"Castleford", "name2":"Castleford Tigers", "image":"cas.jpg"},
+		{"clubId":"sal","name":"Salford", "name2":"Salfod Red Devils", "image":"sal.jpg"},
+		{"clubId":"sth","name":"St. Helens", "name2":"St. Helens", "image":"sth.png"},
+		{"clubId":"war","name":"Warrington", "name2":"Warrington Wolves", "image":"war.png"},
+		{"clubId":"lbr","name":"London Broncos", "name2":"London Broncos", "image":"lon.jpg"},
+		{"clubId":"hkr","name":"Hull KR", "name2":"Hull Kingston-Rovers", "image":"hkr.png"},
+		{"clubId":"hfc","name":"Hull FC", "name2":"Hull FC", "image":"hfc.png"},
+		{"clubId":"cat","name":"Catalan", "name2":"Catalan Dragons", "image":"cat.png"},
+		{"clubId":"lee","name":"Leeds", "name2":"Leeds Rhinos", "image":"lee.png"},
+		{"clubId":"hud","name":"Huddersfield", "name2":"Huddersfield Giants", "image":"hud.png"},
+		{"clubId":"wak","name":"Wakefield", "name2":"Wakefield Trinity", "image":"wak.jpg"},
+		{"clubId":"wig","name":"Wigan", "name2":"Wigan Warriors", "image":"wig.jpg"}
 	]
 }

@@ -6,6 +6,9 @@ function ViewSelect(filterId, dataSet, viewElement, displayProperty)
 	this.viewElement = viewElement
 	this.displayProperty = displayProperty;
 	
+	this.showOptionAll = true;
+	this.showOptionNone = true;
+
 	this.items = new Array();
 	
 	this.setInitialValueEmpty = false;
@@ -103,4 +106,17 @@ ViewSelect.prototype.value = function () {
 
 ViewSelect.prototype.setValue = function (value) {
 	return this.viewElement.setValue(value);
+}
+
+ViewSelect.prototype.selectedDataItem = function()
+{
+	var selectedIndex = this.selectedIndex();
+	if (this.showOptionAll) { selectedIndex --} ;
+	if (this.showOptionNone) { selectedIndex --} ;
+	return this.dataSet.items[selectedIndex];
+}
+
+ViewSelect.prototype.selectedIndex = function()
+{
+	return this.viewElement.selectedIndex();
 }

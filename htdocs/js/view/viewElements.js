@@ -12,6 +12,8 @@ ViewElements.prototype.initialise = function () {
 	this.hasImageFilter = 	new ViewFilterHasImage('filterHasImage', new DocumentSelect('hasImageFilter'), 'text');
 	this.playerFilter = 	new ViewFilterPlayer('filterPlayer', new DocumentSelect('playerFilter'), 'name');
 
+	this.cImage = 		new DocumentImage('cImage');
+
 	this.playerFilter.element.onchange = function() { view.events.selectPlayerBySelect(); }
 
 	this.filteredPlayersCount = new DocumentSpan('filteredPlayersCount');

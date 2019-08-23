@@ -1,10 +1,11 @@
 
-function Club(clubId, name, name2)
+function Club(clubId, name, name2, image)
 {
-	DataItem.call(this, clubId, 'Club', 'name')
+	DataItem.call(this, clubId, 'Club', 'name', image)
 	this.clubId = clubId;
 	this.name = name;
 	this.name2 = name2 ? name2 : "";
+	this.image = image;
 }
 Club.prototype = Object.create(DataItem.prototype)
 

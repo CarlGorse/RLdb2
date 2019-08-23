@@ -44,7 +44,7 @@ View.prototype.selectPlayer = function (playerId) {
 		this.elements.pImage.show();
 	else
 		this.elements.pImage.hide();
-	view.elements.pImage.setValue(p.image);
+	view.elements.pImage.setImage("images\\players\\" + p.image);
 	this.elements.playerDetails.show();
 
 	view.setButtons();

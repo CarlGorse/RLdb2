@@ -26,3 +26,15 @@ DocumentSelect.prototype.clear = function () {
 		this.element.options.remove(0);
 	}
 }
+
+DocumentSelect.prototype.count = function () {
+	return this.element.length;
+}
+
+DocumentSelect.prototype.selectedIndex = function () {
+	for (x = 0; x < this.count(); x ++)
+	{
+		if (this.element.options[x].selected) 
+			return x;
+	}
+}

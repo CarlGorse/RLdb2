@@ -55,7 +55,7 @@ DataSet.prototype.count = function () {
 }
 
 DataSet.prototype.remove = function (dataItem) {
-	var index = this.getIdIndex(dataItem.id);
+	var index = this.index(dataItem.id);
 	this.items.splice(index, 1);
 }
 

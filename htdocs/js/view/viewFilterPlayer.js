@@ -17,7 +17,7 @@ ViewFilterPlayer.prototype.player = function () {
 
 ViewFilterPlayer.prototype.render = function ()
 {
-	ViewSelect.prototype.render.call(this);
+	ViewFilterSelect.prototype.render.call(this);
 
 	count = this.element.options.length;
 	//count -= 1; // exclude 'all'

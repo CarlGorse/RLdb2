@@ -5,6 +5,10 @@ function DocumentImage(elementId)
 }
 DocumentImage.prototype = Object.create(DocumentElement.prototype)
 
-DocumentImage.prototype.setValue = function (value) { 
-	this.element.src = "images\\" + value; 
+DocumentImage.prototype.setImage = function (value) { 
+	this.element.src = value;
+}
+
+DocumentImage.prototype.clear = function () { 
+	this.element.src = "";
 }
