@@ -12,7 +12,7 @@ ViewTablePlayers.prototype = Object.create(DocumentTable.prototype)
 ViewTablePlayers.prototype.render = function() {
 
 	controller.setFilteredPlayers();
-	this.pageCount = Math.floor(controller.filteredPlayers.count() / this.memberPageCount) + 1;
+	this.pageCount = Math.floor((controller.filteredPlayers.count() - 1) / this.memberPageCount) + 1;
 
 	var playerIndex = -1;
 	if (controller.currentPlayer != null)
