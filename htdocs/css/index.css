@@ -4,6 +4,11 @@
 	}
 }
 
+#main {
+	padding-left: 6em;
+	padding-top: 4em;
+}
+
 select { height:3em; }
 
 #filterClub	{ width: 16em; }
