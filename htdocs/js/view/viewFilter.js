@@ -1,8 +1,8 @@
 
-function ViewFilter(filterId, dataSet, viewElement, displayProperty, searchProperty)
+function ViewFilter(elementId, dataSet, displayProperty, searchProperty)
 {
 
-	ViewSelect.call(this, filterId, dataSet, viewElement, displayProperty);
+	ViewSelect.call(this, elementId, dataSet, displayProperty);
 	
 	view.filters.items.push(this); 
 	
@@ -17,10 +17,13 @@ function ViewFilter(filterId, dataSet, viewElement, displayProperty, searchPrope
 	this.showDataItemCount = true;
 	this.includeInPlayerCount = true;
 
+	this.showOptionAll = true;
+	this.showOptionNone = true;
+
 }
 ViewFilter.prototype = Object.create(ViewSelect.prototype)
 
 ViewFilter.prototype.select = function (id)
 {
-	this.viewElement.setValue(id);
+	this.setValue(id);
 }

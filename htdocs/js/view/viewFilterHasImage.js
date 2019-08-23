@@ -1,7 +1,7 @@
 
-function ViewFilterHasImage(filterId, element, displayProperty)
+function ViewFilterHasImage(elementId, displayProperty)
 {
-	ViewFilterSelect.call(this, filterId, data.hasImages, element, displayProperty, 'hasImageId')
+	ViewFilterSelect.call(this, elementId, data.hasImages, displayProperty, 'hasImageId')
 	this.showOptionNone = false;
 }
 ViewFilterHasImage.prototype = Object.create(ViewFilterSelect.prototype)

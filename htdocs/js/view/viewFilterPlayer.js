@@ -1,13 +1,16 @@
 
-function ViewFilterPlayer(filterId, viewElement, displayProperty)
+function ViewFilterPlayer(elementId, displayProperty)
 {
-	ViewFilterSelect.call(this, filterId, data.players, viewElement, displayProperty, 'playerId');
+	ViewFilterSelect.call(this, elementId, data.players, displayProperty, 'playerId');
 	this.showNonMatchingDataItems = false;
 	this.showDataItemCount = false;
 	this.showOptionAll = false;
 	this.showOptionNone = false;
 	this.setInitialValueEmpty = true;
 	this.includeInPlayerCount = false;
+
+	this.element.onchange = function() { view.events.selectPlayerBySelect(); }
+
 }
 ViewFilterPlayer.prototype = Object.create(ViewFilterSelect.prototype)
 

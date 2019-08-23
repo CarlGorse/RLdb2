@@ -1,6 +1,6 @@
 
-function ViewFilterSquadNo(filterId, element, displayProperty)
+function ViewFilterSquadNo(elementId, displayProperty)
 {
-	ViewFilterSelect.call(this, filterId, data.squadNos, element, displayProperty, 'squadNo');
+	ViewFilterSelect.call(this, elementId, data.squadNos, displayProperty, 'squadNo');
 }
 ViewFilterSquadNo.prototype = Object.create(ViewFilterSelect.prototype)

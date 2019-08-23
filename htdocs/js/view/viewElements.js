@@ -6,15 +6,13 @@ ViewElements.prototype.initialise = function () {
 	this.playerDetails =		new DocumentElement('divPlayerDetails');
 	this.editPlayerDetails =	new DocumentElement('editPlayerDetails');
 
-	this.clubFilter = 		new ViewFilterClub('filterClub', new DocumentSelect('clubFilter'), 'name2');
-	this.positionFilter = 	new ViewFilterPosition('filterPosition', new DocumentSelect('positionFilter'), 'name');
-	this.squadNoFilter = 	new ViewFilterSquadNo('filterSquadNo', new DocumentSelect('squadNoFilter'), 'number');
-	this.hasImageFilter = 	new ViewFilterHasImage('filterHasImage', new DocumentSelect('hasImageFilter'), 'text');
-	this.playerFilter = 	new ViewFilterPlayer('filterPlayer', new DocumentSelect('playerFilter'), 'name');
+	this.clubFilter = 		new ViewFilterClub('clubFilter', 'name2');
+	this.positionFilter = 	new ViewFilterPosition('positionFilter', 'name');
+	this.squadNoFilter = 	new ViewFilterSquadNo('squadNoFilter', 'number');
+	this.hasImageFilter = 	new ViewFilterHasImage('hasImageFilter', 'text');
+	this.playerFilter = 	new ViewFilterPlayer('playerFilter', 'name');
 
 	this.cImage = 		new DocumentImage('cImage');
-
-	this.playerFilter.element.onchange = function() { view.events.selectPlayerBySelect(); }
 
 	this.filteredPlayersCount = new DocumentSpan('filteredPlayersCount');
 
@@ -34,9 +32,9 @@ ViewElements.prototype.initialise = function () {
 		
 	this.pForename2 = 		new DocumentInput('pForename2');
 	this.pSurname2 = 		new DocumentInput('pSurname2');
-	this.pClub2 = 			new ViewSelect('pClub2', data.clubs, new DocumentSelect('pClub2'), 'name2');
-	this.pPosition2 = 		new ViewSelect('pPositions2', data.positions, new DocumentSelect('pPosition2'), 'name');
-	this.pSquadNo2 = 		new ViewSelect('pSquadNo2', data.squadNos, new DocumentSelect('pSquadNo2'), 'number');
+	this.pClub2 = 			new ViewSelect('pClub2', data.clubs, 'name2');
+	this.pPosition2 = 		new ViewSelect('pPosition2', data.positions, 'name');
+	this.pSquadNo2 = 		new ViewSelect('pSquadNo2', data.squadNos, 'number');
 	this.pImage2 = 			new DocumentInput('pImage2');
 
 	this.movePageFirst =  	new DocumentButton('movePageFirst', view.events.movePageFirst);

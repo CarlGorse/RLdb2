@@ -1,6 +1,6 @@
 
-function ViewFilterPosition(filterId, viewElement, displayProperty)
+function ViewFilterPosition(elementId, displayProperty)
 {
-	ViewFilterSelect.call(this, filterId, data.positions, viewElement, displayProperty, 'positionId');
+	ViewFilterSelect.call(this, elementId, data.positions, displayProperty, 'positionId');
 }
 ViewFilterPosition.prototype = Object.create(ViewFilterSelect.prototype)

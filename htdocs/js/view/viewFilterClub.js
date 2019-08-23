@@ -1,7 +1,7 @@
 
-function ViewFilterClub(filterId, viewElement, displayProperty)
+function ViewFilterClub(elementId, displayProperty)
 {
-	ViewFilterSelect.call(this, filterId, data.clubs, viewElement, displayProperty, 'clubId');
+	ViewFilterSelect.call(this, elementId, data.clubs, displayProperty, 'clubId');
 	this.showOptionNone = false;
 }
 ViewFilterClub.prototype = Object.create(ViewFilterSelect.prototype)

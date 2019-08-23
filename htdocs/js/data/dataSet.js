@@ -74,7 +74,7 @@ DataSet.prototype.writeJSON = function ()
 
 DataSet.prototype.index = function(id)
 {
-	return this.items.index(this.items, id, 'id');
+	return this.items.index(id, 'id');
 }
 
 DataSet.prototype.previous = function(dataItem)

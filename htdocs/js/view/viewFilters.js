@@ -27,10 +27,10 @@ ViewFilters.prototype.first = function () {
 	this.items[0];
 } 
 
-ViewFilters.prototype.item = function (filterId) {
+ViewFilters.prototype.item = function (elementId) {
 	this.items.forEach( function (f)
 		{
-			if (f.filterId == filterId) return f;
+			if (f.elementId == elementId) return f;
 		}
 	)
 } 

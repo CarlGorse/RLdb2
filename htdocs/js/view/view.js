@@ -133,6 +133,7 @@ View.prototype.savePlayer = function () {
 	var p = controller.currentPlayer;
 	p.forename = view.elements.pForename2.value();
 	p.surname = view.elements.pSurname2.value();
+	p.setName();
 	p.clubId = view.elements.pClub2.value();
 	p.positionId = view.elements.pPosition2.value();
 	p.squadNo = view.elements.pSquadNo2.value();

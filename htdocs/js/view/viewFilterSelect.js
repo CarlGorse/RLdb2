@@ -1,7 +1,7 @@
 
-function ViewFilterSelect(filterId, dataSet, viewElement, displayProperty, searchProperty)
+function ViewFilterSelect(elementId, dataSet, displayProperty, searchProperty)
 {
-	ViewFilter.call(this, filterId, dataSet, viewElement, displayProperty, searchProperty);
+	ViewFilter.call(this, elementId, dataSet, displayProperty, searchProperty);
 	this.setInitialValueEmpty = false;
 }
 ViewFilterSelect.prototype = Object.create(ViewFilter.prototype)

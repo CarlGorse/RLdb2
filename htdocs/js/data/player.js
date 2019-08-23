@@ -6,7 +6,7 @@ function Player(playerId, forename, surname, clubId, positionId, squadNo, image)
 	this.playerId = playerId;
 	this.forename = forename ? forename.trim() : "";
 	this.surname = surname ? surname.trim() : "";
-	this.name = this.surname + ', ' + this.forename;
+	this.setName();
 	this.clubId = clubId ? clubId : "";
 	this.positionId = positionId ? positionId : "";
 	this.squadNo = squadNo ? squadNo : "";
@@ -16,3 +16,7 @@ function Player(playerId, forename, surname, clubId, positionId, squadNo, image)
 
 }
 Player.prototype = Object.create(DataItem.prototype)
+
+Player.prototype.setName = function () {
+	this.name = this.surname + ', ' + this.forename;
+}

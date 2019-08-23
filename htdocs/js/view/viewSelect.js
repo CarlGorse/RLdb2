@@ -1,30 +1,28 @@
 
-function ViewSelect(filterId, dataSet, viewElement, displayProperty)
+function ViewSelect(elementId, dataSet, displayProperty)
 {
-	this.filterId = filterId;
+
+	DocumentSelect.call(this, elementId);
+
+	this.elementId = elementId;
 	this.dataSet = dataSet;
-	this.viewElement = viewElement
 	this.displayProperty = displayProperty;
-	
-	this.showOptionAll = true;
-	this.showOptionNone = true;
 
 	this.items = new ArrayHelper();
 	
 	this.setInitialValueEmpty = false;
 	this.showDataItemCount = false;
 
-	this.element = this.viewElement.element;
-
 }
+ViewSelect.prototype = Object.create(DocumentSelect.prototype)
 
 ViewSelect.prototype.add = function (item) { this.items.push(item); }
 
-ViewSelect.prototype.index = function (filterId) { 
+ViewSelect.prototype.index = function (elementId) { 
 	for (i = 0; i < this.items.length; i++)
 	{
 		var i = this.items[i];
-		if (i.filterId == filterId) return i;
+		if (i.elementId == elementId) return i;
 	}
 }
 
@@ -34,7 +32,7 @@ ViewSelect.prototype.remove = function (index) {
 
 ViewSelect.prototype.render = function () {
 	
-	currentValue = this.element.value;
+	currentValue = this.value();
 
 	this.clear();
 	
@@ -87,7 +85,7 @@ ViewSelect.prototype.render = function () {
 		this.clearValue();
 	else {
 		if (currentValue)
-			this.viewElement.selectOptionByValue(currentValue);
+			this.selectOptionByValue(currentValue);
 	}
 
 }
@@ -96,27 +94,10 @@ ViewSelect.prototype.clearValue = function () {
 	this.element.value = "";
 }
 
-ViewSelect.prototype.clear = function () {
-	this.viewElement.clear();
-}
-
-ViewSelect.prototype.value = function () {
-	return this.viewElement.value();
-}
-
-ViewSelect.prototype.setValue = function (value) {
-	return this.viewElement.setValue(value);
-}
-
 ViewSelect.prototype.selectedDataItem = function()
 {
 	var selectedIndex = this.selectedIndex();
 	if (this.showOptionAll) { selectedIndex --} ;
 	if (this.showOptionNone) { selectedIndex --} ;
 	return this.dataSet.items[selectedIndex];
-}
-
-ViewSelect.prototype.selectedIndex = function()
-{
-	return this.viewElement.selectedIndex();
 }

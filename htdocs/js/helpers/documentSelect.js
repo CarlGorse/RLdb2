@@ -1,7 +1,7 @@
 
-function DocumentSelect(name)
+function DocumentSelect(elementId)
 {
-	DocumentElement.call(this, name);
+	DocumentElement.call(this, elementId);
 }
 DocumentSelect.prototype = Object.create(DocumentElement.prototype)
 
