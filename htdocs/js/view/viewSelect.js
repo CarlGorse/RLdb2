@@ -16,18 +16,12 @@ function ViewSelect(elementId, dataSet, displayProperty)
 }
 ViewSelect.prototype = Object.create(DocumentSelect.prototype)
 
-ViewSelect.prototype.add = function (item) { this.items.push(item); }
-
 ViewSelect.prototype.index = function (elementId) { 
 	for (i = 0; i < this.items.length; i++)
 	{
 		var i = this.items[i];
 		if (i.elementId == elementId) return i;
 	}
-}
-
-ViewSelect.prototype.remove = function (index) {
-	this.items = this.items.splice(index, 1);
 }
 
 ViewSelect.prototype.render = function () {
@@ -90,14 +84,22 @@ ViewSelect.prototype.render = function () {
 
 }
 
-ViewSelect.prototype.clearValue = function () {
-	this.element.value = "";
-}
-
 ViewSelect.prototype.selectedDataItem = function()
 {
 	var selectedIndex = this.selectedIndex();
 	if (this.showOptionAll) { selectedIndex --} ;
 	if (this.showOptionNone) { selectedIndex --} ;
 	return this.dataSet.items[selectedIndex];
+}
+
+DocumentSelect.prototype.setValue = function (dataItemId) { 
+	for (var x = 0; x < this.element.length; x ++)
+	{
+		o = this.element.options[x];
+		o.selected = false;
+		if (o.value == dataItemId.toString()) 
+		{
+			o.selected = true;
+		}
+	}
 }

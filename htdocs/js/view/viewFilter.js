@@ -23,7 +23,7 @@ function ViewFilter(elementId, dataSet, displayProperty, searchProperty)
 }
 ViewFilter.prototype = Object.create(ViewSelect.prototype)
 
-ViewFilter.prototype.select = function (id)
+ViewFilter.prototype.select = function (dataItemId)
 {
-	this.setValue(id);
+	this.setValue(dataItemId);
 }
