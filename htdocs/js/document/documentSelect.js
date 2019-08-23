@@ -5,17 +5,6 @@ function DocumentSelect(elementId)
 }
 DocumentSelect.prototype = Object.create(DocumentElement.prototype)
 
-DocumentSelect.prototype.setValue = function (itemId) { 
-	for (var x = 0; x < this.element.length; x ++)
-	{
-		o = this.element.options[x];
-		o.selected = false;
-		if (o.value == itemId.toString()) 
-		{
-			o.selected = true;
-		}
-	}
-}
 DocumentSelect.prototype.value = function () { 
 	return this.element.value;
 }
@@ -25,6 +14,16 @@ DocumentSelect.prototype.clear = function () {
 	{
 		this.element.options.remove(0);
 	}
+}
+
+DocumentSelect.prototype.remove = function (index) {
+	this.items = this.items.splice(index, 1);
+}
+
+DocumentSelect.prototype.add = function (item) { this.items.push(item); }
+
+DocumentSelect.prototype.clearValue = function () {
+	this.element.value = "";
 }
 
 DocumentSelect.prototype.count = function () {
