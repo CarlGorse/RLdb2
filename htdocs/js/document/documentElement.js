@@ -1,14 +1,25 @@
 
-function DocumentElement(elementId)
-{
-	this.elementId = elementId;
-	this.element = document.getElementById(elementId);
+class DocumentElement {
+
+	constructor (elementId) {
+		this.elementId = elementId;
+		this.element = document.getElementById(elementId);
+	}
+
+	show () {
+		this.element.style.display = "block";
+	}
+
+	hide () {
+		this.element.style.display = "none";
+	}
+
+	setValue (value) {
+		this.element.innerHTML = value;
+	}
+
+	get value () {
+		return this.element.innerHTML;
+	}
+
 }
-
-DocumentElement.prototype.show = function () { this.element.style.display = "block"; }
-
-DocumentElement.prototype.hide = function () { this.element.style.display = "none"; }
-
-DocumentElement.prototype.setValue = function (value) { this.element.innerHTML = value; }
-
-DocumentElement.prototype.value = function () { return this.element.innerHTML; }

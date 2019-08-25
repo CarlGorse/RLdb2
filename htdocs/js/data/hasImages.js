@@ -1,24 +1,26 @@
 
-function HasImages()
-{
-	DataSet.call(this, 'HasImages')
-}
-HasImages.prototype = Object.create(DataSet.prototype)
+class HasImages extends DataSet {
 
-HasImages.prototype.add =  function (hasImageId, text) {
-	hi = new HasImage(hasImageId, text);
-	this.addHasImage(hi);
-}
+	constructor (filename) {
+		super ('HasImages', filename)
+	}
 
-HasImages.prototype.loadFile = function (file) { 
-	file.hasImages.forEach(
-		function (hi) { 
-			data.hasImages.add(hi, hi); 
-		} 
-	)
-}
+	add (hasImageId, text) {
+		let hi = new HasImage(hasImageId, text);
+		this.addHasImage(hi);
+	}
 
-HasImages.prototype.addHasImage = function (hi)
-{
-	this.addItem(hi);
+	loadFile (file) { 
+		file.hasImages.forEach(
+			function (hi) { 
+				data.hasImages.add(hi, hi); 
+			} 
+		)
+	}
+
+	addHasImage (hi)
+	{
+		this.addItem(hi);
+	}
+
 }

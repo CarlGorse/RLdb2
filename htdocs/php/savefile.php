@@ -1,7 +1,7 @@
 <?php
 	
 	$t = $_GET["filename"];
-	$v = $_REQUEST["playersJSON"];
+	$v = $_REQUEST["playersJson"];
 	
 	//$t = '..\data\' . $t;
 	

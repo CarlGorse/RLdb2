@@ -1,17 +1,19 @@
 
-function DocumentTable(elementId)
-{
-    DocumentElement.call(this, elementId);
-}
-DocumentTable.prototype = Object.create(DocumentElement.prototype)
+class DocumentTable extends DocumentElement {
 
-DocumentTable.prototype.clear = function () {
-    while (this.element.rows.length > 1)
-    {
-        this.element.deleteRow(this.element.rows.length - 1);
+    constructor (elementId) {
+        super (elementId);
     }
-}
+    
+    clear () {
+        while (this.element.rows.length > 1)
+        {
+            this.element.deleteRow(this.element.rows.length - 1);
+        }
+    }
 
-DocumentTable.prototype.insertRow = function () {
-    return this.element.insertRow();
+    insertRow () {
+        return this.element.insertRow();
+    }
+
 }

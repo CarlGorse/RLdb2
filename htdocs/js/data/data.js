@@ -1,28 +1,26 @@
 
-function Data()
-{
+class Data {
 
-	this.players = 			new Players();
-	this.clubs = 			new Clubs();
-	this.positions = 		new Positions();
-	this.squadNos = 		new SquadNos();
-	this.hasImages = 		new HasImages();
+	constructor ()
+	{
 
-	this.players.fileName = 	'players.json';
-	this.clubs.fileName = 		'clubs.json';
-	this.positions.fileName = 	'positions.json';
-	this.squadNos.fileName = 	'squadNos.json';
-	this.hasImages.fileName = 	'hasImages.json';
-	
-	this.dataSets = [this.players, this.clubs, this.positions, this.squadNos, this.hasImages,];
+		this.players = 			new Players('players.json');
+		this.clubs = 			new Clubs('clubs.json');
+		this.positions = 		new Positions('positions.json');
+		this.squadNos = 		new SquadNos('squadNos.json');
+		this.hasImages = 		new HasImages('hasImages.json');
 
-}
+		this.dataSets = [this.players, this.clubs, this.positions, this.squadNos, this.hasImages,];
 
-Data.prototype.loadData = function () {
-	this.dataSets.forEach(
-		function (ds) {
-			ds.clear();
-			ds.load();
-		}
-	)
+	}
+
+	loadData () {
+		this.dataSets.forEach(
+			function (ds) {
+				ds.clear();
+				ds.load();
+			}
+		)
+	}
+
 }

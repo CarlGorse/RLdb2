@@ -1,24 +1,25 @@
 
-function SquadNos()
-{
-	DataSet.call(this, 'SquadNos')
-}
-SquadNos.prototype = Object.create(DataSet.prototype)
+class SquadNos extends DataSet {
 
-SquadNos.prototype.add =  function (squadNo) {
-	sn = new SquadNo(squadNo);
-	this.addSquadNo(sn);
-}
+	constructor (filename) {
+		super ('SquadNos', filename);
+	}
 
-SquadNos.prototype.loadFile = function (file) { 
-	file.squadNos.forEach(
-		function (sn) { 
-			data.squadNos.add(sn, sn);
-		}
-	)
-}
+	add (squadNo) {
+		let sn = new SquadNo(squadNo);
+		this.addSquadNo(sn);
+	}
 
-SquadNos.prototype.addSquadNo = function (pn)
-{
-	this.addItem(pn);
+	loadFile (file) { 
+		file.squadNos.forEach(
+			function (sn) { 
+				data.squadNos.add(sn, sn);
+			}
+		)
+	}
+
+	addSquadNo (pn) {
+		this.addItem(pn);
+	}
+
 }

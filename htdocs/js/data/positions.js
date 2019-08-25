@@ -1,26 +1,29 @@
 
-function Positions()
-{
-	DataSet.call(this, 'Positions')
-}
-Positions.prototype = Object.create(DataSet.prototype)
+class Positions extends DataSet {
 
-Positions.prototype.add =  function (id, name) {
-	pn = new Position(id, name);
-	this.addPosition(pn);
-}
+	constructor (filename) {
+		super ('Positions', filename);
+	}
 
-Positions.prototype.position = function (id) { return this.item(id); }
+	add (id, name) {
+		let pn = new Position(id, name);
+		this.addPosition(pn);
+	}
 
-Positions.prototype.loadFile = function (file) { 
-	file.positions.forEach( 
-		function (pn) { 
-			data.positions.add(pn.positionId, pn.name); 
-		} 
-	) 
-}
+	position (id) { 
+		return this.item(id);
+	}
 
-Positions.prototype.addPosition = function (pn)
-{
-	this.addItem(pn);
+	loadFile (file) { 
+		file.positions.forEach( 
+			function (pn) { 
+				data.positions.add(pn.positionId, pn.name); 
+			} 
+		) 
+	}
+
+	addPosition (pn) {
+		this.addItem(pn);
+	}
+
 }

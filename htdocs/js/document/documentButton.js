@@ -1,15 +1,21 @@
 
-function DocumentButton(name, setOnClick)
-{
-    DocumentElement.call(this, name);
-    this.element.onclick = setOnClick;
-}
-DocumentButton.prototype = Object.create(DocumentElement.prototype)
+class DocumentButton extends DocumentElement {
 
-DocumentButton.prototype.disable = function () { this.element.disabled = true; }
+    constructor (name, setOnClick) {
+        super (name);
+        this.element.onclick = setOnClick;
+    }
 
-DocumentButton.prototype.enable = function () { this.element.disabled = false; }
+    disable () {
+        this.element.disabled = true;
+    }
 
-DocumentButton.prototype.setOnClick = function(func) {
-    this.element.onclick = func;
+    enable () {
+        this.element.disabled = false;
+    }
+
+    setOnClick (func) {
+        this.element.onclick = func;
+    }
+
 }

@@ -1,59 +1,61 @@
 
-function Players()
-{
-	DataSet.call(this, 'Players')
-}
-Players.prototype = Object.create(DataSet.prototype)
+class Players extends DataSet {
 
-Players.prototype.add =  function (forename, surname, clubId, positionId, squadNo, image) {
-	playerId = this.nextId();
-	p = new Player(playerId, forename, surname, clubId, positionId, squadNo, image);
-	this.addPlayer(p);
-	return p;
-}
+	constructor (filename)
+	{
+		super ('Players', filename);
+	}
 
-Players.prototype.nextId = function () {
-	var result = 0;
-	this.items.forEach(
-		function (p)
-		{
-			if (p.playerId >= result) result = p.playerId + 1;
-		}
-	)
-	return result;
-}	
+	add (forename, surname, clubId, positionId, squadNo, image) {
+		let playerId = this.nextId;
+		let p = new Player(playerId, forename, surname, clubId, positionId, squadNo, image);
+		this.addPlayer(p);
+		return p;
+	}
 
-Players.prototype.save =  function () {
-	this.writeJSON();
-}
+	get nextId () {
+		var result = 0;
+		this.items.forEach(
+			function (p)
+			{
+				if (p.playerId >= result) result = p.playerId + 1;
+			}
+		)
+		return result;
+	}	
 
-Players.prototype.player = function (id) { return this.item(id); }
+	save () {
+		this.writeJson();
+	}
 
-Players.prototype.loadFile = function (file) { 
-	file.clubs.forEach(
-		function (c) { 
-			c.players.forEach( 
-				function(p) { 
-					p = data.players.add(p.forename, p.surname, c.clubId, p.positionId, p.squadNo, p.image);
-				} 
-			) 
-		} 
-	) 
-}
+	player (id) { return this.item(id); }
 
-Players.prototype.getJSON = function ()
-{
-	var json = new Json();
-	return json.getPlayersJSON();
+	loadFile (file) { 
+		file.clubs.forEach(
+			function (c) { 
+				c.players.forEach( 
+					function(p) { 
+						p = data.players.add(p.forename, p.surname, c.clubId, p.positionId, p.squadNo, p.image);
+					} 
+				) 
+			} 
+		) 
+	}
 
-}
+	getJson ()
+	{
+		var json = new Json();
+		return json.getPlayersJson();
+	}
 
-Players.prototype.addPlayer = function (p)
-{
-	this.addItem(p);
-}
+	addPlayer (p)
+	{
+		this.addItem(p);
+	}
 
-Players.prototype.clear = function (p)
-{
-	this.items.clear();
+	clear (p)
+	{
+		this.items.clear();
+	}
+
 }

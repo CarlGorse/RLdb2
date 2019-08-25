@@ -1,11 +1,16 @@
 
-function DocumentSpan(name)
-{
-	DocumentElement.call(this, name);
-}
-DocumentSpan.prototype = Object.create(DocumentElement.prototype)
+class DocumentSpan extends DocumentElement {
 
-DocumentSpan.prototype.setValue = function (value) { 
-	this.element.textContent = value;
+	constructor (name) {
+		super (name);
+	}
+	
+	setValue (value) { 
+		this.element.textContent = value;
+	}
+	
+	get value () {
+		return this.element.textContent;
+	}
+
 }
-DocumentSpan.prototype.value = function () { return this.element.textContent; }

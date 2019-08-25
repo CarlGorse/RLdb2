@@ -1,8 +1,10 @@
 
-function HasImage(hasImageId, text)
-{
-	DataItem.call(this, hasImageId, 'Image', 'text')
-	this.hasImageId = hasImageId;
-	this.text = text;
+class HasImage extends DataItem {
+	
+	constructor (hasImageId, text) {
+		super (hasImageId, 'Image', 'text');
+		this.hasImageId = hasImageId;
+		this.text = text;
+	}
+
 }
-HasImage.prototype = Object.create(DataItem.prototype)

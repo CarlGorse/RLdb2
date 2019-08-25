@@ -125,3 +125,26 @@ select { height:3em; }
 	min-width:8em;
 	height:auto;
 }
+
+#playerDetails {
+	
+	position:relative;
+	top:0px;
+	vertical-align:top;
+}
+
+/*
+td {
+	
+	border: 1px solid black;
+	table-layout: fixed;
+}
+*/
+
+#divPlayerDetails {
+	padding-left: 2em;
+}
+
+#divEditPlayerDetails {
+	padding-left: 2em;
+}

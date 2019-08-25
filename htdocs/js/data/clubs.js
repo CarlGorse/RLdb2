@@ -1,26 +1,30 @@
 
-function Clubs()
-{
-	DataSet.call(this, 'Clubs')
-}
-Clubs.prototype = Object.create(DataSet.prototype)
+class Clubs extends DataSet {
 
-Clubs.prototype.add =  function (clubId, name, name2, image) {
-	c = new Club(clubId, name, name2, image);
-	this.addClub(c);
-}
+	constructor(filename) {
+		super('Clubs', filename);
+	}
+	
+	add (clubId, name, name2, image) {
+		let c = new Club(clubId, name, name2, image);
+		this.addClub(c);
+		return c;
+	}
 
-Clubs.prototype.club = function (id) { return this.item(id); }
+	club (id) { 
+		return this.item(id); 
+	}
 
-Clubs.prototype.loadFile = function (file) {
-	file.clubs.forEach(
-		function (c) { 
-			data.clubs.add(c.clubId, c.name, c.name2, c.image); 
-		}
-	) 
-}
+	loadFile (file) {
+		file.clubs.forEach (
+			function (c) { 
+				data.clubs.add(c.clubId, c.name, c.name2, c.image); 
+			}
+		) 
+	}
 
-Clubs.prototype.addClub = function (c)
-{
-	this.addItem(c);
+	addClub (c) {
+		this.addItem(c);
+	}
+
 }

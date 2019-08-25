@@ -1,12 +1,17 @@
 
-function DocumentInput(elementId)
-{
-	DocumentElement.call(this, elementId);
-}
-DocumentInput.prototype = Object.create(DocumentElement.prototype)
+class DocumentInput extends DocumentElement {
 
-DocumentInput.prototype.setValue = function (value) { 
-	this.element.value = value; 
-}
+	constructor (elementId)
+	{
+		super (elementId);
+	}
 
-DocumentInput.prototype.value = function () { return this.element.value; }
+	setValue (value) { 
+		this.element.value = value; 
+	}
+
+	get value () {
+		return this.element.value;
+	}
+
+}

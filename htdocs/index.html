@@ -6,8 +6,6 @@
 
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 
-	<script src="js/start.js?$$REVISION$$"></script>
-
 	<script src="js/controller/controller.js?$$REVISION$$"></script>
 	
 	<script src="js/data/data.js?$$REVISION$$"></script>
@@ -32,186 +30,197 @@
 	<script src="js/document/documentSelect.js?$$REVISION$$"></script>
 	<script src="js/document/documentSpan.js?$$REVISION$$"></script>
 	<script src="js/document/documentTable.js?$$REVISION$$"></script>
-	
-	<script src="js/helpers/arrayHelper.js?$$REVISION$$"></script>
-	<script src="js/helpers/functions.js?$$REVISION$$"></script>
 
-	<script src="js/view/view.js?$$REVISION$$"></script>
-	<script src="js/view/viewElements.js?$$REVISION$$"></script>
-	<script src="js/view/viewEvents.js?$$REVISION$$"></script>
-	<script src="js/view/viewSelect.js?$$REVISION$$"></script>
-	<script src="js/view/viewFilter.js?$$REVISION$$"></script>
-	<script src="js/view/viewFilterSelect.js?$$REVISION$$"></script>
-	<script src="js/view/viewFilterClub.js?$$REVISION$$"></script>
-	<script src="js/view/viewFilterHasImage.js?$$REVISION$$"></script>
-	<script src="js/view/viewFilterItem.js?$$REVISION$$"></script>
-	<script src="js/view/viewFilterPlayer.js?$$REVISION$$"></script>
-	<script src="js/view/ViewFilterPosition.js?$$REVISION$$"></script>
-	<script src="js/view/viewFilterSquadNo.js?$$REVISION$$"></script>
-	<script src="js/view/viewFilters.js?$$REVISION$$"></script>
-	<script src="js/view/viewTablePlayers.js?$$REVISION$$"></script>
+	<script src="js/functions/functions.js?$$REVISION$$"></script>
+
+	<script src="js/helpers/arrayHelper.js?$$REVISION$$"></script>
+
+	<script src="js/views/viewPlayers/viewPlayers.js?$$REVISION$$"></script>
+	<script src="js/views/viewPlayers/dataSelect.js?$$REVISION$$"></script>
+	<script src="js/views/viewPlayers/searchFilter.js?$$REVISION$$"></script>
+	<script src="js/views/viewPlayers/searchFilterClub.js?$$REVISION$$"></script>
+	<script src="js/views/viewPlayers/searchFilterItem.js?$$REVISION$$"></script>
+	<script src="js/views/viewPlayers/searchFilterPlayer.js?$$REVISION$$"></script>
+	<script src="js/views/viewPlayers/searchFilters.js?$$REVISION$$"></script>
+	<script src="js/views/viewPlayers/playersTable.js?$$REVISION$$"></script>
+	<script src="js/views/viewPlayers/elements.js?$$REVISION$$"></script>
+	<script src="js/views/viewPlayers/events.js?$$REVISION$$"></script>
 
 </head>
 
 	<body onload="Start();">
 
-	<table id="main">
+		<button onclick="controller.showViewPlayers(); ">
+			View Players
+		</button>
 
-		<tr>
+		<button onclick="controller.showViewScores(); ">
+			View Scores
+		</button>
 
-<td>
+		<table id="viewScores">
+		</table>
 
-			<table>
+		<table id="viewPlayers">
 
-				<tr>
+			<tr>
 
-					<td>
+				<td>
 
-						<table>
+					<table>
 
-								<tr id="clubRow">
-									<td><label class="filterLabel">Club</label></td>
-									<td>
-										<select id="clubFilter"></select>
-									</td>
-								</tr>
+						<tr>
 
-								<tr>
-									<td><label class="filterLabel">Position</label></td>
-									<td>
-										<select id="positionFilter"></select>
-									</td>
-								</tr>
+							<td>
 
-								<tr id="squadNoRow">
-									<td><label class="filterLabel">Squad Number</label></td>
-									<td>
-										<select id="squadNoFilter"></select>
-									</td>
-								</tr>
+								<table>
 
-								<tr>
-									<td><label class="filterLabel">Has image?</label></td>
-									<td>
-										<select id="hasImageFilter"></select>
-									</td>
-								</tr>	  
+										<tr id="clubRow">
+											<td><label class="filterLabel">Club</label></td>
+											<td>
+												<select id="clubFilter"></select>
+											</td>
+										</tr>
+
+										<tr>
+											<td><label class="filterLabel">Position</label></td>
+											<td>
+												<select id="positionFilter"></select>
+											</td>
+										</tr>
+
+										<tr id="squadNoRow">
+											<td><label class="filterLabel">Squad Number</label></td>
+											<td>
+												<select id="squadNoFilter"></select>
+											</td>
+										</tr>
+
+										<tr>
+											<td><label class="filterLabel">Has image?</label></td>
+											<td>
+												<select id="hasImageFilter"></select>
+											</td>
+										</tr>	  
+								
+								</table>
+									
+							</td>
+
+							<td>
+								<img id="cImage"/></td>
+							</td>
+
+						</tr>
+
+					</table>
+
+					<table>
 						
-						</table>
+						<tr>
+							<td>
+								<div id="playerSelect">
+									<span>
+										<span id="filteredPlayersCount"></span>
+									</span>
+									<span id="playerButtons">
+										<button id="movePlayerFirst">&lt&lt</button>
+										<button id="movePlayerPrevious">&lt</button>
+										<button id="movePlayerNext">&gt</button>
+										<button id="movePlayerLast">&gt&gt</button>
+									</span>
+									<span>
+										<select id="playerFilter"></select>
+									</span>
+								</div>
+							</td>
+							<td></td>
+							<td></td>
+						</tr>
+						
+						<tr>
+							<td>
+								<div id="divPlayersTable">
+									<table id="playersTable" width="600">
+										<tr>
+											<th id="nameColumn">Name</th>
+											<th id="clubColumn">Club</th>
+											<th id="positionColumn">Position</th>
+											<th id="squadNoColumn">Squad Number</th>
+										</tr>
+									</table>
+								</div>
+							</td>
 							
-					</td>
+							<td>
+								
+								<span id="divPlayerDetails"> 
+									<table id="playerDetails">
+										<th id="detailLabelColumn"></th>
+										<th id="detailValueColumn"></th>
+										<tr><td><label class="detailLabel">Forename</label></td><td><span id="pForename"></span></td></tr>
+										<tr><td><label class="detailLabel">Surname</label></td><td><span id="pSurname"></span></td></tr>
+										<tr><td><label class="detailLabel">Club</label></td><td><span id="pClub"></span></td></tr>
+										<tr><td><label class="detailLabel">Position</label></td><td><span id="pPosition"></span></td></tr>
+										<tr><td><label class="detailLabel">Squad Number</label></td><td><span id="pSquadNo"></span></td></tr>
+									</table>
+								</span>
+									
+								<span id="editPlayerDetails">
+									<table>
+										<th id="detailLabelColumn2"></th>
+										<th id="detailValueColumn2"></th>
+										<tr><td><label class="detailLabel">Forename</label></td><td><input id="pForename2"/></td></tr>
+										<tr><td><label class="detailLabel">Surname</label></td><td><input id="pSurname2"/></td></tr>
+										<tr><td><label class="detailLabel">Club</label></td><td><select id="pClub2"></select></td></tr>
+										<tr><td><label class="detailLabel">Position</label></td><td><select id="pPosition2"></select></td></tr>
+										<tr><td><label class="detailLabel">Squad Number</label></td><td><select id="pSquadNo2"></select></td></tr>
+										<tr><td><label class="detailLabel">Image</label></td><td><input id="pImage2"/></td></tr>
+									</table>
+								</span>
 
-					<td>
-						<img id="cImage"/></td>
-					</td>
+							</td>
+							<td>
+								<img id="pImage"/></td>
+							</td>
+						</tr>
+
+						<tr>
+							<td>
+								<div id="pageSelect">
+									<span id="pageCount"></span>
+									<span id="pageButtons">
+										<button id="movePageFirst">&lt&lt</button>
+										<button id="movePagePrevious">&lt</button>
+										<button id="movePageNext">&gt</button>
+										<button id="movePageLast">&gt&gt</button>
+									</span>
+									<span id="editButtons"> 
+										<button id="addPlayer">Add new Player</button>
+										<button id="deletePlayer">Delete Player</button>
+										<button id="editPlayer">Edit Player</button>
+									</span>
+								</div>
+							</td>
+						</tr>
+						
+						<tr>
+							<td></td>
+							<td></td>
+							<td>
+								<div id="divButtons3"> 
+									<button id="savePlayer">Save Player</button>
+								</div>
+							</td>
+						</tr>
+
+					</table>
 
 				</tr>
 
-			</table>
+			</td>
 
-			<table>
-				
-				<tr>
-					<td>
-						<div id="playerSelect">
-							<span>
-								<span id="filteredPlayersCount"></span>
-							</span>
-							<span id="playerButtons">
-								<button id="movePlayerFirst">&lt&lt</button>
-								<button id="movePlayerPrevious">&lt</button>
-								<button id="movePlayerNext">&gt</button>
-								<button id="movePlayerLast">&gt&gt</button>
-							</span>
-							<span>
-								<select id="playerFilter"></select>
-							</span>
-						</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td>
-						<div id="divPlayersTable">
-							<table id="playersTable" width="600">
-								<tr>
-									<th id="nameColumn">Name</th>
-									<th id="clubColumn">Club</th>
-									<th id="positionColumn">Position</th>
-									<th id="squadNoColumn">Squad Number</th>
-								</tr>
-							</table>
-						</div>
-					</td>
-					<td id="secondColumn"></td>
-					<td>
-						<div id="divPlayerDetails"> 
-							<table id="playerDetails">
-								<th id="detailLabelColumn"></th>
-								<th id="detailValueColumn"></th>
-								<tr><td><label class="detailLabel">Forename</label></td><td><span id="pForename"></span></td></tr>
-								<tr><td><label class="detailLabel">Surname</label></td><td><span id="pSurname"></span></td></tr>
-								<tr><td><label class="detailLabel">Club</label></td><td><span id="pClub"></span></td></tr>
-								<tr><td><label class="detailLabel">Position</label></td><td><span id="pPosition"></span></td></tr>
-								<tr><td><label class="detailLabel">Squad Number</label></td><td><span id="pSquadNo"></span></td></tr>
-							</table>
-						</div>
-			
-						<div id="editPlayerDetails">
-							<table>
-								<th id="detailLabelColumn2"></th>
-								<th id="detailValueColumn2"></th>
-								<tr><td><label class="detailLabel">Forename</label></td><td><input id="pForename2"/></td></tr>
-								<tr><td><label class="detailLabel">Surname</label></td><td><input id="pSurname2"/></td></tr>
-								<tr><td><label class="detailLabel">Club</label></td><td><select id="pClub2"></select></td></tr>
-								<tr><td><label class="detailLabel">Position</label></td><td><select id="pPosition2"></select></td></tr>
-								<tr><td><label class="detailLabel">Squad Number</label></td><td><select id="pSquadNo2"></select></td></tr>
-								<tr><td><label class="detailLabel">Image</label></td><td><input id="pImage2"/></td></tr>
-							</table>
-						</div>
-
-					</td>
-					<td>
-						<img id="pImage"/></td>
-					</td>
-				</tr>
-
-				<tr>
-					<td>
-						<div id="pageSelect">
-							<span id="pageCount"></span>
-							<span id="pageButtons">
-								<button id="movePageFirst">&lt&lt</button>
-								<button id="movePagePrevious">&lt</button>
-								<button id="movePageNext">&gt</button>
-								<button id="movePageLast">&gt&gt</button>
-							</span>
-							<span id="editButtons"> 
-								<button id="addPlayer">Add new Player</button>
-								<button id="deletePlayer">Delete Player</button>
-								<button id="editPlayer">Edit Player</button>
-							</span>
-						</div>
-					</td>
-				</tr>
-				
-				<tr>
-					<td></td>
-					<td></td>
-					<td>
-						<div id="divButtons3"> 
-							<button id="savePlayer">Save Player</button>
-						</div>
-					</td>
-				</tr>
-
-			</table>
-
-		</tr>
-
-	</td>
-
-	</table>
+		</table>
 
 	</body>
 

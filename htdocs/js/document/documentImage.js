@@ -1,14 +1,16 @@
 
-function DocumentImage(elementId)
-{
-	DocumentElement.call(this, elementId);
-}
-DocumentImage.prototype = Object.create(DocumentElement.prototype)
+class DocumentImage extends DocumentElement {
 
-DocumentImage.prototype.setImage = function (value) { 
-	this.element.src = value;
-}
+	constructor (elementId) {
+		super (elementId);
+	}
 
-DocumentImage.prototype.clear = function () { 
-	this.element.src = "";
+	setImage (value) { 
+		this.element.src = value;
+	}
+
+	clear () { 
+		this.element.src = "";
+	}
+
 }
