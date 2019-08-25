@@ -1,7 +1,7 @@
 
 class Functions {
 
-    getCountDescription (count, description) {
+    static getCountDescription (count, description) {
         var result = count;
         result += ' ';
         result += description;
