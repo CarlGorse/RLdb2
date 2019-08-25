@@ -7,9 +7,9 @@ class ViewElements {
 		this.editPlayerDetails =	new DocumentElement('editPlayerDetails');
 
 		this.clubFilter = 		new ViewSearchFilterClub('clubFilter', 'name2');
-		this.positionFilter = 	new ViewSearchFilter('positionFilter', data.positions, 'name', 'positionId');
-		this.squadNoFilter = 	new ViewSearchFilter('squadNoFilter', data.squadNos, 'number', 'squadNo');
-		this.hasImageFilter = 	new ViewSearchFilter('hasImageFilter', data.hasImages, 'text', 'hasImageId');
+		this.positionFilter = 	new ViewSearchFilter('positionFilter', data.positions, 'name', 'positionId', true);
+		this.squadNoFilter = 	new ViewSearchFilter('squadNoFilter', data.squadNos, 'number', 'squadNo', true);
+		this.hasImageFilter = 	new ViewSearchFilter('hasImageFilter', data.hasImages, 'text', 'hasImageId', false);
 		this.playerFilter = 	new ViewSearchFilterPlayer('playerFilter', 'name');
 
 		this.cImage = 				new DocumentImage('cImage');

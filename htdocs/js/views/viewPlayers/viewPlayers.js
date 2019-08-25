@@ -116,7 +116,7 @@ class ViewPlayers {
 		p.squadNo = viewPlayers.elements.pSquadNo2.value;
 		p.image = viewPlayers.elements.pImage2.value;
 		
-		data.players.save(p);
+		data.players.save();
 		
 		this.loadDisplay();
 
@@ -132,6 +132,8 @@ class ViewPlayers {
 		var p = controller.currentPlayer;	// save current player before deleted from data/controller
 		
 		data.players.remove(p);
+		
+		data.players.save();
 		
 		this.loadDisplay();
 

@@ -3,11 +3,10 @@ class ViewSearchFilterPlayer extends ViewSearchFilter {
 
 	constructor (elementId, displayProperty)
 	{
-		super (elementId, data.players, displayProperty, 'playerId');
+		super ( elementId, data.players, displayProperty, 'playerId', false);
 		this.showNonMatchingDataItems = false;
 		this.showDataItemCount = false;
 		this.showOptionAll = false;
-		this.showOptionNone = false;
 		this.setInitialValueEmpty = true;
 		this.includeInPlayerCount = false;
 
@@ -24,7 +23,7 @@ class ViewSearchFilterPlayer extends ViewSearchFilter {
 		ViewSearchFilter.prototype.render.call(this);
 
 		let count = this.element.options.length;
-		var countDescription = functions.getCountDescription(count, 'player');
+		var countDescription = Functions.getCountDescription(count, 'player');
 		viewPlayers.elements.filteredPlayersCount.setValue(countDescription);
 
 	}

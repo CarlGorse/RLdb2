@@ -1,7 +1,7 @@
 
 class ViewSearchFilter extends DataSelect {
 
-	constructor (elementId, dataSet, displayProperty, searchProperty)
+	constructor (elementId, dataSet, displayProperty, searchProperty, showOptionNone = true)
 	{
 
 		super (elementId, dataSet, displayProperty);
@@ -9,7 +9,7 @@ class ViewSearchFilter extends DataSelect {
 		viewPlayers.filters.items.push(this); 
 		
 		this.element.onchange = function() {
-			view.events.changeFilter(this);
+			viewPlayers.events.changeFilter(this);
 		}
 		
 		this.searchProperty = searchProperty;
@@ -20,7 +20,7 @@ class ViewSearchFilter extends DataSelect {
 		this.includeInPlayerCount = true;
 
 		this.showOptionAll = true;
-		this.showOptionNone = true;
+		this.showOptionNone = showOptionNone;
 
 	}
 
@@ -43,8 +43,7 @@ class ViewSearchFilter extends DataSelect {
 
 				if (filterItemValue == "none")
 				{
-					if (p[this.searchProperty].length > 0)
-					{
+					if (p[this.searchProperty + 'Property'].isSet()) {
 						isMatch = false;
 						return;
 					}
@@ -55,14 +54,13 @@ class ViewSearchFilter extends DataSelect {
 					return;
 				}
 
-				viewPlayers.filters.items.forEach(
+				viewPlayers.filters.items.forEach (
 					function (f2) { 
 						if (f2.elementId == this.elementId) return;
 						if (f2.includeInPlayerCount == false) return;
 						if (f2.value == "none")
 						{
-							if (p[f2.searchProperty].length > 0)
-							{
+							if (p[f2.searchProperty + 'Property'].isSet()) {
 								isMatch = false;
 								return;
 							}

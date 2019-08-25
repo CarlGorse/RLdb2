@@ -3,8 +3,7 @@ class ViewSearchFilterClub extends ViewSearchFilter{
 
 	constructor (elementId, displayProperty)
 	{
-		super ( elementId, data.clubs, displayProperty, 'clubId');
-		this.showOptionNone = false;
+		super ( elementId, data.clubs, displayProperty, 'clubId', false);
 	}
 
 	render() {

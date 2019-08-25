@@ -54,6 +54,7 @@ class DocumentSelect extends DocumentElement {
 	}
 
 	setValue (dataItemId) { 
+		if (!dataItemId) return;
 		for (var x = 0; x < this.element.length; x ++)
 		{
 			let o = this.element.options[x];
