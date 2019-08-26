@@ -1,8 +1,8 @@
 
 var controller;
 var data;
-var functions;
 var viewPlayers;
+var viewScores;
 
 function Start()
 {
@@ -15,8 +15,8 @@ class Controller {
 	constructor ()
 	{
 		data = new Data();
-		functions = new Functions();
 		viewPlayers = new ViewPlayers();
+		viewScores = new ViewScores();
 		
 		this.currentPlayer = null;
 		this.currentPlayerId = 0;
@@ -26,11 +26,8 @@ class Controller {
 	
 	initialise () {
 		this.currentPlayer = null;
-		controller.showViewPlayers();
-	}	
-
-	loadData () { 
 		data.loadData();
+		controller.showViewPlayers();
 	}	
 
 	setCurrentPlayer (playerId) {
@@ -70,6 +67,7 @@ class Controller {
 
 	showViewScores() {
 		document.getElementById("viewScores").style.display = "block";
+		viewScores.loadDisplay();
 		controller.hideViewPlayers();
 	}
 

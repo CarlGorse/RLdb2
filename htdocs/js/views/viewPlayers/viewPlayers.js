@@ -4,17 +4,14 @@ class ViewPlayers {
 	constructor () {
 
 		this.events = new ViewEvents(this);
-		this.elements = new ViewElements(this);
+		this.elements = new ViewPlayerElements(this);
 		this.filters = new ViewSearchFilters();
 	}
 
 	loadDisplay () {
 
-		controller.loadData();
-
 		this.events.initialise();
 		this.elements.initialise();
-		this.filters.initialise();
 
 		this.hidePlayerDetails();
 		this.hideEditPlayerDetails();

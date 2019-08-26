@@ -15,6 +15,11 @@ select { height:3em; }
 #filterPosition	{ width: 16em; }
 #squadFilter	{ width: 16em;  }
 
+.searchLabels
+{
+	width: 8em;
+}
+
 .filterLabel::after { content: ":"; }
 .detailLabel::after { content: ":"; }
 
@@ -53,6 +58,11 @@ select { height:3em; }
 #playerSelect {
 	padding-top:3em;
 	padding-bottom:1em;
+}
+
+
+#viewButtons {
+	padding-bottom:2em;
 }
 
 #divPlayerFilter {

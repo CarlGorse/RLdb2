@@ -1,15 +1,16 @@
 
-class ViewSearchFilterPlayer extends ViewSearchFilter {
+class ViewPlayersSearchFilterPlayer extends ViewPlayersSearchFilter {
 
-	constructor (elementId, displayProperty)
+	constructor (parameters)
 	{
-		super ( elementId, data.players, displayProperty, 'playerId', false);
-		this.showNonMatchingDataItems = false;
-		this.showDataItemCount = false;
-		this.showOptionAll = false;
-		this.setInitialValueEmpty = true;
-		this.includeInPlayerCount = false;
-
+		parameters.dataSet = data.players;
+		parameters.includeInPlayerCount = false;
+		parameters.searchProperty = 'playerId';
+		parameters.showOptionAll = false;
+		parameters.showOptionNone = false;
+		parameters.showPlayerCount = false;
+		super (parameters);
+		
 		this.element.onchange = function() { viewPlayers.events.selectPlayerBySelect(); }
 
 	}
@@ -20,7 +21,7 @@ class ViewSearchFilterPlayer extends ViewSearchFilter {
 
 	render() {
 
-		ViewSearchFilter.prototype.render.call(this);
+		ViewPlayersSearchFilter.prototype.render.call(this);
 
 		let count = this.element.options.length;
 		var countDescription = Functions.getCountDescription(count, 'player');
@@ -30,7 +31,7 @@ class ViewSearchFilterPlayer extends ViewSearchFilter {
 
 	select (playerId) {
 		controller.setCurrentPlayer(playerId);
-		ViewSearchFilter.prototype.select.call(this, playerId);
+		ViewPlayersSearchFilter.prototype.select.call(this, playerId);
 		viewPlayers.elements.playersTable.render();
 	}
 

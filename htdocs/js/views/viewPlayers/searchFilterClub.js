@@ -1,13 +1,18 @@
 
-class ViewSearchFilterClub extends ViewSearchFilter{
+class ViewPlayersSearchFilterClub extends ViewPlayersSearchFilter{
 
-	constructor (elementId, displayProperty)
+	constructor (parameters)
 	{
-		super ( elementId, data.clubs, displayProperty, 'clubId', false);
+		parameters.dataSet = data.clubs;
+		parameters.searchProperty = 'clubId';
+		parameters.showOptionNone = false;
+		super (parameters);
 	}
 
 	render() {
-		ViewSearchFilter.prototype.render.call(this);
+		
+		ViewPlayersSearchFilter.prototype.render.call(this);
+
 		let c = this.selectedDataItem();
 		if (c)
 		{

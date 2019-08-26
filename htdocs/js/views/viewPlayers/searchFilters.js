@@ -5,9 +5,6 @@ class ViewSearchFilters {
 		this.items = new ArrayHelper();
 	}
 
-	initialise() {
-	}
-
 	add (filter) {
 		this.items.push(filter);
 	} 

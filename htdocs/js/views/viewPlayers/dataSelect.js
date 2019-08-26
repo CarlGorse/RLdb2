@@ -1,18 +1,16 @@
 
 class DataSelect extends DocumentSelect{
 
-	constructor (elementId, dataSet, displayProperty)
+	constructor (parameters)
 	{
 
-		super (elementId);
+		super (parameters.elementId);
 
-		this.elementId = elementId;
-		this.dataSet = dataSet;
-		this.displayProperty = displayProperty;
+		this.dataSet = 				parameters.dataSet;
+		this.displayProperty = 		parameters.displayProperty;
+		this.setInitialValueEmpty =	parameters.setInitialValueEmpty;
 
-		this.items = new ArrayHelper();
-		
-		this.setInitialValueEmpty = false;
+		if (typeof(this.setInitialValueEmpty) == "undefined") this.setInitialValueEmpty = false;
 
 	}
 

@@ -1,16 +1,16 @@
 
-class ViewElements {
+class ViewPlayerElements {
 
 	initialise () {
 
 		this.playerDetails =		new DocumentElement('divPlayerDetails');
 		this.editPlayerDetails =	new DocumentElement('editPlayerDetails');
 
-		this.clubFilter = 		new ViewSearchFilterClub('clubFilter', 'name2');
-		this.positionFilter = 	new ViewSearchFilter('positionFilter', data.positions, 'name', 'positionId', true);
-		this.squadNoFilter = 	new ViewSearchFilter('squadNoFilter', data.squadNos, 'number', 'squadNo', true);
-		this.hasImageFilter = 	new ViewSearchFilter('hasImageFilter', data.hasImages, 'text', 'hasImageId', false);
-		this.playerFilter = 	new ViewSearchFilterPlayer('playerFilter', 'name');
+		this.clubFilter = 		this.initialiseSearchFilter( new ViewPlayersSearchFilterClub ( {	elementId: 'clubFilter', displayProperty: 'name2'} ));
+		this.positionFilter = 	this.initialiseSearchFilter( new ViewPlayersSearchFilter ( { 		elementId: 'positionFilter', dataSet: data.positions, displayProperty: 'name', searchProperty: 'positionId', showOptionNone: true } ));
+		this.squadNoFilter = 	this.initialiseSearchFilter( new ViewPlayersSearchFilter ( { 		elementId: 'squadNoFilter', dataSet: data.squadNos, displayProperty: 'number', searchProperty: 'squadNo', showOptionNone: true } ));
+		this.hasImageFilter = 	this.initialiseSearchFilter( new ViewPlayersSearchFilter ( { 		elementId: 'hasImageFilter', dataSet: data.hasImages, displayProperty: 'text', searchProperty: 'hasImageId', showOptionNone: false } ));
+		this.playerFilter = 	this.initialiseSearchFilter( new ViewPlayersSearchFilterPlayer ( { 	elementId: 'playerFilter', displayProperty: 'name' } ));
 
 		this.cImage = 				new DocumentImage('cImage');
 
@@ -49,6 +49,17 @@ class ViewElements {
 		
 		this.pageCount = 		new DocumentSpan('pageCount');
 
+	}
+
+	initialiseSearchFilter(filter)
+	{
+		viewPlayers.filters.items.push(filter); 
+		
+		filter.element.onchange = function() {
+			viewPlayers.events.changeFilter(filter);
+		}
+
+		return filter;
 	}
 
 }

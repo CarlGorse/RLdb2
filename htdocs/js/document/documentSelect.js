@@ -4,6 +4,9 @@ class DocumentSelect extends DocumentElement {
 	constructor (elementId)
 	{
 		super (elementId);
+
+		this.items = new ArrayHelper();
+		
 	}
 
 	get value () {
